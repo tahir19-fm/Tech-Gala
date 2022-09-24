@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/banner_rev"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/headingText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="dsjhflkjasdfhlkdshfsdkjvnksdfjvnskfvnasvsdvsdvsvdsdvsdvsdvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/subheading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/headingText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/registered_user_icon"
+            />
+        <TextView
+            android:id="@+id/totalRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="14 Registered"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="#0066FF"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:gravity="end"
+            >
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/wish_list"
+                />
+        <TextView
+            android:id="@+id/lastDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 month left"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="#0066FF"
+            android:layout_marginStart="6dp"
+            />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/subheading"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="6dp"
+        >
+        <TextView
+            android:id="@+id/tvTeamIndividual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="team"
+            android:background="@drawable/edit_text_style"
+            />
+        <TextView
+            android:id="@+id/registrationFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registration Fee: $100"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:gravity="end"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

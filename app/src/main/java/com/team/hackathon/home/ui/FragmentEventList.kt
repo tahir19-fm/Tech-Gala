@@ -1,60 +1,51 @@
 package com.team.hackathon.home.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.team.hackathon.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.team.hackathon.databinding.FragmentEventListBinding
+import com.team.hackathon.home.data.EventDataModel
+import com.team.hackathon.home.util.ParentItemAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentEventList.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentEventList : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
+    companion object{
+        fun getInstance() = FragmentEventList()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_list, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentEventList.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentEventList().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupViews() {
+        val data:MutableList<EventDataModel>
+        data=ArrayList()
+        data.add(EventDataModel("https://idendron.hku.hk/wp-content/uploads/2020/12/Banner_rev.jpg","Join EY Techathon 3.0: Enter the Metaverse","16 registered","Last date:12/12/2002","Team","10 rupia"))
+        data.add(EventDataModel("https://idendron.hku.hk/wp-content/uploads/2020/12/Banner_rev.jpg","Join EY Techathon 3.0: Enter the Metaverse","16 registered","Last date:12/12/2002","Team","10 rupia"))
+        data.add(EventDataModel("https://idendron.hku.hk/wp-content/uploads/2020/12/Banner_rev.jpg","Join EY Techathon 3.0: Enter the Metaverse","16 registered","Last date:12/12/2002","Team","10 rupia"))
+        data.add(EventDataModel("https://idendron.hku.hk/wp-content/uploads/2020/12/Banner_rev.jpg","Join EY Techathon 3.0: Enter the Metaverse","16 registered","Last date:12/12/2002","Team","10 rupia"))
+       setupRecycler(data)
+    }
+
+    private fun setupRecycler(data: MutableList<EventDataModel>) {
+        val layoutManager = LinearLayoutManager(requireActivity())
+        val parentItemAdapter = ParentItemAdapter(data)
+        binding.rvEventList.addItemDecoration(
+            DividerItemDecoration(context, layoutManager.orientation)
+        )
+        binding.rvEventList.adapter = parentItemAdapter
+        binding.rvEventList.layoutManager = layoutManager
     }
 }

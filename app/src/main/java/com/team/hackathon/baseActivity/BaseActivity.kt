@@ -1,11 +1,11 @@
-package com.team.hackathon.BaseActivity
+package com.team.hackathon.baseActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.team.hackathon.databinding.ActivityBaseBinding
 
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
     private val binding by lazy { ActivityBaseBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
