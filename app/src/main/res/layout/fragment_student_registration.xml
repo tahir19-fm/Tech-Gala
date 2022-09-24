@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/registerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.05"
+        android:text="NAME"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/name_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerName"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:lines="1"/>
+    <TextView
+        android:id="@+id/registerPhonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.05"
+        android:text="PHONE NUMBER"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_EditText" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/phoneNumber_linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPhonenumber">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/countryCodePicker"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            app:ccp_arrowColor="#0066FF"
+            app:ccp_autoDetectCountry="true"
+            android:padding="5dp"
+            app:ccp_contentColor="@color/black"
+            app:ccp_countryPreference="IN,SA,BD,NP,PK,LK"
+            app:ccp_rememberLastSelection="true"
+            app:ccp_textSize="14sp"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/phoneNumber_editText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:inputType="phone"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:lines="1"
+            android:background="@drawable/rounded_edit_text"
+            android:imeOptions="actionNext"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/registerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.05"
+        android:text="Institute Id"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber_linearLayout" />
+
+    <EditText
+        android:id="@+id/id_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edit_text"
+        android:lines="1"
+android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerId" />
+
+    <TextView
+        android:id="@+id/college_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.05"
+        android:text="INSTITUTE"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_EditText" />
+
+    <EditText
+        android:id="@+id/institute_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edit_text"
+        android:lines="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/college_TextView" />
+
+
+    <TextView
+        android:id="@+id/branch_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.05"
+        android:text="BRANCH"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_goneMarginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/institute_EditText" />
+
+    <EditText
+        android:id="@+id/branch"
+android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+app:layout_goneMarginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edit_text"
+        android:lines="1"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/branch_EditText" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.05"
+        android:text="GENDER"
+        android:layout_marginTop="15dp"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/branch" />
+
+    <AutoCompleteTextView
+        android:id="@+id/selectGender1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edit_text"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:imeOptions="actionNext"
+        android:inputType="none"
+        android:lines="1"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Male"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnToRegisterUser"
+        android:layout_width="match_parent"
+        android:background="@drawable/button_style"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:visibility="visible"
+        android:backgroundTint="#808080"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:letterSpacing="0.03"
+        android:text="Verify"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

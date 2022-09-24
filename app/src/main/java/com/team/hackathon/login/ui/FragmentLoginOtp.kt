@@ -28,6 +28,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.team.hackathon.login.data.UserRegistrationDto
+import com.team.hackathon.login.data.studentDetails
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
@@ -35,7 +36,7 @@ import java.util.concurrent.TimeUnit
 
 
 class FragmentLoginOtp : Fragment() {
-private val dataCollection = Firebase.firestore.collection("data")
+private val dataCollection = Firebase.firestore.collection("details")
     private val binding by lazy { FragmentLoginOtpBinding.inflate(layoutInflater) }
     private val viewModel: LoginViewModel by activityViewModels()
     private var codeBySystem: String = ""
@@ -69,6 +70,9 @@ private val dataCollection = Firebase.firestore.collection("data")
         binding.pinView.requestFocus()
         InputMethodManager.SHOW_FORCED
         InputMethodManager.HIDE_IMPLICIT_ONLY
+        binding.test.setOnClickListener{
+            uploadData()
+        }
 
         binding.ivBackButton.setOnClickListener {
             requireActivity().onBackPressed()
@@ -171,18 +175,6 @@ private val dataCollection = Firebase.firestore.collection("data")
 
     }
 
-    private fun savedata(data: UserRegistrationDto)=CoroutineScope(Dispatchers.IO).launch {
-        try {
-            dataCollection.add(data).await()
-            withContext(Dispatchers.Main) {
-                Toast.makeText(requireContext(), "data Saved : )", Toast.LENGTH_LONG).show()
-            }
-        } catch (e: Exception) {
-            withContext(Dispatchers.Main) {
-                Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
-            }
-        }
-    }
 
     private fun setobservers() {
         viewModel.phoneNumber.observe(this.requireActivity()) {
@@ -193,13 +185,7 @@ private val dataCollection = Firebase.firestore.collection("data")
         }
     }
 
-    private fun createUser() {
- viewModel.userData.observe(this.requireActivity()){
-     val data=it as UserRegistrationDto
-     savedata(data)
- }
 
-    }
 
 
 
@@ -207,7 +193,7 @@ private val dataCollection = Firebase.firestore.collection("data")
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             // val otp = credential.smsCode
             Log.d(TAG, "onVerificationCompleted:$credential")
-            createUser()
+         //-------------------   createUser()
             // new implementation
             val code = credential.smsCode
             if (code != null) {
@@ -271,6 +257,26 @@ private val dataCollection = Firebase.firestore.collection("data")
             optionsBuilder.setForceResendingToken(resendToken)
         }
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
+    }
+    private fun saveStudentDetails(StudentDetail: studentDetails) =CoroutineScope(Dispatchers.IO).launch {
+        try {
+            dataCollection.add(StudentDetail).await()
+            withContext(Dispatchers.Main){
+                Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
+            }
+        }
+        catch (e:Exception){
+            withContext(Dispatchers.Main){
+                Toast.makeText(requireContext(),e.message,Toast.LENGTH_LONG).show()
+            }
+    }
+
+    }
+    private fun uploadData(){
+        val id = viewModel.institute_data.toString()
+        val phoneNumber = viewModel.institue_phoneNumber.toString()
+        val studentData = studentDetails(id,phoneNumber)
+        saveStudentDetails(studentData)
     }
 }
 

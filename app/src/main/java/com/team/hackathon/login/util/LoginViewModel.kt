@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.team.hackathon.login.data.UserRegistrationDto
+import com.team.hackathon.login.data.studentDetails
 import kotlinx.coroutines.launch
 
 
@@ -49,6 +50,21 @@ class LoginViewModel : ViewModel() {
     fun saveUserDataOnLocal(data: UserRegistrationDto) {
         _userData.value = data
     }
+    fun setInstituteID(id:String){
+        _institute_id.value=id
+    }
+
+    private val _institute_id= MutableLiveData<String>()
+    val institute_data: LiveData<String>
+    get() =_institute_id
+
+    fun setInstituePhoneNumber(institutePhone : String){
+        _institue_phoneNumber.value = institutePhone
+    }
+    private val _institue_phoneNumber = MutableLiveData<String>()
+    val institue_phoneNumber : LiveData<String>
+    get() = _institue_phoneNumber
+
 
 
 }

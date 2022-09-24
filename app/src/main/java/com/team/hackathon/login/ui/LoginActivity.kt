@@ -9,6 +9,7 @@ import com.team.hackathon.R
 import com.team.hackathon.databinding.ActivityLoginBinding
 import com.team.hackathon.login.util.LoginViewModel
 import com.team.hackathon.baseActivity.BaseActivity
+import com.team.hackathon.login.ui.FragmentStudentRegistration
 import com.team.hackathon.login.ui.FragmentUserValidation
 
 class LoginActivity : BaseActivity(){
@@ -85,7 +86,7 @@ class LoginActivity : BaseActivity(){
     }
 
     private fun loginRegister() {
-        startFragment(FragmentUserRegistration.getInstance(), false)
+        startFragment(FragmentStudentRegistration.getInstance(), false)
     }
 
     private fun loginUserValidation() {
