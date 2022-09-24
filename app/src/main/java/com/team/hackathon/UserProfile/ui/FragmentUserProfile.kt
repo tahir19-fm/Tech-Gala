@@ -19,12 +19,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import com.team.hackathon.R
 import com.team.hackathon.UserProfile.data.UserDataForProfile
 import com.team.hackathon.UserProfile.data.UserForProfile
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
 import com.team.hackathon.databinding.FragmentUserProfileBinding
+import org.json.JSONException
+import org.json.JSONObject
 
-class FragmentUserProfile : Fragment() {
+class FragmentUserProfile : Fragment() , PaymentResultListener  {
     private val binding by lazy { FragmentUserProfileBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
     private val pickImage  = 100
@@ -42,11 +47,51 @@ class FragmentUserProfile : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
 
         readFromFirebaseData()
         setData()
         super.onViewCreated(view, savedInstanceState)
+
+        binding.sendmoney.setOnClickListener{
+            val amt = binding.edamount.text.toString()
+            val amount = Math.round(amt.toFloat() * 100)
+            val checkout = Checkout()
+
+            checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
+
+            checkout.setImage(R.drawable.banner_rev)
+            val obj = JSONObject()
+            try {
+                obj.put("name", "Geeks for Geeks")
+
+                // put description
+                obj.put("description", "Test payment")
+
+                // to set theme color
+                obj.put("theme.color", "")
+
+                // put the currency
+                obj.put("currency", "INR")
+
+                // put amount
+                obj.put("amount", amount)
+
+                // put mobile number
+                obj.put("prefill.contact", "9284064503")
+
+                // put email
+                obj.put("prefill.email", "chaitanyamunje@gmail.com")
+
+                checkout.open(requireActivity(),obj)
+            }catch (e:JSONException){
+                e.printStackTrace()
+            }
+
+        }
+
+
+
         binding.editButton.setOnClickListener{
             viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE_EDIT)
         }
@@ -190,6 +235,14 @@ class FragmentUserProfile : Fragment() {
         binding.llFirstLine.visibility = View.VISIBLE
         binding.llSecondLine.visibility = View.VISIBLE
         binding.llThirdLine.visibility = View.VISIBLE
+    }
+
+    override fun onPaymentSuccess(s: String?) {
+        Toast.makeText(requireActivity(), "Payment is successful : " + s, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPaymentError(p0: Int, s: String?) {
+        Toast.makeText(requireActivity(), "Payment Failed due to error : " + s, Toast.LENGTH_SHORT).show();
     }
 
 }
