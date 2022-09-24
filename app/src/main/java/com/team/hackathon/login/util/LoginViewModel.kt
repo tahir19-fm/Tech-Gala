@@ -58,13 +58,13 @@ class LoginViewModel : ViewModel() {
     val institute_data: LiveData<String>
     get() =_institute_id
 
-    fun setInstituePhoneNumber(institutePhone : String){
-        _institue_phoneNumber.value = institutePhone
-    }
+
     private val _institue_phoneNumber = MutableLiveData<String>()
     val institue_phoneNumber : LiveData<String>
     get() = _institue_phoneNumber
 
-
+    fun setInstituePhoneNumber(institutePhone : String){
+        _institue_phoneNumber.value = institutePhone
+    }
 
 }

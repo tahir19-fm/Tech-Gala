@@ -128,9 +128,6 @@ private val dataCollection = Firebase.firestore.collection("details")
             }
         }.start()
 
-
-
-
         binding.otpLinkBox.setOnClickListener {
 
             sendOtp()
@@ -273,8 +270,8 @@ private val dataCollection = Firebase.firestore.collection("details")
 
     }
     private fun uploadData(){
-        val id = viewModel.institute_data.toString()
-        val phoneNumber = viewModel.institue_phoneNumber.toString()
+        val id = viewModel.institute_data.value.toString()
+        val phoneNumber = viewModel.institue_phoneNumber.value.toString()
         val studentData = studentDetails(id,phoneNumber)
         saveStudentDetails(studentData)
     }

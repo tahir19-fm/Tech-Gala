@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         if (currUser == null) {
 openLoginActivity()
         } else {
-          openHomepage()
+          openLoginActivity()
         }
     }
     private fun openLoginActivity() {
