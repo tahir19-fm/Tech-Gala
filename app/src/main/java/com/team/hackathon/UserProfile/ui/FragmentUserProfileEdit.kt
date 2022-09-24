@@ -10,10 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.team.hackathon.R
-import com.team.hackathon.UserProfile.data.AddressForEdit
-import com.team.hackathon.UserProfile.data.DataClassForEdit
-import com.team.hackathon.UserProfile.data.FoodPreferencesForEdit
-import com.team.hackathon.UserProfile.data.User
+import com.team.hackathon.UserProfile.data.*
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
 import com.team.hackathon.UserProfile.util.UtilForMonth
 import com.team.hackathon.databinding.FragmentUserProfileEditBinding
@@ -45,6 +42,7 @@ class FragmentUserProfileEdit : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.backButtonEdit.setOnClickListener{
@@ -61,6 +59,8 @@ class FragmentUserProfileEdit : Fragment() {
         onCLickSaveButton()
 
         setAllCursorAtTheEnd()
+
+        setAllValuesFromUserProfile()
         //
         // Default Values Please Do Not Remove It
 //        hashMap.put("date","12")
@@ -169,51 +169,9 @@ class FragmentUserProfileEdit : Fragment() {
         binding.selectcityDropdown.setSelection(binding.selectcityDropdown.length())
         binding.actSelectHeight.setSelection(binding.actSelectHeight.length())
         binding.edSelectWeight.setSelection(binding.edSelectWeight.length())
-        binding.edSelectAllergies.setSelection(binding.edSelectAllergies.length())
+        binding.edCollageName.setSelection(binding.edCollageName.length())
     }
 
-//    private fun setAllValuesFromProfile(){
-//        viewModel.userDataForEdit.observe(this.requireActivity()){
-//            val modal = it as UserDataForProfile
-//            binding.nameEditText.setText(modal.name)
-//            binding.edphoneNumber.setText(modal.phoneNumber)
-//
-//            val calender = Calendar.getInstance()
-//            calender.timeInMillis = modal.dob!!
-//            monthForConverting = UtilsForMonthName.returnMonthName(calender.get(Calendar.MONTH))
-//            dateForConverting = calender.get(Calendar.DAY_OF_MONTH).toString()
-//            yearForConverting = calender.get(Calendar.YEAR).toString()
-//
-//            binding.selectDate.setText(dateForConverting.toString())
-//            binding.selectMonth.setText(monthForConverting.toString())
-//            binding.selectYear.setText(yearForConverting.toString())
-//            binding.actSelectGender.setText(modal.gender)
-//            binding.selectCountryd.setText(modal.address.country)
-//            binding.selectcityDropdown.setText(modal.address.city)
-//            binding.edSelectWeight.setText(modal.weight)
-//            binding.actSelectHeight.setText(modal.Height)
-//            binding.actSelectFoodPreferences.setText(modal.foodPreferences.type)
-//            binding.edSelectAllergies.setText(modal.foodPreferences.allergies.toString())
-//
-//            hashMap["nameForEdit"] = modal.name!!
-//            hashMap["phoneForEdit"] = modal.phoneNumber!!
-//
-//            hashMap["dateForEdit"] = dateForConverting.toString()
-//            val monthNumber:Int ? = UtilForMonth.returnMonthNumber(monthForConverting.toString())
-//            hashMap["monthForEdit"] = monthNumber.toString()
-//            hashMap["yearForEdit"] = yearForConverting.toString()
-//
-//            hashMap["genderForEdit"] = modal.gender!!
-//            hashMap["countryForEdit"] = modal.address.country!!
-//            hashMap["cityForEdit"] = modal.address.city!!
-//            hashMap["weightForEdit"] = modal.weight!!
-//            hashMap["heightForEdit"] = modal.Height!!
-//            hashMap["foodPreferencesForEdit"] = modal.foodPreferences.type!!
-//            hashMap["allergiesForEdit"] = modal.foodPreferences.allergies.toString()
-//        }
-//
-//
-//    }
 
     private fun onCLickSaveButton(){
         binding.saveButton.setOnClickListener {
@@ -223,8 +181,8 @@ class FragmentUserProfileEdit : Fragment() {
             val city = binding.selectcityDropdown.text
             hashMap["cityForEdit"] = city.toString()
 
-            val allergies = binding.edSelectAllergies.text
-            hashMap["allergiesForEdit"] = allergies.toString()
+            val collageName = binding.edCollageName.text
+            hashMap["allergiesForEdit"] = collageName.toString()
 
             val height = binding.actSelectHeight.text
             hashMap["heightForEdit"] = height.toString()
@@ -234,105 +192,24 @@ class FragmentUserProfileEdit : Fragment() {
 
             Log.d("testingHashmap",hashMap.toString())
 
-            //patchData()
         }
 
     }
 
-    private fun setNewUserData(){
-        convertDOBtoMilliSecond()
-        setNewDataOnEditDataClass()
-    }
-
-//    private fun  patchData(){
-//        setNewUserData()
-//        viewModel.newUserData.observe(this.requireActivity()){
-//            val modal = it as DataClassForEdit
-//            viewModel.patchUserData(modal)
-//            apiObserver()
-//        }
-//    }
-
-//    private fun apiObserver() {
-//        viewModel.patchUserData.observe(requireActivity()) {
-//            when (it) {
-//                ApiResult.Loading -> {
-//                    Toast.makeText(requireActivity(), "uploading data", Toast.LENGTH_SHORT).show()
-//                    binding.saveButton.visibility = View.GONE
-//                    binding.progressBar.visibility = View.VISIBLE
-//                    //Show loading state. It can be progress bar or shimmer or something else.
-//                }
-//                is ApiResult.Success -> {
-//                    val name = hashMap["nameForEdit"]
-//                    binding.saveButton.visibility = View.VISIBLE
-//                    binding.progressBar.visibility = View.GONE
-//                    Toast.makeText(requireActivity(), "data added  + $name", Toast.LENGTH_SHORT).show()
-//
-//                }
-//                is ApiResult.Error -> {
-//                    Toast.makeText(
-//                        this.requireActivity(),
-//                        "error : ${it.message}",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                    Timber.i("apiResponse : ${it.message}")
-//                }
-//            }
-//        }
-//    }
-
-    private fun convertDOBtoMilliSecond(){
-        val finalYear = hashMap["yearForEdit"]
-        val month = hashMap["monthForEdit"]
-        val finalDate = hashMap["dateForEdit"]
-
-
-        Log.d("month",finalDate.toString())
-        Log.d("month1",month.toString())
-        Log.d("month2",finalYear.toString())
-        Log.d("main",month.toString())
-
-        val calender = Calendar.getInstance()
-        finalYear?.let { it1 ->
-            month.let { it2 ->
-                finalDate?.let { it3 ->
-                    if (it2 != null) {
-                        calender.set(
-                            it1.toInt(),
-                            it2.toInt(), it3.toInt()
-                        )
-                    }
-                }
-            }
+    private fun setAllValuesFromUserProfile(){
+        viewModel.userData.observe(requireActivity()){
+            val modal = it as UserDataForProfile
+            binding.nameEditText.setText(modal.user.name)
+            binding.edphoneNumber.setText(modal.user.phoneNumber)
+            binding.actSelectGender.setText(modal.user.gender)
+            binding.selectCountryd.setText(modal.user.country)
+            binding.selectcityDropdown.setText(modal.user.city)
+            binding.edCollageName.setText(modal.user.collageName)
         }
-        val date = calender.timeInMillis
 
-        hashMap["date_of_birth"] = date.toString()
     }
 
-    private fun setNewDataOnEditDataClass(){
-        viewModel.setNewUserData(
-            DataClassForEdit(
-                User(
-                    "Testing_id",
-                    hashMap["nameForEdit"].toString(),
-                    AddressForEdit(
-                        hashMap["countryForEdit"].toString(),
-                        hashMap["cityForEdit"].toString()
-                    ),
-                    hashMap["weightForEdit"].toString(),
-                    hashMap["heightForEdit"].toString(),
-                    hashMap["genderForEdit"].toString(),
-                    "55",
-                    hashMap["phoneForEdit"].toString(),
-                    FoodPreferencesForEdit(
-                        listOf(hashMap["allergiesForEdit"].toString()),
-                        hashMap["foodPreferencesForEdit"].toString()
-                    ),
-                    "newUrl",
-                    hashMap["date_of_birth"]?.toLong()
-                )
-            )
-        )
-    }
+
+
+
 }

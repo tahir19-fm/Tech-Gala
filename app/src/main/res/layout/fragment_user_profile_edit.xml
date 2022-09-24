@@ -495,7 +495,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_regular"
             android:letterSpacing="0.05"
-            android:text="FOOD PREFERENCES"
+            android:text="PREFERENCES"
             android:textColor="#000000"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -525,7 +525,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="Vegitarian"
+                android:text="SoftWare , Android"
                 android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -538,7 +538,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_regular"
             android:letterSpacing="0.05"
-            android:text="ALLERGIES (enter values seperated by comma)"
+            android:text="Collage Name"
             android:textColor="#000000"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -558,7 +558,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvAllergies">
 
             <EditText
-                android:id="@+id/edSelectAllergies"
+                android:id="@+id/edCollageName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edit_text"
@@ -568,7 +568,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="Egg Yolk , Chicken , Spinach"
+                android:text="Jamia Hamdard University"
                 android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
