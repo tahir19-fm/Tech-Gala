@@ -1,4 +1,4 @@
-package com.team.hackathon.BaseActivity
+package com.team.hackathon.baseActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,60 +1,107 @@
 package com.team.hackathon.home.ui
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.team.hackathon.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.team.hackathon.databinding.FragmentEventListBinding
+import com.team.hackathon.home.data.EventDataModel
+import com.team.hackathon.home.util.HomeViewModel
+import com.team.hackathon.home.util.ParentItemAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentEventList.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentEventList : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
+    private val viewModel: HomeViewModel by activityViewModels()
+    private lateinit var data:MutableList<EventDataModel>
+    val db = Firebase.firestore
+    companion object{
+        fun getInstance() = FragmentEventList()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_list, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        readFromFirebaseData()
+        setupObserver()
+        setupViews()
+
+
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentEventList.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentEventList().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun setupObserver() {
+
+        viewModel.userData.observe(this.requireActivity()){
+            var beta=it as ArrayList<EventDataModel>
+            data=ArrayList()
+            for(events in beta){
+
+                Log.d("TAG", "dffddfdf: ${events.image}")
+            data.add(EventDataModel(events.image,events.heading,events.totalRegister,events.lastDate,events.teamType,events.entryfee,events.id,checkList(events.id)))
                 }
+            setupRecycler(data)
+        }
+    }
+
+    private fun checkList(id: String): Boolean {
+        val preferences =requireContext().getSharedPreferences("com.team.hackathon", Context.MODE_PRIVATE)
+        val bet = preferences.getBoolean(id, false)
+        Log.e("TAG", "ac get ${data}" )
+        return bet
+    }
+
+    private fun setupViews() {
+
+    }
+
+    private fun setupRecycler(data: MutableList<EventDataModel>) {
+        val layoutManager = LinearLayoutManager(requireActivity())
+        val parentItemAdapter = ParentItemAdapter(data)
+        binding.rvEventList.addItemDecoration(
+            DividerItemDecoration(context, layoutManager.orientation)
+        )
+        binding.rvEventList.adapter = parentItemAdapter
+        binding.rvEventList.layoutManager = layoutManager
+    }
+    private fun readFromFirebaseData(){
+        val docRef = db.collection("events")
+        docRef.get()
+            .addOnSuccessListener { result ->
+                Log.d("TAG", "readFromFirebaseData: ${result.documents}")
+                if(result!=null){
+                    val res=ArrayList<EventDataModel>()
+                    for(document in result.documents) {
+                        res.add(   EventDataModel(
+                            document.getString("image").toString(),
+                            document.getString("heading").toString(),
+                            document.getString("totalRegister").toString()+" Registered",
+                            "last date : "+document.getString("lastDate").toString(),
+                            document.getString("teamType").toString(),
+                            "Rupees: "+document.getString("entryfee").toString(),
+                            document.id,false ))
+
+                    }
+                    viewModel.fetchUserData(res)
+                }else{
+                    Log.d("Data", "No such document")
+                }
+            }.addOnFailureListener{ exception ->
+                Log.d("Data", "get failed with ", exception)
             }
     }
+
+
 }

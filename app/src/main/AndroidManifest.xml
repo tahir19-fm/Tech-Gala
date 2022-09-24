@@ -18,15 +18,13 @@
             android:name=".home.ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".BaseActivity.BaseActivity"
+            android:name=".baseActivity.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".login.ui.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
-        <activity android:name=".SplashActivity"
-            android:exported="false"/>
         <activity
-            android:name=".UserProfile.ui.UserProfileActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,21 +1,5 @@
 <resources>
-    <string name="app_name">Hackathon</string>
-    <string name="text_app_name">Diet Tracker</string>
-    <string name="breakfast">BREAKFAST</string>
-    <string name="lunch">LUNCH</string>
-    <string name="dinner">DINNER</string>
-    //----------------------following are use in LOGIN : ----------------------
-
-    // for login_phone_number : ---------
-    <string name="initial_message">we will send an OTP to your number</string>
-    <string name="sign">Sign In</string>
-    <string name="generate_otp">Send OTP</string>
-
-
-    // for login_otp
-    <string name="otp">Enter OTP</string>
-    <string name="check">Verify</string>
-
+    <string name="app_name">hackathon</string>
     // for userValidation
     <string name="heading_userValidation">Diet Tracker</string>
     <string name="head_text_userValidation">"Your account doesn't exist"</string>
@@ -23,31 +7,8 @@
 you can go back and login with a another number</string>
     <string name="btnToNumber_text">Change Number</string>
     <string name="btnToRegistration_text">Create New Account</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--    TODO : //invite code-->
-    <string name="enter_your_dietician_s_invite_code">Enter your dietician\'s invite code</string>
-    <string name="invite_code">Invite Code</string>
-    <string name="request_dietician">Request Dietician</string>
-    <string name="request_pending">Request Pending</string>
-    <string name="request_pending_message">you will see your diet after your \ndietician accepts your request</string>
-    <string name="wrong_code_no_worry">Submitted wrong invite code? No worries. \nYou can go always back and enter a new code</string>
-    <string name="change_your_code">Change your code</string>
-
-    // for User Profile
-    <string name="userprofile_bio_heading">Bio</string>
-    <string name="userprofile_bio_subheading">Write Something About You Here</string>
-    <string name="userprofile_location_heading">Location</string>
-    <string name="userprofile_loction_subheading">Delhi , India</string>
-    <string name="userprofile_basicinfo_heading">Basic Information</string>
-    <string name="userprofile_basicinfo_subheading">Height,Weight,Age , Gender , Activity</string>
-    <string name="userprofile_primarygoal_heading">Primary Goal</string>
-    <string name="userprofile_primarygoal_subheading">Lose Weight</string>
-    <string name="userprofile_foodprefences_heading">Food Prefrences</string>
-    <string name="userprofile_foodprefences_subheadaing">Diet Preference , Allergies , Cuisine</string>
-    <string name="userprofile_paymentdetails_heading">Payment Details</string>
-    <string name="userprofile_paymentdetails_subheading">Update Your Payment Details Here</string>
-
-    // for Register Fragment
     <string name="register">REGISTER</string>
     <string name="info">We will send an OTP to veify your mobile number</string>
     <string-array name="date">
@@ -428,15 +389,6 @@ you can go back and login with a another number</string>
 
     </string-array>
 
-    <string-array name="foodPreference">
-        <item>VEGETARIAN</item>
-        <item>NON VEGETARIAN</item>
-        <item>VEGAN ONLY</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
-    <string name="beta_one_frag_text">Call no %s\nStatus is : %s</string>
 
 </resources>
