@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.edit
 import com.squareup.picasso.Picasso
 import com.team.hackathon.R
 import com.team.hackathon.home.data.EventDataModel
+import java.util.*
 
 class ParentItemAdapter internal constructor(private val itemList: List<EventDataModel>) : RecyclerView.Adapter<ParentItemAdapter.ParentViewHolder>() {
     var context: Context? = null
-
+    val calender=Calendar.getInstance()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ParentViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.event_list_card_view, viewGroup, false)
@@ -31,6 +33,7 @@ class ParentItemAdapter internal constructor(private val itemList: List<EventDat
         parentViewHolder.lstDate.text=parentItem.lastDate
         parentViewHolder.teamTipe.text=parentItem.teamType
         parentViewHolder.regFee.text=parentItem.entryfee
+
 
     }
 
@@ -53,6 +56,7 @@ class ParentItemAdapter internal constructor(private val itemList: List<EventDat
             lstDate=itemView.findViewById(R.id.lastDate)
             teamTipe=itemView.findViewById(R.id.tvTeamIndividual)
             regFee=itemView.findViewById(R.id.registrationFee)
+
         }
     }
 }

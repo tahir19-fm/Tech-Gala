@@ -14,11 +14,11 @@ class HomeViewModel: ViewModel() {
     fun setUserState(state:Int){
         _userState.value=state
     }
-    private val _userData = MutableLiveData<EventDataModel>()
-    val userData: MutableLiveData<EventDataModel>
+    private val _userData = MutableLiveData<ArrayList<EventDataModel>>()
+    val userData: MutableLiveData<ArrayList<EventDataModel>>
         get() = _userData
 
-    fun fetchUserData(data :EventDataModel) {
+    fun fetchUserData(data :ArrayList<EventDataModel>) {
        _userData.value=data
     }
 
