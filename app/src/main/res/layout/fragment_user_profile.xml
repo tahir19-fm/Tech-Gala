@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrl"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llnavBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_arrow_back_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="Profile"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/editButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/edit" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivUserProfile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/userimage"
+            app:layout_constraintTop_toBottomOf="@+id/llnavBar"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <ImageView
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/camera"
+            app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+            app:layout_constraintEnd_toEndOf="@+id/ivUserProfile"
+            />
+
+        <TextView
+            android:id="@+id/tvUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="U"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+            app:layout_constraintEnd_toEndOf="@+id/ivUserProfile"
+            app:layout_constraintStart_toStartOf="@+id/ivUserProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivUserProfile" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lluserInformation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/ivUserProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivUserProfile"
+            app:layout_constraintTop_toTopOf="@id/ivUserProfile">
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="User"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="+91 7827549899"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Delhi , India"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llFirstLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/lluserInformation"
+            app:layout_constraintBottom_toTopOf="@+id/llBasicInformationHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginTop="10dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llBasicInformationHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/lluserInformation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            >
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="BASIC INFO"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="18sp"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <GridLayout
+            android:id="@+id/glBasicInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="5"
+            android:columnCount="2"
+            app:layout_constraintTop_toBottomOf="@+id/llBasicInformationHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Weight"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tvWeight"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="70 KG"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Height"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tvHeight"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="170 cm"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Age"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tvAge"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="22 yrs"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Gender"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Male"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Date Of Birth"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tvDob"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Male"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="16sp"
+                />
+
+
+
+
+
+        </GridLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/glBasicInformation"
+            app:layout_constraintTop_toTopOf="@+id/glBasicInformation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="#0066FF"/>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llSecondLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/glBasicInformation"
+            app:layout_constraintBottom_toTopOf="@+id/llFoodPreferencesHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginTop="10dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llFoodPreferencesHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/glBasicInformation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="Food Preferences"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="18sp"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <GridLayout
+            android:id="@+id/glFoodPreferencesInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="5"
+            android:columnCount="2"
+            app:layout_constraintTop_toBottomOf="@+id/llFoodPreferencesHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Type"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Non Vegitarian"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Allergies"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:id="@+id/tvAllergie"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="Milk , Fish , Eggs"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="16sp"
+                />
+
+        </GridLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llThirdLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/glFoodPreferencesInformation"
+            app:layout_constraintBottom_toTopOf="@+id/signOutButton"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginTop="10dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/signOutButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/glFoodPreferencesInformation"
+
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_signout_24"
+                app:layout_constraintStart_toStartOf="@+id/signOut"
+                app:layout_constraintTop_toTopOf="@+id/signOut"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Sign Out"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:textSize="18sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

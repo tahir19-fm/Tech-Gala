@@ -4,6 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/activity_base.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/button_style.xml" value="0.2415" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/camera.xml" value="0.124" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/edit.xml" value="0.2415" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/ic_baseline_arrow_back_24.xml" value="0.2415" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/ic_baseline_signout_24.xml" value="0.2415" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/rounded_edit_text.xml" value="0.2415" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/userimage.xml" value="0.2415" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/layout/activity_user_profile.xml" value="0.253125" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_user_profile.xml" value="0.253125" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_user_profile_edit.xml" value="0.253125" />
       </map>
     </option>
   </component>
