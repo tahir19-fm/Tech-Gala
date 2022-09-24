@@ -17,7 +17,7 @@
             android:name=".home.ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".login.ui.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

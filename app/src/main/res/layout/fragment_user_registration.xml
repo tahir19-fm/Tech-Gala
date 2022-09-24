@@ -6,17 +6,6 @@
     android:background="@color/background"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/registrationHeader"
-        layout="@layout/head_er_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/registerName"
@@ -31,7 +20,7 @@
         android:textStyle="bold"
         android:textSize="13sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationHeader" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name_EditText"

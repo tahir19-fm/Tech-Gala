@@ -53,8 +53,8 @@ class FragmentUserRegistration : Fragment() {
 
         val ccp = binding.countryCodePicker
         ccp.registerCarrierNumberEditText(binding.phoneNumberEditText)
-        binding.registrationHeader.headerText.text = "REGISTER"
-        binding.registrationHeader.image.visibility = View.GONE
+       // binding.registrationHeader.headerText.text = "REGISTER"
+      //  binding.registrationHeader.image.visibility = View.GONE
         val date = resources.getStringArray(R.array.date)
         val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, date) }
         binding.selectDate.setAdapter(arrayAdapterDate)

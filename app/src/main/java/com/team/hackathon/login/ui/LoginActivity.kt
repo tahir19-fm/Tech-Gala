@@ -8,7 +8,7 @@ import com.dietTracker.login.ui.FragmentLoginPhoneNumber
 import com.team.hackathon.R
 import com.team.hackathon.databinding.ActivityLoginBinding
 import com.team.hackathon.login.util.LoginViewModel
-import com.team.hackathon.BaseActivity.BaseActivity
+import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.login.ui.FragmentUserValidation
 
 class LoginActivity : BaseActivity(){
