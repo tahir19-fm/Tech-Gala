@@ -1,11 +1,14 @@
 package com.team.hackathon.home.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.team.hackathon.R
+import com.team.hackathon.UserProfile.ui.FragmentUserProfile
+import com.team.hackathon.UserProfile.ui.UserProfileActivity
 import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.databinding.ActivityBaseBinding
 import com.team.hackathon.databinding.ActivityHomeBinding
@@ -27,6 +30,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
+        binding.headerDiet.image.setOnClickListener{
+            val intent = Intent(this@HomeActivity,UserProfileActivity::class.java)
+            startActivity(intent)
+        }
         binding.bottomNavigationView.setOnItemSelectedListener {item->
             when(item.itemId){
                 R.id.users -> {Toast.makeText(this,"user",Toast.LENGTH_LONG).show()}
@@ -50,7 +57,6 @@ class HomeActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction= fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.homeActivityFragment, FragmentEventList()).commit()
-
 
     }
 }

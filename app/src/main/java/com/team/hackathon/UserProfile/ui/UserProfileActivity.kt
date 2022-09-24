@@ -1,12 +1,9 @@
 package com.team.hackathon.UserProfile.ui
 
-import com.team.hackathon.BaseActivity.BaseActivity
-
-
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.team.hackathon.R
 import com.team.hackathon.SplashActivity
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
@@ -14,8 +11,8 @@ import com.team.hackathon.databinding.ActivityUserProfileBinding
 import com.team.hackathon.home.ui.FragmentEventList
 
 
-class UserProfileActivity : BaseActivity() {
-    private val binding by lazy { ActivityUserProfileBinding.inflate(layoutInflater) }
+class UserProfileActivity : AppCompatActivity() {
+    private val binding by lazy {ActivityUserProfileBinding.inflate(layoutInflater) }
     private val viewModel : UserProfileViewModel by viewModels()
 
     companion object{

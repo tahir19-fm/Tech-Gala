@@ -98,9 +98,9 @@ class FragmentUserProfileEdit : Fragment() {
         val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
         binding.selectYear.setAdapter(arrayAdapterYears)
 
-        val foodPreferences = resources.getStringArray(R.array.foodPreference)
+        /*val foodPreferences = resources.getStringArray(R.array.foodPreference)
         val arrayAdapterFoodPreferences = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,foodPreferences) }
-        binding.actSelectFoodPreferences.setAdapter(arrayAdapterFoodPreferences)
+        binding.actPreferences.setAdapter(arrayAdapterFoodPreferences)*/
     }
 
     private fun selectSelectedFromDropDown(){
@@ -148,7 +148,7 @@ class FragmentUserProfileEdit : Fragment() {
             }
         }
 
-        binding.actSelectFoodPreferences.setOnItemClickListener { parent, _, position, _ ->
+        binding.actPreferences.setOnItemClickListener { parent, _, position, _ ->
             foodPreferences = parent.getItemAtPosition(position) as String
             if (foodPreferences!!.contains(this.foodPreferences!!)) {
                 Toast.makeText(context, foodPreferences, Toast.LENGTH_LONG).show()
@@ -165,7 +165,7 @@ class FragmentUserProfileEdit : Fragment() {
         binding.selectYear.setSelection(binding.selectYear.length())
         binding.selectCountryd.setSelection(binding.selectCountryd.length())
         binding.actSelectGender.setSelection(binding.actSelectGender.length())
-        binding.actSelectFoodPreferences.setSelection(binding.actSelectFoodPreferences.length())
+        binding.actPreferences.setSelection(binding.actPreferences.length())
         binding.selectcityDropdown.setSelection(binding.selectcityDropdown.length())
         binding.actSelectHeight.setSelection(binding.actSelectHeight.length())
         binding.edSelectWeight.setSelection(binding.edSelectWeight.length())
