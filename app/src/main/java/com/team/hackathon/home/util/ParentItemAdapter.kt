@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import com.team.hackathon.R
 import com.team.hackathon.home.data.EventDataModel
-import com.team.hackathon.home.ui.FragmentEventList
 
 class ParentItemAdapter internal constructor(private val itemList: List<EventDataModel>) : RecyclerView.Adapter<ParentItemAdapter.ParentViewHolder>() {
     var context: Context? = null
@@ -26,12 +25,12 @@ class ParentItemAdapter internal constructor(private val itemList: List<EventDat
 
         val parentItem = itemList[position]
 
-        Picasso.get().load(parentItem.imageUrl).into(parentViewHolder.imageUr)
+        Picasso.get().load(parentItem.image).into(parentViewHolder.imageUr)
         parentViewHolder.headingPost.text=parentItem.heading
         parentViewHolder.total.text=parentItem.totalRegister
         parentViewHolder.lstDate.text=parentItem.lastDate
         parentViewHolder.teamTipe.text=parentItem.teamType
-        parentViewHolder.regFee.text=parentItem.registrationFee
+        parentViewHolder.regFee.text=parentItem.entryfee
 
     }
 
