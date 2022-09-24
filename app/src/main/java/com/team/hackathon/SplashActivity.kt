@@ -13,9 +13,16 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         val currUser = FirebaseAuth.getInstance().currentUser
         if (currUser == null) {
-          //login
+openLoginActivity()
         } else {
           //intent
         }
+    }
+    private fun openLoginActivity() {
+        // make it Login Activity after completion : )
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
     }
 }

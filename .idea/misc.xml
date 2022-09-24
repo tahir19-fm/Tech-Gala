@@ -4,6 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/activity_base.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/drawable-v24/basicinfo.xml" value="0.181" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.35688405797101447" />
+        <entry key="app/src/main/res/layout/dropdown_layout.xml" value="0.35688405797101447" />
+        <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.35688405797101447" />
+        <entry key="app/src/main/res/layout/fragment_login_phone_number.xml" value="0.35688405797101447" />
+        <entry key="app/src/main/res/layout/fragment_user_registration.xml" value="0.3744293212890625" />
+        <entry key="app/src/main/res/layout/fragment_user_validation.xml" value="0.35688405797101447" />
+        <entry key="app/src/main/res/layout/head_er_layout.xml" value="0.35688405797101447" />
       </map>
     </option>
   </component>
