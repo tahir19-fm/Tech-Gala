@@ -19,7 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
+import com.team.hackathon.UserProfile.data.UserDataForProfile
+import com.team.hackathon.UserProfile.data.UserForProfile
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
 import com.team.hackathon.databinding.FragmentUserProfileBinding
 
@@ -44,6 +45,7 @@ class FragmentUserProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         readFromFirebaseData()
+        setData()
         super.onViewCreated(view, savedInstanceState)
         binding.editButton.setOnClickListener{
             viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE_EDIT)
@@ -63,10 +65,6 @@ class FragmentUserProfile : Fragment() {
 
         }
 
-        //viewModel.fetachUserData("hfSkfOT7YbcxrEqDdbTa")
-        //apiViewModal.fetchUserData(FirebaseAuth.getInstance().currentUser!!.uid)
-        //setUpObserver()
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -80,86 +78,56 @@ class FragmentUserProfile : Fragment() {
     }
 
     private fun readFromFirebaseData(){
+        hideAllContentShowProgressBar()
         val docRef = db.collection("Users").document("FmUhRcWqDqA6ifxHIm1U")
         docRef.get()
             .addOnSuccessListener { document ->
                 if(document!=null){
                     Log.d("Data", "DocumentSnapshot data: ${document.data}")
+                    val name = document.getString("gender").toString()
+                    viewModel.setUserData(
+                        UserDataForProfile(
+                            UserForProfile(
+                                document.getString("college_id").toString(),
+                                document.getString("name").toString(),
+                                document.getString("year").toString(),
+                                document.getString("branch").toString(),
+                                document.getString("gender").toString(),
+                                document.getString("age").toString(),
+                                document.getString("phone").toString(),
+                                document.getString("profile_picture_url").toString(),
+                                document.getString("interest").toString(),
+                                document.getString("city").toString(),
+                                document.getString("country").toString(),
+                                document.getString("collage_name").toString()
+                            )
+                        )
+                    )
+                    Toast.makeText(requireActivity(),name,Toast.LENGTH_SHORT).show()
+                    showALlContentHideProgresssBar()
                 }else{
                     Log.d("Data", "No such document")
                 }
             }.addOnFailureListener{ exception ->
                 Log.d("Data", "get failed with ", exception)
             }
+
     }
 
-    /*private fun setUpObserver(){
+    private fun setData(){
         viewModel.userData.observe(requireActivity()){
-            when(it){
-                ApiResult.Loading -> {
-                    hideAllContentShowProgressBar()
-
-                }
-                is ApiResult.Success -> {
-                    showALlContentHideProgresssBar()
-                    val data = it.data as UserDataForProfile
-                    binding.tvUserName.text = data.name
-                    userNameFromFirebase = data.name
-                    binding.tvPhoneNumber.text = data.phoneNumber
-                    val city = data.address.city
-                    val country = data.address.country
-                    val address = "$city , $country"
-                    binding.tvAddress.text = address
-                    binding.tvWeight.text = data.weight+" Kg"
-                    binding.tvHeight.text = data.Height+" cm"
-                    binding.tvGender.text = data.gender
-                    binding.tvAge.text = data.age+" yrs"
-                    binding.tvType.text = data.foodPreferences.type
-                    val calender = Calendar.getInstance()
-                    calender.timeInMillis = data.dob!!
-                    val monthName = UtilsForMonthName.returnMonthName(calender.get(Calendar.MONTH))
-                    val date : String = calender.get(Calendar.DAY_OF_MONTH).toString() + " " + monthName + " " + calender.get(
-                        Calendar.YEAR)
-                    binding.tvDob.text = date
-
-                    imageUrlFromFirebase = data.profilePicture
-                    if (data.foodPreferences!=null){
-                        data.foodPreferences.allergies?.forEach{ item ->
-                            //Toast.makeText(requireActivity(),item,Toast.LENGTH_SHORT).show()
-                            allergies = "$allergies $item "
-                        }
-                    }
-                    binding.tvAllergie.text = allergies
-                    Log.d("array",allergies)
-                    DownloadImageFromInternet(binding.ivUserProfile).execute(imageUrlFromFirebase)
-                    viewModel.setUserDataForEdit(
-                        UserDataForProfile(
-                            "Testing_Id",
-                            data.name,
-                            Address(
-                                data.address.country,
-                                data.address.city
-                            ),
-                            data.weight,
-                            data.Height,
-                            data.gender,
-                            data.age,
-                            data.phoneNumber,
-                            FoodPreferences(
-                                listOf(allergies),
-                                data.foodPreferences.type
-                            ),
-                            "null",
-                            data.dob
-                        )
-                    )
-                }
-                is ApiResult.Error ->{
-                    Toast.makeText(requireActivity(), "Error : ${it.message}", Toast.LENGTH_LONG).show()
-                }
-            }
+            val modal = it as UserDataForProfile
+            binding.tvUserName.text = modal.user.name
+            binding.tvPhoneNumber.text = modal.user.phoneNumber
+            binding.tvBranch.text = modal.user.branch
+            binding.tvYear.text = modal.user.year + " Year"
+            binding.tvAge.text = modal.user.age + " yrs"
+            binding.tvInterest.text = modal.user.interest
+            binding.tvAddress.text = modal.user.city
+            binding.tvCollageName.text = modal.user.collageName
         }
-    }*/
+    }
+
 
 
     @SuppressLint("StaticFieldLeak")

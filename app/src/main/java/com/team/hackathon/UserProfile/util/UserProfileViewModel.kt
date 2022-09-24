@@ -15,7 +15,11 @@ class UserProfileViewModel : ViewModel() {
 
     private val _userData = MutableLiveData<UserDataForProfile>()
     val userData: MutableLiveData<UserDataForProfile>
-        get() = _userData
+    get() = _userData
+
+    fun setUserData(data:UserDataForProfile){
+        _userData.value = data
+    }
 
 
 

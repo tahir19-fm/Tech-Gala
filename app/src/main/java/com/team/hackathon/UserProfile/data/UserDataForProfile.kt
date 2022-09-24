@@ -1,30 +1,22 @@
 package com.team.hackathon.UserProfile.data
 
 
-class UserDataForProfile(
-    val _id: String,
-    val name: String?=null,
-    val address: Address,
-    val weight : String?=null,
-    val Height : String?=null,
-    val gender : String?=null,
-    val age : String?=null,
-    val phoneNumber : String?=null,
-    val foodPreferences: FoodPreferences,
+data class UserDataForProfile (
+    val user: UserForProfile
+)
+
+data class UserForProfile(
+    val collage_id: String,
+    val name: String,
+    val year : String,
+    val branch : String,
+    val gender : String,
+    val age : String,
+    val phoneNumber : String,
     val profilePicture : String?=null,
-    val dob : Long ? = null
+    val interest : String ? = null,
+    val city : String ? = null,
+    val country : String ? = null,
+    val collageName : String? = null
 )
-
-
-data class Address(
-    val country: String?=null,
-    val city: String?=null,
-)
-
-
-data class FoodPreferences(
-    val allergies: List<String>?=null,
-    val type : String?=null
-)
-
 

@@ -198,7 +198,7 @@
             <TextView
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Weight"
+                android:text="Branch"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -206,10 +206,10 @@
                 android:textSize="16sp"
                 />
             <TextView
-                android:id="@+id/tvWeight"
+                android:id="@+id/tvBranch"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="70 KG"
+                android:text="BTECH CSE"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -219,7 +219,7 @@
             <TextView
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Height"
+                android:text="Batch Year"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -227,10 +227,10 @@
                 android:textSize="16sp"
                 />
             <TextView
-                android:id="@+id/tvHeight"
+                android:id="@+id/tvYear"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="170 cm"
+                android:text="2 yr"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -282,27 +282,29 @@
                 android:textSize="16sp"
                 />
 
+
             <TextView
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Date Of Birth"
+                android:text="Gender"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 />
             <TextView
-                android:id="@+id/tvDob"
+                android:id="@+id/tvCollageName"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Male"
+                android:text="Jamia Hamdard University"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_light"
                 android:textSize="16sp"
                 />
+
 
 
 
@@ -363,7 +365,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="Food Preferences"
+                android:text="Preferences"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -386,7 +388,7 @@
             <TextView
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Type"
+                android:text="Interest"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -394,37 +396,17 @@
                 android:textSize="16sp"
                 />
             <TextView
-                android:id="@+id/tvType"
+                android:id="@+id/tvInterest"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Non Vegitarian"
+                android:text="Software Development , Android"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_light"
                 android:textSize="18sp"
                 />
-            <TextView
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:text="Allergies"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"
-                android:textSize="18sp"
-                />
-            <TextView
-                android:id="@+id/tvAllergie"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:text="Milk , Fish , Eggs"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_light"
-                android:textSize="16sp"
-                />
+
 
         </GridLayout>
 
