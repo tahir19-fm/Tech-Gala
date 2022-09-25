@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_login_phone_number.xml" value="0.35688405797101447" />
-        <entry key="app/src/main/res/layout/fragment_sign_in_with_details.xml" value="0.24003623188405798" />
+        <entry key="app/src/main/res/layout/fragment_sign_in_with_details.xml" value="0.33246939838796424" />
         <entry key="app/src/main/res/layout/fragment_student_registration.xml" value="0.26803690592447915" />
         <entry key="app/src/main/res/layout/fragment_user_registration.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_user_validation.xml" value="0.35688405797101447" />

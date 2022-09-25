@@ -2,13 +2,11 @@ package com.team.hackathon
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.dietTracker.invite.ui.FragmentUserRegistration
 import com.dietTracker.login.ui.FragmentLoginOtp
 import com.dietTracker.login.ui.FragmentLoginPhoneNumber
-import com.team.hackathon.R
-import com.team.hackathon.databinding.ActivityLoginBinding
 import com.team.hackathon.login.util.LoginViewModel
 import com.team.hackathon.baseActivity.BaseActivity
+import com.team.hackathon.login.ui.FragmentSignInWithDetails
 import com.team.hackathon.login.ui.FragmentStudentRegistration
 import com.team.hackathon.login.ui.FragmentUserValidation
 
@@ -21,12 +19,13 @@ class LoginActivity : BaseActivity(){
         const val LOGIN_STATE_USER_VALIDATION = 2
         const val LOGIN_STATE_REGISTER_USER = 3
         const val LOGIN_STATE_ENTER_OTP = 4
+        const val LOGIN_STATE_SIGN_IN_WITH_DETAILS = 5
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.setLoginState(LOGIN_STATE_ENTER_NUMBER)
+        viewModel.setLoginState(1)
         setupObservers()
     }
 
@@ -45,6 +44,10 @@ class LoginActivity : BaseActivity(){
                 LOGIN_STATE_USER_VALIDATION -> {
                     loginUserValidation()
                 }
+                LOGIN_STATE_SIGN_IN_WITH_DETAILS->{
+                    signInWithDetails()
+                }
+
             }
         }
     }
@@ -91,6 +94,9 @@ class LoginActivity : BaseActivity(){
 
     private fun loginUserValidation() {
         startFragment(FragmentUserValidation.getInstance(), false)
+    }
+    private fun signInWithDetails(){
+        startFragment(FragmentSignInWithDetails.getInstance(),false)
     }
 
 }

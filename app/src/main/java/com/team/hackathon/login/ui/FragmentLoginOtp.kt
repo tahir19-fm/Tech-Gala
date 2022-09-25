@@ -2,6 +2,7 @@ package com.dietTracker.login.ui
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -25,8 +26,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.team.hackathon.home.ui.HomeActivity
 import com.team.hackathon.login.data.UserRegistrationDto
 import com.team.hackathon.login.data.studentDetails
 import kotlinx.coroutines.*
@@ -70,9 +73,11 @@ private val dataCollection = Firebase.firestore.collection("details")
         binding.pinView.requestFocus()
         InputMethodManager.SHOW_FORCED
         InputMethodManager.HIDE_IMPLICIT_ONLY
-        binding.test.setOnClickListener{
-            uploadData()
-        }
+
+
+//        binding.test.setOnClickListener{
+//            uploadData()
+//        }
 
         binding.ivBackButton.setOnClickListener {
             requireActivity().onBackPressed()
@@ -112,7 +117,7 @@ private val dataCollection = Firebase.firestore.collection("details")
 
             override fun onFinish() {
 
-                object : CountDownTimer(70000, 1000) {
+                object : CountDownTimer(50000, 1000) {
                     override fun onTick(millisUntilFinished: Long) {
                         binding.otpResendBox.setText("Resend otp in : " + millisUntilFinished / 1000 + " Seconds")
                     }
@@ -135,7 +140,7 @@ private val dataCollection = Firebase.firestore.collection("details")
             Toast.makeText(context, "hyperlink", Toast.LENGTH_SHORT).show()
             binding.otpLinkBox.visibility = View.INVISIBLE
             binding.otpResendBox.visibility = View.VISIBLE
-            object : CountDownTimer((60000).toLong(), 1000) {
+            object : CountDownTimer((50000).toLong(), 1000) {
 
                 override fun onTick(millisUntilFinished: Long) {
                     binding.otpResendBox.setText("Resend otp in : " + millisUntilFinished / 1000 + " Seconds")
@@ -222,7 +227,6 @@ private val dataCollection = Firebase.firestore.collection("details")
         val credential = PhoneAuthProvider.getCredential(codeBySystem, code)
         signInWithPhoneAuthCredential(credential)
     }
-
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(credential)
@@ -232,7 +236,8 @@ private val dataCollection = Firebase.firestore.collection("details")
                     //Delay after login to give firebase some time to refresh auth token.
                     lifecycleScope.launch {
                         delay(1000)
-//                        initAfterLogin()
+                        uploadData()
+                        move()
                     }
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
@@ -257,7 +262,7 @@ private val dataCollection = Firebase.firestore.collection("details")
     }
     private fun saveStudentDetails(StudentDetail: studentDetails) =CoroutineScope(Dispatchers.IO).launch {
         try {
-            dataCollection.add(StudentDetail).await()
+            Firebase.firestore.collection("users").document(viewModel.institute_data.value.toString()).set(studentDetails(viewModel.institute_data.value.toString(),viewModel.phoneNumber.value.toString()))
             withContext(Dispatchers.Main){
                 Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
             }
@@ -271,9 +276,16 @@ private val dataCollection = Firebase.firestore.collection("details")
     }
     private fun uploadData(){
         val id = viewModel.institute_data.value.toString()
-        val phoneNumber = viewModel.institue_phoneNumber.value.toString()
+        val phoneNumber = viewModel.phoneNumber.value.toString()
         val studentData = studentDetails(id,phoneNumber)
         saveStudentDetails(studentData)
+    }
+
+    private fun move(){
+        val i = Intent(this.requireActivity(), HomeActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(i)
+        this.requireActivity().finish()
     }
 }
 

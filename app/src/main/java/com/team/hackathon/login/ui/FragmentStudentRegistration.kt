@@ -34,13 +34,16 @@ class FragmentStudentRegistration : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnToRegisterUser.setOnClickListener{
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
-            if (binding.idEditText!=null){
-                viewModel.setInstituteID(binding.idEditText.text.toString())
-            }
-            if (binding.phoneNumberEditText!=null){
-                viewModel.setInstituePhoneNumber("+91"+binding.phoneNumberEditText.text.toString())
+            binding.idEditText.setText(viewModel.institute_data.value)
+            binding.phoneNumberEditText.setText(viewModel.phoneNumberRegistration.value)
+            if (binding.idEditText!=null && binding.phoneNumberEditText.text.toString()!=null){
+
+                viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
+
             }
         }
+
+
 
     }
 
