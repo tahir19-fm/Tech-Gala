@@ -61,9 +61,14 @@ class FragmentUserProfileEdit : Fragment() {
 
 
         binding.saveButton.setOnClickListener{
+            //binding.saveButton.visibility = View.GONE
+            //binding.progressBar.visibility = View.VISIBLE
             val oldData = getOldUserData()
             val newData = getNewUserData()
             update(oldData,newData)
+            //binding.saveButton.visibility = View.VISIBLE
+            //binding.progressBar.visibility = View.GONE
+            //viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
             Log.d("testingHashmap",hashMap.toString())
         }
 
@@ -242,6 +247,7 @@ class FragmentUserProfileEdit : Fragment() {
     }
 
     private fun update(data : UserDataClassForEdit , newData : Map<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
+
         val userQuery = db
             .whereEqualTo("name" , data.user.name)
             .get()
@@ -259,6 +265,7 @@ class FragmentUserProfileEdit : Fragment() {
                    }
                 }
             }
+
         }else{
             withContext(Dispatchers.Main){
                 Toast.makeText(requireActivity(), "No User Found", Toast.LENGTH_LONG).show()
@@ -266,5 +273,6 @@ class FragmentUserProfileEdit : Fragment() {
         }
 
     }
+
 
 }
