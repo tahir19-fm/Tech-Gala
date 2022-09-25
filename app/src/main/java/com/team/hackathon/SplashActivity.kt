@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         val currUser = FirebaseAuth.getInstance().currentUser
         if (currUser == null) {
-openHomepage()
+        openLoginActivity()
         } else {
           openHomepage()
         }

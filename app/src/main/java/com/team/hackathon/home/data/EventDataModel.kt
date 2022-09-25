@@ -7,6 +7,5 @@ class EventDataModel(
  val lastDate:String,
  val teamType:String,
  val entryfee:String,
- val id: String,
- val wishList: Boolean
+ val id: String
      )

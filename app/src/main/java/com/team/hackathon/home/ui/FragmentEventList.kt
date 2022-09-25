@@ -1,6 +1,5 @@
 package com.team.hackathon.home.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,25 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.team.hackathon.databinding.FragmentEventListBinding
 import com.team.hackathon.home.data.EventDataModel
 import com.team.hackathon.home.util.HomeViewModel
 import com.team.hackathon.home.util.ParentItemAdapter
+import kotlin.collections.ArrayList
 
 
 class FragmentEventList : Fragment() {
-private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
+    private val viewModel: HomeViewModel by viewModels()
     private lateinit var data:MutableList<EventDataModel>
-    val db = Firebase.firestore
-    companion object{
-        fun getInstance() = FragmentEventList()
-    }
-
+    private val db = Firebase.firestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -34,49 +31,50 @@ private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         readFromFirebaseData()
         setupObserver()
         setupViews()
-
-
 
     }
 
     private fun setupObserver() {
 
-        viewModel.userData.observe(this.requireActivity()){
-            var beta=it as ArrayList<EventDataModel>
+        viewModel.userDataEvents.observe(this.requireActivity()){
+            val beta=it as ArrayList<EventDataModel>
             data=ArrayList()
             for(events in beta){
-
                 Log.d("TAG", "dffddfdf: ${events.image}")
-            data.add(EventDataModel(events.image,events.heading,events.totalRegister,events.lastDate,events.teamType,events.entryfee,events.id,checkList(events.id)))
+            data.add(EventDataModel(events.image,events.heading,events.totalRegister,events.lastDate,events.teamType,events.entryfee,events.id))
                 }
+            //reading data from viewModel and setting recyclerView
+            binding.progressBar.visibility=View.GONE
             setupRecycler(data)
         }
     }
 
-    private fun checkList(id: String): Boolean {
-        val preferences =requireContext().getSharedPreferences("com.team.hackathon", Context.MODE_PRIVATE)
-        val bet = preferences.getBoolean(id, false)
-        Log.e("TAG", "ac get ${data}" )
-        return bet
+    private fun setupViews() {
+        refreshByPull()
+        Log.d("bag", "setupViews: ${Firebase.auth.currentUser!!.phoneNumber.toString()} ")
+
     }
 
-    private fun setupViews() {
-
+    private fun refreshByPull() {
+        binding.refresh.setOnRefreshListener {
+            binding.refresh.isRefreshing=false
+            readFromFirebaseData()
+        }
     }
 
     private fun setupRecycler(data: MutableList<EventDataModel>) {
         val layoutManager = LinearLayoutManager(requireActivity())
         val parentItemAdapter = ParentItemAdapter(data)
-        binding.rvEventList.addItemDecoration(
-            DividerItemDecoration(context, layoutManager.orientation)
-        )
         binding.rvEventList.adapter = parentItemAdapter
         binding.rvEventList.layoutManager = layoutManager
     }
+
     private fun readFromFirebaseData(){
+        binding.progressBar.visibility=View.VISIBLE
         val docRef = db.collection("events")
         docRef.get()
             .addOnSuccessListener { result ->
@@ -91,9 +89,9 @@ private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
                             "last date : "+document.getString("lastDate").toString(),
                             document.getString("teamType").toString(),
                             "Rupees: "+document.getString("entryfee").toString(),
-                            document.id,false ))
-
+                            document.id ))
                     }
+                    res.reverse()
                     viewModel.fetchUserData(res)
                 }else{
                     Log.d("Data", "No such document")

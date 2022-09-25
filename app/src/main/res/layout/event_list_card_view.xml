@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="16dp"
+   android:padding="16dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/edit_text_style"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_bold"
+        android:textSize="16dp"
         android:text="dsjhflkjasdfhlkdshfsdkjvnksdfjvnskfvnasvsdvsdvsvdsdvsdvsdvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img" />
@@ -51,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:text="14 Registered"
+            android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="#0066FF"/>
         </LinearLayout>
@@ -71,6 +74,7 @@
             android:id="@+id/lastDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
             android:text="1 month left"
             android:fontFamily="@font/poppins_regular"
             android:textColor="#0066FF"
@@ -92,7 +96,8 @@
             android:layout_height="wrap_content"
             android:text="team"
             android:fontFamily="@font/poppins_regular"
-            android:background="@drawable/edit_text_style"
+            android:textColor="@color/white"
+            android:background="@drawable/button_style"
             />
         <TextView
             android:layout_width="wrap_content"
