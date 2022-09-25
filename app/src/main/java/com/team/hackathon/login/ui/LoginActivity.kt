@@ -2,11 +2,8 @@ package com.team.hackathon
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.dietTracker.invite.ui.FragmentUserRegistration
 import com.dietTracker.login.ui.FragmentLoginOtp
 import com.dietTracker.login.ui.FragmentLoginPhoneNumber
-import com.team.hackathon.R
-import com.team.hackathon.databinding.ActivityLoginBinding
 import com.team.hackathon.login.util.LoginViewModel
 import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.login.ui.FragmentStudentRegistration
@@ -26,7 +23,7 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.setLoginState(LOGIN_STATE_ENTER_NUMBER)
+        viewModel.setLoginState(1)
         setupObservers()
     }
 

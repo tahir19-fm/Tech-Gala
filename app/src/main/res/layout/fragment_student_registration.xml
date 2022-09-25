@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/background"
+    tools:context=".login.ui.FragmentStudentRegistration"
     android:layout_height="match_parent">
 
 
@@ -26,6 +27,7 @@
         android:id="@+id/name_EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
@@ -84,13 +86,15 @@
             android:layout_height="match_parent"
             android:layout_weight="0.7"
             android:inputType="phone"
+            android:editable="false"
             android:padding="5dp"
+            android:textColor="@color/black"
             android:singleLine="true"
             android:maxLines="1"
             android:lines="1"
             android:background="@drawable/rounded_edit_text"
             android:imeOptions="actionNext"
-            />
+            tools:ignore="Deprecated" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
@@ -109,13 +113,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber_linearLayout" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/id_EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_edit_text"
         android:lines="1"
-android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:editable="false"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:maxLines="1"
@@ -123,7 +130,8 @@ android:layout_marginTop="10dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerId" />
+        app:layout_constraintTop_toBottomOf="@+id/registerId"
+        tools:ignore="Deprecated" />
 
     <TextView
         android:id="@+id/college_TextView"
@@ -140,22 +148,24 @@ android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_EditText" />
 
+
     <EditText
         android:id="@+id/institute_EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_edit_text"
         android:lines="1"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:maxLines="1"
+        android:textColor="@color/black"
         android:padding="5dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/college_TextView" />
-
 
     <TextView
         android:id="@+id/branch_EditText"
@@ -184,6 +194,7 @@ app:layout_goneMarginStart="16dp"
         android:background="@drawable/rounded_edit_text"
         android:lines="1"
         android:maxLines="1"
+        android:textColor="@color/black"
         android:padding="5dp"
         android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"

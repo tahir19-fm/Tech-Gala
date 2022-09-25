@@ -3,6 +3,7 @@ package com.dietTracker.login.ui
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -44,11 +45,8 @@ class FragmentLoginPhoneNumber : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.phoneNumberRegistration.observe(viewLifecycleOwner) {
-            binding.phoneNumberBox.setText(it)
-        }
-
         binding.countryCodePicker.registerCarrierNumberEditText(binding.phoneNumberBox)
+
         val ccp = binding.countryCodePicker
         ccp.registerCarrierNumberEditText(binding.phoneNumberBox)
 
@@ -60,21 +58,17 @@ class FragmentLoginPhoneNumber : Fragment() {
 
     private fun onSendOTPClicked(){
         val ccp = binding.countryCodePicker
+        viewModel.setInstituteID(binding.idEditText.text.toString())
         if (isValidPhoneNumber(ccp.fullNumberWithPlus)) {
             // for registration number
             viewModel.setPhoneNumberRegistration(binding.phoneNumberBox.text.toString())
             viewModel.setInstituteID(binding.idEditText.text.toString())
+            Log.d("tahir",viewModel.phoneNumber.value.toString())
             viewModel.setphoneNumber(binding.countryCodePicker.fullNumberWithPlus)
             studentExists()
             hideKeyboard()
         }
-        else if (!isValidId(id.toString())){
-            Toast.makeText(context,"invalid id",Toast.LENGTH_SHORT).show()
-        }
 
-        else {
-            Toast.makeText(context, "Invalid Number", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun hideKeyboard() {
