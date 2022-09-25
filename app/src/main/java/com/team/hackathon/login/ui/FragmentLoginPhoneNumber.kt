@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.nfc.Tag
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +49,8 @@ class FragmentLoginPhoneNumber : Fragment() {
 
         binding.countryCodePicker.registerCarrierNumberEditText(binding.phoneNumberBox)
 
+
+
         val ccp = binding.countryCodePicker
         ccp.registerCarrierNumberEditText(binding.phoneNumberBox)
 
@@ -59,7 +63,7 @@ class FragmentLoginPhoneNumber : Fragment() {
     private fun onSendOTPClicked(){
         val ccp = binding.countryCodePicker
         viewModel.setInstituteID(binding.idEditText.text.toString())
-        if (isValidPhoneNumber(ccp.fullNumberWithPlus)) {
+        if (isValidPhoneNumber(ccp.fullNumber)  && isValidId(binding.idEditText.text.toString())) {
             // for registration number
             viewModel.setPhoneNumberRegistration(binding.phoneNumberBox.text.toString())
             viewModel.setInstituteID(binding.idEditText.text.toString())
@@ -67,6 +71,12 @@ class FragmentLoginPhoneNumber : Fragment() {
             viewModel.setphoneNumber(binding.countryCodePicker.fullNumberWithPlus)
             studentExists()
             hideKeyboard()
+        }
+        else if(!isValidId(binding.idEditText.text.toString())){
+            Toast.makeText(context,"invalid id",Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Toast.makeText(context,"invalid Number",Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -95,6 +105,34 @@ class FragmentLoginPhoneNumber : Fragment() {
             }
     }
 
+//    private fun buttonCall() {
+//        binding.phoneNumberBox.addTextChangedListener(object : TextWatcher {
+//
+//            override fun afterTextChanged(s: Editable?) {
+//                val ch = binding.phoneNumberBox.text.toString()
+//                if (ch.length != 10) {
+//                    binding.btnToSendOtp.isEnabled = true
+//                    binding.btnToSendOtp.visibility = View.INVISIBLE
+//                    binding.btnCover.visibility = View.VISIBLE
+//                }
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//
+//
+//        }
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                val ch = binding.phoneNumberBox.text.toString()
+//                if (ch.length == 10) {
+//                    binding.btnToSendOtp.isEnabled = true
+//                    binding.btnToSendOtp.visibility = View.VISIBLE
+//                    binding.btnCover.visibility = View.INVISIBLE
+//                }
+//
+//            }
+//        })
+//
+//    }
 
 
 
