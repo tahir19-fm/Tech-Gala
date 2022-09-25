@@ -320,6 +320,15 @@ you can go back and login with a another number</string>
 
     </string-array>
 
+    <string-array name="age">
+    <item>18</item>
+    <item>19</item>
+    <item>20</item>
+    <item>21</item>
+
+
+</string-array>
+
 
 
 </resources>

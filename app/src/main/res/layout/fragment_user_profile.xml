@@ -286,7 +286,7 @@
             <TextView
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:text="Gender"
+                android:text="Collage Name"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
@@ -378,7 +378,7 @@
         <GridLayout
             android:id="@+id/glFoodPreferencesInformation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:rowCount="5"
             android:columnCount="2"
             app:layout_constraintTop_toBottomOf="@+id/llFoodPreferencesHeading"
@@ -395,17 +395,18 @@
                 android:fontFamily="@font/poppins_medium"
                 android:textSize="16sp"
                 />
+
             <TextView
                 android:id="@+id/tvInterest"
                 android:layout_rowWeight="1"
+                android:layout_column="1"
                 android:layout_columnWeight="1"
-                android:text="Software Development , Android"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_light"
-                android:textSize="18sp"
-                />
+                android:text="Software Development , Android"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
 
         </GridLayout>

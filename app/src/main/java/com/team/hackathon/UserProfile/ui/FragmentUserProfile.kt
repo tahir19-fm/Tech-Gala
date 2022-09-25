@@ -36,7 +36,6 @@ class FragmentUserProfile : Fragment()  {
     private var imageUri : Uri? = null
     private var imageUrlFromFirebase :String?= null
     private var userNameFromFirebase:String?=null
-    private var allergies : String = ""
     private val db = FirebaseFirestore.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -163,8 +162,11 @@ class FragmentUserProfile : Fragment()  {
             binding.tvUserName.text = modal.user.name
             binding.tvPhoneNumber.text = modal.user.phoneNumber
             binding.tvBranch.text = modal.user.branch
+            binding.tvGender.text = modal.user.gender
             binding.tvYear.text = modal.user.year + " Year"
             binding.tvAge.text = modal.user.age + " yrs"
+
+
             binding.tvInterest.text = modal.user.interest
             binding.tvAddress.text = modal.user.city
             binding.tvCollageName.text = modal.user.collageName
@@ -234,6 +236,5 @@ class FragmentUserProfile : Fragment()  {
         binding.llSecondLine.visibility = View.VISIBLE
         binding.llThirdLine.visibility = View.VISIBLE
     }
-
 
 }

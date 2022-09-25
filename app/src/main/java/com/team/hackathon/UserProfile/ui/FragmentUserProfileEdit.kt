@@ -9,12 +9,20 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.team.hackathon.R
 import com.team.hackathon.UserProfile.data.*
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
-import com.team.hackathon.UserProfile.util.UtilForMonth
 import com.team.hackathon.databinding.FragmentUserProfileEditBinding
-import java.util.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import kotlin.collections.HashMap
 
 class FragmentUserProfileEdit : Fragment() {
@@ -22,10 +30,11 @@ class FragmentUserProfileEdit : Fragment() {
     private var date: String?=null
     private var year: String?=null
     private var gender: String?=null
+    private var age : String?=null
     private var preferences: String?=null
-
     private val binding by lazy { FragmentUserProfileEditBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
+    private val db = Firebase.firestore.collection("Users")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,30 +46,37 @@ class FragmentUserProfileEdit : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.backButtonEdit.setOnClickListener{
-            viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
-        }
-        binding.progressBar.visibility = View.GONE
-        //setAllValuesFromProfile()
 
         setAllDropDown()
         selectSelectedFromDropDown()
 
 
-        //setNewUserData()
-        onCLickSaveButton()
-
         setAllCursorAtTheEnd()
 
         setAllValuesFromUserProfile()
+        setData()
+
+        binding.saveButton.setOnClickListener{
+            val oldData = getOldUserData()
+            val newData = getNewUserData()
+            update(oldData,newData)
+        }
+
+        binding.backButtonEdit.setOnClickListener{
+            viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
+        }
+        binding.progressBar.visibility = View.GONE
+
 
 
     }
 
+
+
     private fun setAllDropDown(){
         val date = resources.getStringArray(R.array.date)
         val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, date) }
-        binding.selectDate.setAdapter(arrayAdapterDate)
+        binding.selectBranch.setAdapter(arrayAdapterDate)
 
         val gender = resources.getStringArray(R.array.gender)
         val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
@@ -71,16 +87,20 @@ class FragmentUserProfileEdit : Fragment() {
         val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
         binding.selectYear.setAdapter(arrayAdapterYears)
 
+        val age = resources.getStringArray(R.array.age)
+        val arrayAdapterAge = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,age) }
+        binding.actSelectAge.setAdapter(arrayAdapterAge)
+
 
     }
 
     private fun selectSelectedFromDropDown(){
 
-        binding.selectDate.setOnItemClickListener { parent, _, position, _ ->
+        binding.selectBranch.setOnItemClickListener { parent, _, position, _ ->
             this.date = parent.getItemAtPosition(position) as String
             if (date!!.contains(this.date!!)) {
                 Toast.makeText(context, date, Toast.LENGTH_LONG).show()
-                hashMap["dateForEdit"] = this.date!!
+                hashMap["branchForEdit"] = this.date!!
             }
         }
 
@@ -103,32 +123,51 @@ class FragmentUserProfileEdit : Fragment() {
             }
         }
 
+        binding.actSelectAge.setOnItemClickListener{ parent ,_, poition, _ ->
+            age = parent.getItemAtPosition(poition) as String
+            if (age!!.contains(this.age!!)){
+                Toast.makeText(context,age,Toast.LENGTH_LONG).show()
+                hashMap["ageForEdit"] = this.age!!
+            }
+        }
+
 
 
     }
 
     private fun setAllCursorAtTheEnd(){
-        binding.selectDate.setSelection(binding.selectDate.length())
+        binding.selectBranch.setSelection(binding.selectBranch.length())
         binding.selectYear.setSelection(binding.selectYear.length())
-
         binding.actSelectGender.setSelection(binding.actSelectGender.length())
-        binding.preferences.setSelection(binding.preferences.length())
-
+        binding.edpreferences.setSelection(binding.edpreferences.length())
+        binding.actSelectAge.setSelection(binding.actSelectAge.length())
         binding.edCollageName.setSelection(binding.edCollageName.length())
     }
 
 
-    private fun onCLickSaveButton(){
-        binding.saveButton.setOnClickListener {
+    private fun setData(){
             val name = binding.nameEditText.text
             hashMap["nameForEdit"] = name.toString()
 
+            val phoneNumber = binding.edphoneNumber.text
+            hashMap["phoneNumberForEdit"] = phoneNumber.toString()
+
+            val interest = binding.edpreferences.text
+            hashMap["interestForEdit"] = interest.toString()
+
             val collageName = binding.edCollageName.text
-            hashMap["allergiesForEdit"] = collageName.toString()
+            hashMap["collageNameForEdit"] = collageName.toString()
+
+            val defaultBranch = "B.TECH CSE"
+            val defaultGender = "Male"
+            val defaultYear = "1"
+            val defaultAge = "20"
+            hashMap["branchForEdit"] = defaultBranch
+            hashMap["genderForEdit"] = defaultGender
+            hashMap["yearForEdit"] = defaultYear
+            hashMap["ageForEdit"] = defaultAge
 
             Log.d("testingHashmap",hashMap.toString())
-
-        }
 
     }
 
@@ -139,15 +178,80 @@ class FragmentUserProfileEdit : Fragment() {
             binding.edphoneNumber.setText(modal.user.phoneNumber)
             binding.actSelectGender.setText(modal.user.gender)
             binding.edCollageName.setText(modal.user.collageName)
-            binding.selectDate.setText(modal.user.branch)
+            binding.selectBranch.setText(modal.user.branch)
             binding.selectYear.setText(modal.user.year)
-            binding.preferences.setText(modal.user.interest)
-
+            binding.edpreferences.setText(modal.user.interest)
+            binding.actSelectAge.setText(modal.user.age)
         }
 
     }
 
+    private fun getOldUserData() : UserDataClassForEdit{
+        val name = hashMap["nameForEdit"]
+        val phoneNumber = hashMap["phoneNumberForEdit"]
+        val branch = hashMap["branchForEdit"]
+        val year = hashMap["yearForEdit"]
+        val gender = hashMap["genderForEdit"]
+        val age = hashMap["ageForEdit"]
+        val interest = hashMap["interestForEdit"]
+        val collageName = hashMap["collageNameForEdit"]
 
+        return UserDataClassForEdit(
+            UserForProfileEdit(
+            "abc@gmail.com",
+            name.toString(), year.toString(),branch.toString(),gender.toString(),age.toString(),phoneNumber.toString(),interest.toString(),"Mumbai",
+                collageName.toString()
 
+        )
+        )
+    }
+
+    private fun getNewUserData() :Map<String , Any>{
+        val name = hashMap["nameForEdit"]
+        val phoneNumber = hashMap["phoneNumberForEdit"]
+        val branch = hashMap["branchForEdit"]
+        val year = hashMap["yearForEdit"]
+        val gender = hashMap["genderForEdit"]
+        val age = hashMap["ageForEdit"]
+        val interest = hashMap["interestForEdit"]
+        val collageName = hashMap["collageNameForEdit"]
+
+        val map = mutableMapOf<String , Any>()
+        map["name"] = name.toString()
+        map["phone"] = phoneNumber.toString()
+        map["branch"] = branch.toString()
+        map["year"] = year.toString()
+        map["gender"] = gender.toString()
+        map["age"] = age.toString()
+        map["interest"] = interest.toString()
+        map["collage_name"] = collageName.toString()
+        return map
+    }
+
+    private fun update(data : UserDataClassForEdit , newData : Map<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
+        val userQuery = db
+            .whereEqualTo("name" , data.user.name)
+            .get()
+            .await()
+        if (userQuery.documents.isNotEmpty()){
+            for(document in userQuery){
+                try {
+                    db.document(document.id).set(
+                        newData,
+                        SetOptions.merge()
+                    )
+                }catch (e:Exception){
+                   withContext(Dispatchers.Main){
+                       Toast.makeText(requireActivity(), e.message, Toast.LENGTH_LONG).show()
+                   }
+                }
+            }
+        }else{
+            withContext(Dispatchers.Main){
+                Toast.makeText(requireActivity(), "No User Found", Toast.LENGTH_LONG).show()
+            }
+        }
+
+    }
 
 }

@@ -178,7 +178,7 @@
                 android:textColor="@color/black">
 
                 <AutoCompleteTextView
-                    android:id="@+id/selectDate"
+                    android:id="@+id/selectBranch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edit_text"
@@ -266,6 +266,49 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/tvage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.05"
+            android:text="AGE"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectGender" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectAge"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvage">
+
+            <AutoCompleteTextView
+                android:id="@+id/actSelectAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edit_text"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="22"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/tvfoodPreferences"
@@ -280,7 +323,7 @@
             android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectGender" />
+            app:layout_constraintTop_toBottomOf="@+id/selectAge" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/foodPreferences"
@@ -295,7 +338,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvfoodPreferences">
 
             <EditText
-                android:id="@+id/preferences"
+                android:id="@+id/edpreferences"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edit_text"

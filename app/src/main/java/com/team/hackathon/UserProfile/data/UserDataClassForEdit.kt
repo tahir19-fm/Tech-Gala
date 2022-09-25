@@ -1,11 +1,11 @@
 package com.team.hackathon.UserProfile.data
 
 
-data class UserDataForProfile (
-    val user: UserForProfile
+data class UserDataClassForEdit (
+    val user: UserForProfileEdit
 )
 
-data class UserForProfile(
+data class UserForProfileEdit(
     val collage_id: String,
     val name: String,
     val year : String,
@@ -17,4 +17,5 @@ data class UserForProfile(
     val city : String ? = null,
     val collageName : String? = null
 )
+
 
