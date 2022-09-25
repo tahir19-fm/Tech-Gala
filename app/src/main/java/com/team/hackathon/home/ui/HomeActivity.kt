@@ -63,12 +63,12 @@ class HomeActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction= fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.homeActivityFragment, FragmentEventList()).commit()
+        fragmentManager.beginTransaction().remove(FragmentEventRegistered()).commit()
 
     }
     private fun openFragmentEventListRegistered() {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction= fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.homeActivityFragment, FragmentEventRegistered()).commit()
-
     }
 }

@@ -77,27 +77,6 @@ class FragmentUserProfileEdit : Fragment() {
     }
 
     private fun setAllDropDown(){
-        val date = resources.getStringArray(R.array.date)
-        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, date) }
-        binding.selectDate.setAdapter(arrayAdapterDate)
-
-        val month = resources.getStringArray(R.array.month)
-        val arrayAdapterMonth = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, month) }
-        binding.selectMonth.setAdapter(arrayAdapterMonth)
-
-        val gender = resources.getStringArray(R.array.gender)
-        val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
-        binding.actSelectGender.setAdapter(arrayAdapterGender)
-
-        val country = resources.getStringArray(R.array.countries_array)
-        val arrayAdapterCountry =
-            context?.let { ArrayAdapter(it, R.layout.dropdown_layout, country) }
-        binding.selectCountryd.setAdapter(arrayAdapterCountry)
-
-        val years = resources.getStringArray(R.array.years)
-        val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
-        binding.selectYear.setAdapter(arrayAdapterYears)
-
         /*val foodPreferences = resources.getStringArray(R.array.foodPreference)
         val arrayAdapterFoodPreferences = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,foodPreferences) }
         binding.actPreferences.setAdapter(arrayAdapterFoodPreferences)*/

@@ -59,7 +59,7 @@ class FragmentLoginPhoneNumber : Fragment() {
         if (isValidPhoneNumber(ccp.fullNumber)) {
             // for registration number
             viewModel.setPhoneNumberRegistration(binding.phoneNumberBox.text.toString())
-            viewModel.setLoginState(LoginActivity.LOGIN_STATE_REGISTER_USER)
+            viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
             viewModel.setphoneNumber(binding.countryCodePicker.fullNumberWithPlus)
             hideKeyboard()
         } else {

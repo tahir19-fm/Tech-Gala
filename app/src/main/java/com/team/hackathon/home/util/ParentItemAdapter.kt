@@ -2,23 +2,22 @@ package com.team.hackathon.home.util
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.squareup.picasso.Picasso.get
 import com.team.hackathon.R
+import com.team.hackathon.eventregisteration.ui.EventRegistrationActivity
 import com.team.hackathon.home.data.EventDataModel
-import com.team.hackathon.home.ui.HomeActivity
 import java.util.*
 
 
 class ParentItemAdapter internal constructor(private val itemList: List<EventDataModel>) : RecyclerView.Adapter<ParentItemAdapter.ParentViewHolder>() {
     var context: Context? = null
-    val calender=Calendar.getInstance()
     companion object{
          var id=""
     }
@@ -40,6 +39,13 @@ class ParentItemAdapter internal constructor(private val itemList: List<EventDat
         parentViewHolder.lstDate.text=parentItem.lastDate
         parentViewHolder.teamTipe.text=parentItem.teamType
         parentViewHolder.regFee.text=parentItem.entryfee
+        parentViewHolder.itemView.setOnClickListener{v->
+            id=parentItem.id
+            val intent = Intent(v.context, EventRegistrationActivity::class.java)
+            Log.d("naaa", ": ${id}")
+            intent.putExtra("id",id)
+            v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -61,10 +67,6 @@ class ParentItemAdapter internal constructor(private val itemList: List<EventDat
             lstDate=itemView.findViewById(R.id.lastDate)
             teamTipe=itemView.findViewById(R.id.tvTeamIndividual)
             regFee=itemView.findViewById(R.id.registrationFee)
-            itemView.setOnClickListener { v ->
-                v.context.startActivity(Intent(v.context, HomeActivity::class.java))
-
-            }
         }
 
     }
