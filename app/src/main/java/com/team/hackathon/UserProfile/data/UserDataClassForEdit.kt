@@ -14,8 +14,9 @@ data class UserForProfileEdit(
     val age : String,
     val phoneNumber : String,
     val interest : String ,
-    val city : String ? = null,
-    val collageName : String? = null
+    val city : String ,
+    val collageName : String,
+
 )
 
 

@@ -330,5 +330,19 @@ you can go back and login with a another number</string>
 </string-array>
 
 
+    <string-array name="braches">
+        <item>BCA</item>
+        <item>MCA</item>
+        <item>B.TECH-CSE</item>
+        <item>B.TECH-ELE</item>
+        <item>B.TECH-MEC</item>
+        <item>B.TECH-CIVIL</item>
+        <item>P.H.D</item>
+        <item>OTHER</item>
+
+        <item>21</item>
+    </string-array>
+
+
 
 </resources>

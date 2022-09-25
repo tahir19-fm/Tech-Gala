@@ -27,7 +27,7 @@ import kotlin.collections.HashMap
 
 class FragmentUserProfileEdit : Fragment() {
     private var hashMap: HashMap<String, String> = HashMap()
-    private var date: String?=null
+    private var branches: String?=null
     private var year: String?=null
     private var gender: String?=null
     private var age : String?=null
@@ -48,18 +48,23 @@ class FragmentUserProfileEdit : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setAllDropDown()
-        selectSelectedFromDropDown()
 
+        setAllValuesFromUserProfile()
+
+        setData()
+
+        selectSelectedFromDropDown()
 
         setAllCursorAtTheEnd()
 
-        setAllValuesFromUserProfile()
-        setData()
+
+
 
         binding.saveButton.setOnClickListener{
             val oldData = getOldUserData()
             val newData = getNewUserData()
             update(oldData,newData)
+            Log.d("testingHashmap",hashMap.toString())
         }
 
         binding.backButtonEdit.setOnClickListener{
@@ -74,8 +79,8 @@ class FragmentUserProfileEdit : Fragment() {
 
 
     private fun setAllDropDown(){
-        val date = resources.getStringArray(R.array.date)
-        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, date) }
+        val branches = resources.getStringArray(R.array.braches)
+        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, branches) }
         binding.selectBranch.setAdapter(arrayAdapterDate)
 
         val gender = resources.getStringArray(R.array.gender)
@@ -97,10 +102,10 @@ class FragmentUserProfileEdit : Fragment() {
     private fun selectSelectedFromDropDown(){
 
         binding.selectBranch.setOnItemClickListener { parent, _, position, _ ->
-            this.date = parent.getItemAtPosition(position) as String
-            if (date!!.contains(this.date!!)) {
-                Toast.makeText(context, date, Toast.LENGTH_LONG).show()
-                hashMap["branchForEdit"] = this.date!!
+            this.branches = parent.getItemAtPosition(position) as String
+            if (branches!!.contains(this.branches!!)) {
+                Toast.makeText(context, branches, Toast.LENGTH_LONG).show()
+                hashMap["branchForEdit"] = this.branches!!
             }
         }
 
@@ -142,6 +147,7 @@ class FragmentUserProfileEdit : Fragment() {
         binding.edpreferences.setSelection(binding.edpreferences.length())
         binding.actSelectAge.setSelection(binding.actSelectAge.length())
         binding.edCollageName.setSelection(binding.edCollageName.length())
+        binding.actSelectCity.setSelection(binding.actSelectCity.length())
     }
 
 
@@ -158,15 +164,18 @@ class FragmentUserProfileEdit : Fragment() {
             val collageName = binding.edCollageName.text
             hashMap["collageNameForEdit"] = collageName.toString()
 
+            val city = binding.actSelectCity.text
+            hashMap["cityForEdit"] = city.toString()
+
             val defaultBranch = "B.TECH CSE"
             val defaultGender = "Male"
             val defaultYear = "1"
             val defaultAge = "20"
+
             hashMap["branchForEdit"] = defaultBranch
             hashMap["genderForEdit"] = defaultGender
             hashMap["yearForEdit"] = defaultYear
             hashMap["ageForEdit"] = defaultAge
-
             Log.d("testingHashmap",hashMap.toString())
 
     }
@@ -182,6 +191,7 @@ class FragmentUserProfileEdit : Fragment() {
             binding.selectYear.setText(modal.user.year)
             binding.edpreferences.setText(modal.user.interest)
             binding.actSelectAge.setText(modal.user.age)
+            binding.actSelectCity.setText(modal.user.city)
         }
 
     }
@@ -195,11 +205,11 @@ class FragmentUserProfileEdit : Fragment() {
         val age = hashMap["ageForEdit"]
         val interest = hashMap["interestForEdit"]
         val collageName = hashMap["collageNameForEdit"]
-
+        val city = hashMap["cityForEdit"]
         return UserDataClassForEdit(
             UserForProfileEdit(
             "abc@gmail.com",
-            name.toString(), year.toString(),branch.toString(),gender.toString(),age.toString(),phoneNumber.toString(),interest.toString(),"Mumbai",
+            name.toString(), year.toString(),branch.toString(),gender.toString(),age.toString(),phoneNumber.toString(),interest.toString(),city.toString(),
                 collageName.toString()
 
         )
@@ -207,14 +217,16 @@ class FragmentUserProfileEdit : Fragment() {
     }
 
     private fun getNewUserData() :Map<String , Any>{
-        val name = hashMap["nameForEdit"]
-        val phoneNumber = hashMap["phoneNumberForEdit"]
+        val name = binding.nameEditText.text
+        val phoneNumber = binding.edphoneNumber.text
         val branch = hashMap["branchForEdit"]
         val year = hashMap["yearForEdit"]
         val gender = hashMap["genderForEdit"]
         val age = hashMap["ageForEdit"]
-        val interest = hashMap["interestForEdit"]
-        val collageName = hashMap["collageNameForEdit"]
+        val interest = binding.edpreferences.text
+        val city = binding.actSelectCity.text
+        val collageName = binding.edCollageName.text
+
 
         val map = mutableMapOf<String , Any>()
         map["name"] = name.toString()
@@ -224,6 +236,7 @@ class FragmentUserProfileEdit : Fragment() {
         map["gender"] = gender.toString()
         map["age"] = age.toString()
         map["interest"] = interest.toString()
+        map["city"] = city.toString()
         map["collage_name"] = collageName.toString()
         return map
     }

@@ -165,11 +165,10 @@ class FragmentUserProfile : Fragment()  {
             binding.tvGender.text = modal.user.gender
             binding.tvYear.text = modal.user.year + " Year"
             binding.tvAge.text = modal.user.age + " yrs"
-
-
             binding.tvInterest.text = modal.user.interest
             binding.tvAddress.text = modal.user.city
             binding.tvCollageName.text = modal.user.collageName
+            binding.tvUserProfile.text = modal.user.name[0].uppercase()
         }
     }
 
