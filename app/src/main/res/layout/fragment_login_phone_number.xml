@@ -119,6 +119,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:inputType="phone"
+                android:textColor="@color/black"
                 android:backgroundTint="#0066FF"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -153,6 +154,7 @@
             android:layout_marginStart="16sp"
             android:padding="5dp"
             android:singleLine="true"
+            android:textColor="@color/black"
             android:layout_marginTop="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

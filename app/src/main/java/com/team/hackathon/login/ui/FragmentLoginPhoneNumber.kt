@@ -1,8 +1,10 @@
 package com.dietTracker.login.ui
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +16,9 @@ import com.team.hackathon.login.util.LoginViewModel
 import com.team.hackathon.databinding.FragmentLoginPhoneNumberBinding
 import com.team.hackathon.login.util.isValidPhoneNumber
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.team.hackathon.LoginActivity
+import com.team.hackathon.login.util.isValidId
 import java.util.regex.Pattern
 
 
@@ -56,13 +60,19 @@ class FragmentLoginPhoneNumber : Fragment() {
 
     private fun onSendOTPClicked(){
         val ccp = binding.countryCodePicker
-        if (isValidPhoneNumber(ccp.fullNumber)) {
+        if (isValidPhoneNumber(ccp.fullNumberWithPlus)) {
             // for registration number
             viewModel.setPhoneNumberRegistration(binding.phoneNumberBox.text.toString())
-            viewModel.setLoginState(LoginActivity.LOGIN_STATE_REGISTER_USER)
+            viewModel.setInstituteID(binding.idEditText.text.toString())
             viewModel.setphoneNumber(binding.countryCodePicker.fullNumberWithPlus)
+            studentExists()
             hideKeyboard()
-        } else {
+        }
+        else if (!isValidId(id.toString())){
+            Toast.makeText(context,"invalid id",Toast.LENGTH_SHORT).show()
+        }
+
+        else {
             Toast.makeText(context, "Invalid Number", Toast.LENGTH_SHORT).show()
         }
     }
@@ -71,6 +81,24 @@ class FragmentLoginPhoneNumber : Fragment() {
         val inputManager =
             requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
+
+    private fun studentExists(){
+        val docRef = FirebaseFirestore.getInstance().collection("users").document(viewModel.institute_data.value.toString())
+        docRef.get()
+            .addOnSuccessListener{ document->
+                if (document.exists()){
+                    viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
+                }
+                else
+                {
+                    viewModel.setLoginState(LoginActivity.LOGIN_STATE_REGISTER_USER)
+                }
+
+            }
+            .addOnFailureListener{exception->
+                Log.d(ContentValues.TAG,"get failed with",exception)
+            }
     }
 
 
