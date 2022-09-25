@@ -29,7 +29,7 @@ import com.team.hackathon.databinding.FragmentUserProfileBinding
 import org.json.JSONException
 import org.json.JSONObject
 
-class FragmentUserProfile : Fragment() , PaymentResultListener  {
+class FragmentUserProfile : Fragment()  {
     private val binding by lazy { FragmentUserProfileBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
     private val pickImage  = 100
@@ -60,10 +60,10 @@ class FragmentUserProfile : Fragment() , PaymentResultListener  {
 
             checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
 
-            checkout.setImage(R.drawable.banner_rev)
+            checkout.setImage(R.drawable.add_icon)
             val obj = JSONObject()
             try {
-                obj.put("name", "Geeks for Geeks")
+                obj.put("name", "Tech-A-Thon")
 
                 // put description
                 obj.put("description", "Test payment")
@@ -140,10 +140,8 @@ class FragmentUserProfile : Fragment() , PaymentResultListener  {
                                 document.getString("gender").toString(),
                                 document.getString("age").toString(),
                                 document.getString("phone").toString(),
-                                document.getString("profile_picture_url").toString(),
                                 document.getString("interest").toString(),
                                 document.getString("city").toString(),
-                                document.getString("country").toString(),
                                 document.getString("collage_name").toString()
                             )
                         )
@@ -237,12 +235,5 @@ class FragmentUserProfile : Fragment() , PaymentResultListener  {
         binding.llThirdLine.visibility = View.VISIBLE
     }
 
-    override fun onPaymentSuccess(s: String?) {
-        Toast.makeText(requireActivity(), "Payment is successful : " + s, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPaymentError(p0: Int, s: String?) {
-        Toast.makeText(requireActivity(), "Payment Failed due to error : " + s, Toast.LENGTH_SHORT).show();
-    }
 
 }
