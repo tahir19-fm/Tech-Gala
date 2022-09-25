@@ -13,13 +13,14 @@
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/fragment_event_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/header_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/menu/bottom_nav.xml" value="0.1265625" />
+        <entry key="app/src/main/res/drawable-v24/rounded_edit_text.xml" value="0.1845" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.24818840579710144" />
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_login_phone_number.xml" value="0.2527898412551323" />
         <entry key="app/src/main/res/layout/fragment_sign_in_with_details.xml" value="0.24003623188405798" />
-        <entry key="app/src/main/res/layout/fragment_student_registration.xml" value="0.26803690592447915" />
+        <entry key="app/src/main/res/layout/fragment_student_registration.xml" value="0.28193570750293245" />
         <entry key="app/src/main/res/layout/fragment_user_registration.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_user_validation.xml" value="0.35688405797101447" />
       </map>
