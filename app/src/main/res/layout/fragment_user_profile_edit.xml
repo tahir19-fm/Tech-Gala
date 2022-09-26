@@ -147,7 +147,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_regular"
             android:letterSpacing="0.05"
-            android:text="DATE OF BIRTH"
+            android:text="BRANCH AND YEAR"
             android:textColor="#000000"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -178,7 +178,7 @@
                 android:textColor="@color/black">
 
                 <AutoCompleteTextView
-                    android:id="@+id/selectDate"
+                    android:id="@+id/selectBranch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edit_text"
@@ -189,36 +189,11 @@
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="12"
+                    android:text="BTECH CSE"
                     android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textView1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="0.333"
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:textColor="@color/black">
-
-                <AutoCompleteTextView
-                    android:id="@+id/selectMonth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edit_text"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:imeOptions="actionNext"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="May"
-                    android:textSize="12sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textView11"
@@ -242,7 +217,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:text="2022"
+                    android:text="2"
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -271,7 +246,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvCountryandCity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gender">
@@ -293,199 +267,91 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tvCountryandCity"
+            android:id="@+id/tvage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_regular"
             android:letterSpacing="0.05"
-            android:text="COUNTRY AND CITY"
+            android:text="AGE"
             android:textColor="#000000"
             android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectGender" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/lllinearLayoutSec"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectAge"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCountryandCity">
+            app:layout_constraintTop_toBottomOf="@+id/tvage">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/selectCountry"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="0dp"
+            <AutoCompleteTextView
+                android:id="@+id/actSelectAge"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
+                android:background="@drawable/rounded_edit_text"
                 android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:textColor="@color/black">
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="22"
+                android:textSize="12sp" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/selectCountryd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edit_text"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:imeOptions="actionNext"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="INDIA"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/selectCity"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:textColor="@color/black">
-
-                <EditText
-                    android:id="@+id/selectcityDropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/rounded_edit_text"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:text="DELHI"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llHeightAndWeight"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.05"
+            android:text="CITY"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lllinearLayoutSec">
+            app:layout_constraintTop_toBottomOf="@+id/selectAge" />
 
-            <TextView
-                android:id="@+id/height"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/poppins_regular"
-                android:letterSpacing="0.05"
-                android:text="HEIGHT (cm)"
-                android:textColor="#000000"
-                android:textSize="13sp"
-                android:textStyle="bold"
-
-                />
-
-            <TextView
-                android:id="@+id/Weight"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/poppins_regular"
-                android:letterSpacing="0.05"
-                android:text="WEIGHT (kg)"
-                android:textColor="#000000"
-                android:textSize="13sp"
-                android:textStyle="bold"
-
-                />
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llSelectHeightandWeight"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectCity"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llHeightAndWeight">
+            app:layout_constraintTop_toBottomOf="@+id/tvCity">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/selectHeight"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/actSelectCity"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
+                android:background="@drawable/rounded_edit_text"
                 android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:textColor="@color/black">
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Delhi"
+                android:textSize="12sp" />
 
-                <EditText
-                    android:id="@+id/actSelectHeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edit_text"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:imeOptions="actionNext"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:inputType="number"
-                    android:text="170"
-                    android:singleLine="true"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/selectWeight"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:textColor="@color/black">
-
-                <EditText
-                    android:id="@+id/edSelectWeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/rounded_edit_text"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:text="70"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvfoodPreferences"
@@ -500,11 +366,11 @@
             android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llSelectHeightandWeight" />
+            app:layout_constraintTop_toBottomOf="@+id/selectCity" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/foodPreferences"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -514,18 +380,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvfoodPreferences">
 
-            <AutoCompleteTextView
-                android:id="@+id/actPreferences"
+            <EditText
+                android:id="@+id/edpreferences"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edit_text"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:lines="1"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="SoftWare , Android"
+                android:text="Software , Android"
                 android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -19,19 +19,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import com.team.hackathon.R
 import com.team.hackathon.UserProfile.data.UserDataForProfile
 import com.team.hackathon.UserProfile.data.UserForProfile
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
 import com.team.hackathon.databinding.FragmentUserProfileBinding
+import org.json.JSONException
+import org.json.JSONObject
 
-class FragmentUserProfile : Fragment() {
+class FragmentUserProfile : Fragment()  {
     private val binding by lazy { FragmentUserProfileBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
     private val pickImage  = 100
     private var imageUri : Uri? = null
     private var imageUrlFromFirebase :String?= null
     private var userNameFromFirebase:String?=null
-    private var allergies : String = ""
     private val db = FirebaseFirestore.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +46,51 @@ class FragmentUserProfile : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
 
         readFromFirebaseData()
         setData()
         super.onViewCreated(view, savedInstanceState)
+
+        binding.sendmoney.setOnClickListener{
+            val amt = binding.edamount.text.toString()
+            val amount = Math.round(amt.toFloat() * 100)
+            val checkout = Checkout()
+
+            checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
+
+            checkout.setImage(R.drawable.add_icon)
+            val obj = JSONObject()
+            try {
+                obj.put("name", "Tech-A-Thon")
+
+                // put description
+                obj.put("description", "Test payment")
+
+                // to set theme color
+                obj.put("theme.color", "")
+
+                // put the currency
+                obj.put("currency", "INR")
+
+                // put amount
+                obj.put("amount", amount)
+
+                // put mobile number
+                obj.put("prefill.contact", "8082731286")
+
+                // put email
+                obj.put("prefill.email", "tahir19.fm@gmail.com")
+
+                checkout.open(requireActivity(),obj)
+            }catch (e:JSONException){
+                e.printStackTrace()
+            }
+
+        }
+
+
+
         binding.editButton.setOnClickListener{
             viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE_EDIT)
         }
@@ -95,10 +139,8 @@ class FragmentUserProfile : Fragment() {
                                 document.getString("gender").toString(),
                                 document.getString("age").toString(),
                                 document.getString("phone").toString(),
-                                document.getString("profile_picture_url").toString(),
                                 document.getString("interest").toString(),
                                 document.getString("city").toString(),
-                                document.getString("country").toString(),
                                 document.getString("collage_name").toString()
                             )
                         )
@@ -120,11 +162,13 @@ class FragmentUserProfile : Fragment() {
             binding.tvUserName.text = modal.user.name
             binding.tvPhoneNumber.text = modal.user.phoneNumber
             binding.tvBranch.text = modal.user.branch
+            binding.tvGender.text = modal.user.gender
             binding.tvYear.text = modal.user.year + " Year"
             binding.tvAge.text = modal.user.age + " yrs"
             binding.tvInterest.text = modal.user.interest
             binding.tvAddress.text = modal.user.city
             binding.tvCollageName.text = modal.user.collageName
+            binding.tvUserProfile.text = modal.user.name[0].uppercase()
         }
     }
 
