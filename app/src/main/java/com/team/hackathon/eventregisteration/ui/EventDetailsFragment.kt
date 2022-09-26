@@ -23,6 +23,10 @@ class EventDetailsFragment : Fragment() {
     private val db = Firebase.firestore
 
     companion object {
+        const val REGISTER=1
+        const val REGISTERED=2
+        const val COMPLETED=3
+        const val DOWNLOAD_C=4
         const val RS="Rs "
         fun getInstance() = FragmentLoginOtp()
     }
@@ -42,12 +46,14 @@ class EventDetailsFragment : Fragment() {
     }
 
     private fun setupViews() {
+
     binding.btnRegister.setOnClickListener{
-        if (viewModel.registerDone.value==true&&completed()){
+        if (viewModel.registerDone.value== DOWNLOAD_C){
+            //download c
             return@setOnClickListener
-        }else if (viewModel.registerDone.value==true){
+        }else if (viewModel.registerDone.value==2){
             return@setOnClickListener
-        }else if (completed()){
+        }else if (viewModel.registerDone.value==3){
             return@setOnClickListener
         }else
         {
@@ -55,9 +61,30 @@ class EventDetailsFragment : Fragment() {
         }
     }
 
+
     }
 
     private fun completed(): Boolean {
+
+        val docRef = db.collection("eventscompleted").document(viewModel.userId.value.toString())
+        docRef.get()
+            .addOnSuccessListener { document ->
+                Log.d("gf", "readFromFirebaseData: ${document}")
+                if(document.exists()){
+                    val exist=true
+                    viewModel.setUserExists(COMPLETED)
+                    Log.d("Dataaaaa", "${exist}")
+                }
+                if (viewModel.registerDone.value== REGISTERED&&document.exists()){
+                    viewModel.setUserExists(DOWNLOAD_C)
+                }
+                else{
+                    Log.d("Data", "No such document$")
+                }
+            }.addOnFailureListener{ exception ->
+                Log.d("Data", "get failed with ", exception)
+            }
+
 
         return false
     }
@@ -83,11 +110,17 @@ class EventDetailsFragment : Fragment() {
 
         viewModel.registerDone.observe(this.requireActivity()){
             when(it){
-                true->{
-                    binding.btnRegister.text="registered"
-                }
-                else -> {
+                REGISTER->{
                     binding.btnRegister.text="register"
+                }
+               REGISTERED->{
+                   binding.btnRegister.text="registered"
+               }
+                COMPLETED->{
+                    binding.btnRegister.text="completed"
+                }
+                DOWNLOAD_C->{
+                    binding.btnRegister.text="download certificate"
                 }
             }
         }
@@ -132,11 +165,15 @@ class EventDetailsFragment : Fragment() {
         roc.get()
             .addOnSuccessListener {document->
 
+
+                if (document.getString("completed").toString()=="1"){
+                    viewModel.setUserExists(DOWNLOAD_C)
+                }else
                 if(document.exists()){
                     Log.d("Data", " exist document")
-                   viewModel.setUserExists(true)
+                   viewModel.setUserExists(REGISTERED)
                 }else{
-                    viewModel.setUserExists(false)
+                    viewModel.setUserExists(REGISTER)
                     Log.d("Data", "No such document")
                 }
             }.addOnFailureListener{ exception ->

@@ -3,7 +3,9 @@ package com.team.hackathon.eventregisteration.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
+import com.razorpay.PaymentResultListener
 import com.team.hackathon.R
 import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.databinding.ActivityBaseBinding
@@ -11,7 +13,7 @@ import com.team.hackathon.databinding.ActivityEventRegistrationBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 import com.team.hackathon.home.ui.FragmentEventRegistered
 
-class EventRegistrationActivity : AppCompatActivity() {
+class EventRegistrationActivity : AppCompatActivity() , PaymentResultListener {
     private val binding by lazy { ActivityEventRegistrationBinding.inflate(layoutInflater) }
     private val viewModel:EventRegistrationViewModel by viewModels()
 
@@ -55,5 +57,17 @@ class EventRegistrationActivity : AppCompatActivity() {
 
     private fun openEventDetailFragment() {
         supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,EventDetailsFragment()).commit()
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        registerUser()
+    }
+
+    private fun registerUser() {
+
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+       Toast.makeText(this,"Payment Unsuccessful",Toast.LENGTH_LONG).show()
     }
 }
