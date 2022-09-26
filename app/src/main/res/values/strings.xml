@@ -4,8 +4,8 @@
     <string name="heading_userValidation">Diet Tracker</string>
     <string name="head_text_userValidation">"Your account doesn't exist"</string>
     <string name="sub_text_userValidation">you can click signup to create new account or
-you can go back and login with a another number</string>
-    <string name="btnToNumber_text">Change Number</string>
+you can go back to reset  your Details</string>
+    <string name="btnToNumber_text">Reset Details</string>
     <string name="btnToRegistration_text">Create New Account</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

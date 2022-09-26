@@ -31,6 +31,10 @@ class FragmentUserValidation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.ivBackButton.setOnClickListener{
+            viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_NUMBER)
+        }
+
         binding.btnToNumber.setOnClickListener {
             viewModel.setphoneNumber("")
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_NUMBER)
@@ -38,8 +42,6 @@ class FragmentUserValidation : Fragment() {
         binding.btnToRegistration.setOnClickListener {
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_REGISTER_USER)
         }
-        binding.ivBackButton.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
+
     }
 }

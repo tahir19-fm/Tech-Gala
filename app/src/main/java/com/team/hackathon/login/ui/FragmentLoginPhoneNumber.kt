@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.team.hackathon.LoginActivity
 import com.team.hackathon.login.util.isValidId
+import kotlinx.coroutines.delay
 import java.util.regex.Pattern
 
 
@@ -48,7 +49,8 @@ class FragmentLoginPhoneNumber : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.countryCodePicker.registerCarrierNumberEditText(binding.phoneNumberBox)
-
+        binding.phoneNumberBox.setText("8789355466")
+        binding.idEditText.setText("assam@gm.com")
 
 
         val ccp = binding.countryCodePicker
@@ -92,11 +94,15 @@ class FragmentLoginPhoneNumber : Fragment() {
         docRef.get()
             .addOnSuccessListener{ document->
                 if (document.exists()){
+
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
+
                 }
                 else
                 {
-                    viewModel.setLoginState(LoginActivity.LOGIN_STATE_REGISTER_USER)
+                    viewModel.setLoginState(LoginActivity.LOGIN_STATE_USER_VALIDATION)
+                    binding.frag1.visibility=View.INVISIBLE
+                    binding.progressBar.visibility=View.VISIBLE
                 }
 
             }

@@ -67,7 +67,7 @@ class FragmentUploadImage : Fragment() {
 
 
     private fun downloadFiles() {
-        val url = "https://static.wikia.nocookie.net/peppapig/images/6/61/Peppa_Pig.png/revision/latest/top-crop/width/360/height/450?cb=20220823194418"
+        val url = "https://simg.nicepng.com/png/small/224-2248218_drawing-toon-link-download-drawing.png"
         // create a download request
 
         val request = DownloadManager.Request(Uri.parse(url)) // request a download url

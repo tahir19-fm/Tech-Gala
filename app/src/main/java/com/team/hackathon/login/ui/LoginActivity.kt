@@ -24,7 +24,7 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.setLoginState(2)
+        viewModel.setLoginState(1)
         setupObservers()
     }
 
@@ -88,7 +88,7 @@ class LoginActivity : BaseActivity(){
     }
 
     private fun loginUserValidation() {
-        startFragment(FragmentUploadImage.getInstance(), false)
+        startFragment(FragmentUserValidation.getInstance(), false)
     }
 
 }

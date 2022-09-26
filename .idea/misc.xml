@@ -13,7 +13,19 @@
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/fragment_event_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/header_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/menu/bottom_nav.xml" value="0.1265625" />
+        <entry key="app/src/main/res/drawable-v24/add_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/bg_searchview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_access_time_filled_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_content_copy_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/rounded_edit_text.xml" value="0.1845" />
+        <entry key="app/src/main/res/drawable-v24/search_bar_border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/shape_diet.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_check_circle_outline_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/registered_list.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/registered_user_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_linear_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.24818840579710144" />
@@ -24,7 +36,7 @@
         <entry key="app/src/main/res/layout/fragment_student_registration.xml" value="0.28193570750293245" />
         <entry key="app/src/main/res/layout/fragment_upload_image.xml" value="0.24818840579710144" />
         <entry key="app/src/main/res/layout/fragment_user_registration.xml" value="0.35688405797101447" />
-        <entry key="app/src/main/res/layout/fragment_user_validation.xml" value="0.35688405797101447" />
+        <entry key="app/src/main/res/layout/fragment_user_validation.xml" value="0.25" />
       </map>
     </option>
   </component>
