@@ -32,6 +32,7 @@ class FragmentUserValidation : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ivBackButton.setOnClickListener{
+
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_NUMBER)
         }
 

@@ -90,19 +90,19 @@ class FragmentLoginPhoneNumber : Fragment() {
     }
 
     private fun studentExists(){
-        val docRef = FirebaseFirestore.getInstance().collection("users").document(viewModel.institute_data.value.toString())
+        binding.frag1.visibility=View.INVISIBLE
+        binding.progressBar.visibility=View.VISIBLE
+        val docRef = FirebaseFirestore.getInstance().collection("users").document(viewModel.phoneNumber.value.toString())
         docRef.get()
             .addOnSuccessListener{ document->
                 if (document.exists()){
 
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
-
                 }
                 else
                 {
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_USER_VALIDATION)
-                    binding.frag1.visibility=View.INVISIBLE
-                    binding.progressBar.visibility=View.VISIBLE
+
                 }
 
             }
@@ -110,9 +110,6 @@ class FragmentLoginPhoneNumber : Fragment() {
                 Log.d(ContentValues.TAG,"get failed with",exception)
             }
     }
-
-
-
 
 }
 

@@ -260,9 +260,11 @@ private val dataCollection = Firebase.firestore.collection("details")
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
     }
     private fun saveStudentDetails(StudentDetail: studentDetails) =CoroutineScope(Dispatchers.IO).launch {
+
         try {
-            Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toString()).set(studentDetails(viewModel.institute_data.value.toString(),viewModel.phoneNumber.value.toString()))
+            Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toString()).set(StudentDetail)
             withContext(Dispatchers.Main){
+
                 Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
             }
         }
@@ -274,10 +276,11 @@ private val dataCollection = Firebase.firestore.collection("details")
 
     }
     private fun uploadData(){
-        val id = viewModel.institute_data.value.toString()
-        val phoneNumber = viewModel.institue_phoneNumber.value.toString()
-        val studentData = studentDetails(id,phoneNumber)
-        saveStudentDetails(studentData)
+//        val id = viewModel.institute_data.value.toString()
+//        val phoneNumber = viewModel.institue_phoneNumber.value.toString()
+
+    val data=viewModel.studentDetailedInfo.value as studentDetails
+        saveStudentDetails(data)
     }
     private fun moveTOHome(){
 

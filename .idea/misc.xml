@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/drawable-v24/rounded_edit_text.xml" value="0.1845" />
         <entry key="app/src/main/res/drawable-v24/search_bar_border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/shape_diet.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dropdown_border_format.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/ic_baseline_check_circle_outline_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/registered_list.xml" value="0.1" />
@@ -33,8 +34,10 @@
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_login_phone_number.xml" value="0.2527898412551323" />
         <entry key="app/src/main/res/layout/fragment_sign_in_with_details.xml" value="0.24003623188405798" />
-        <entry key="app/src/main/res/layout/fragment_student_registration.xml" value="0.28193570750293245" />
+        <entry key="app/src/main/res/layout/fragment_student_registration.xml" value="0.339775673323245" />
         <entry key="app/src/main/res/layout/fragment_upload_image.xml" value="0.24818840579710144" />
+        <entry key="app/src/main/res/layout/fragment_user_profile.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment_user_profile_edit.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_user_registration.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_user_validation.xml" value="0.25" />
       </map>

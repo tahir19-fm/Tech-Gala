@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">hackathon</string>
     // for userValidation
-    <string name="heading_userValidation">Diet Tracker</string>
+    <string name="heading_userValidation">APP NAME</string>
     <string name="head_text_userValidation">"Your account doesn't exist"</string>
     <string name="sub_text_userValidation">you can click signup to create new account or
 you can go back to reset  your Details</string>
@@ -10,7 +10,7 @@ you can go back to reset  your Details</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="register">REGISTER</string>
-    <string name="info">We will send an OTP to veify your mobile number</string>
+    <string name="info">We will send an OTP to verify your mobile number</string>
     <string-array name="date">
         <item>1</item>
         <item>2</item>
@@ -64,6 +64,27 @@ you can go back to reset  your Details</string>
     <string-array name="gender">
         <item>MALE</item>
         <item>FEMALE</item>
+    </string-array>
+
+    <string-array name="branch">
+        <item> B.Tech- Computer Science and Engineering</item>
+        <item> B.Tech Electrical and Electronics Engineering</item>
+        <item>B.Tech Mechanical Engineering</item>
+        <item> B.Tech- Aeronautical Engineering</item>
+        <item> B.Tech- Automobile Engineering</item>
+        <item>B.Tech- Biotechnology</item>
+        <item> B.Tech- Civil Engineering</item>
+        <item>B.Tech. Electronics And Communication</item>
+    </string-array>
+
+    <string-array name="hussain">
+        <item>Machine Learning</item>
+        <item>Cyber Security</item>
+        <item> Game Development</item>
+        <item>Web Development</item>
+        <item>App Development</item>
+        <item> Algorithms-Complexity Theory</item>
+        <item> Databases</item>
     </string-array>
 
     <string-array name="countries_array">

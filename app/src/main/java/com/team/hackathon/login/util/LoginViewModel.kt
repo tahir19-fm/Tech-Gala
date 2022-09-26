@@ -1,5 +1,6 @@
 package com.team.hackathon.login.util
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -50,14 +51,15 @@ class LoginViewModel : ViewModel() {
     fun saveUserDataOnLocal(data: UserRegistrationDto) {
         _userData.value = data
     }
-    fun setInstituteID(id:String){
-        _institute_id.value=id
-    }
+
 
     private val _institute_id= MutableLiveData<String>()
     val institute_data: LiveData<String>
     get() =_institute_id
 
+    fun setInstituteID(id:String){
+        _institute_id.value=id
+    }
 
     private val _institue_phoneNumber = MutableLiveData<String>()
     val institue_phoneNumber : LiveData<String>
@@ -66,5 +68,27 @@ class LoginViewModel : ViewModel() {
     fun setInstituePhoneNumber(institutePhone : String){
         _institue_phoneNumber.value = institutePhone
     }
+
+
+
+    private val _studentDetailedInfo = MutableLiveData<studentDetails>()
+    val studentDetailedInfo: LiveData<studentDetails>
+    get()= _studentDetailedInfo
+
+    fun setStudentDetailedInfo(data:studentDetails){
+        _studentDetailedInfo.value = data
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

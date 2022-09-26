@@ -31,7 +31,6 @@ class FragmentUserProfile : Fragment() {
     private var imageUri : Uri? = null
     private var imageUrlFromFirebase :String?= null
     private var userNameFromFirebase:String?=null
-    private var allergies : String = ""
     private val db = FirebaseFirestore.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
