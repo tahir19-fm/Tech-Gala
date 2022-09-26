@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".eventregisteration.ui.RegisterForEventFragment">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:id="@+id/teamName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Team Name"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_regular"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="android code"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-        />
-    </androidx.appcompat.widget.LinearLayoutCompat>
     <GridLayout
         android:id="@+id/glBasicInformation"
         android:background="@drawable/rounded_linear_layout"
@@ -38,11 +11,12 @@
         android:layout_height="wrap_content"
         android:rowCount="3"
         android:columnCount="1"
-        app:layout_constraintTop_toBottomOf="@+id/teamName"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         >
 
 
@@ -73,8 +47,7 @@
             android:textSize="14sp"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
-            />
-
+            />96666666666666666666666666666666666666666666666666666666666666
     </GridLayout>
 
 
