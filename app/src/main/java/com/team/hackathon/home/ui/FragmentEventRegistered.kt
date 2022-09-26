@@ -6,20 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.team.hackathon.R
 import com.team.hackathon.databinding.FragmentEventRegisteredBinding
 import com.team.hackathon.home.data.EventDataModel
 import com.team.hackathon.home.util.HomeViewModel
 import com.team.hackathon.home.util.ParentItemAdapter
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.tasks.await
-import kotlin.concurrent.thread
 
 class FragmentEventRegistered : Fragment() {
     private val binding by lazy { FragmentEventRegisteredBinding.inflate(layoutInflater) }
@@ -61,7 +56,7 @@ class FragmentEventRegistered : Fragment() {
                         events.totalRegister,
                         events.lastDate,
                         events.teamType,
-                        events.entryfee,
+                        events.entryfees,
                         events.id
                     )
                 )

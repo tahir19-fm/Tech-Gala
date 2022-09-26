@@ -106,6 +106,7 @@ class EventDetailsFragment : Fragment() {
             }
             binding.teamLength.text = data.teamType
             binding.location.text = data.location
+        binding.startEnddate.text=data.startEndDate
     }
 
         viewModel.registerDone.observe(this.requireActivity()){
@@ -146,9 +147,8 @@ class EventDetailsFragment : Fragment() {
                             document.getString("location").toString(),
                             document.getString("subHeading").toString(),
                             document.getString("teamType").toString(),
-                            document.getString("totalRegister").toString()
-
-
+                            document.getString("totalRegister").toString(),
+                           document.getString("startEndDate").toString()
                         )
                     viewModel.fetchUserDataDetail(res)
 

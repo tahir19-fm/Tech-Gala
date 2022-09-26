@@ -10,5 +10,6 @@ class EventDetailsModalClass (
     val subHeading:String,
     val teamType:String,
     val totalRegister:String,
+    val startEndDate:String
 
         )
