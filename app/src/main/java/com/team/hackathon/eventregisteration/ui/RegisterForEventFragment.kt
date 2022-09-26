@@ -25,9 +25,10 @@ class RegisterForEventFragment : Fragment() {
 
 
     companion object {
-        const val emailMessage = "Hey You Have Been Invited For a Event"
+        const val emailMessage =
+            "Hey You Have Been Invited For a Event. You can download app and get further details.\n"
+        const val gitLink = "https://github.com/tahir19-fm/Tech-Gala"
     }
-
 
 
     override fun onCreateView(
@@ -35,69 +36,44 @@ class RegisterForEventFragment : Fragment() {
     ): View {
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
-
-
-//        readFromFirebaseData()
-//        setupObserver()
         setupViews()
-        registerForEvent()
-
-    }
-
-    private fun registerForEvent() {
-
     }
 
     private fun setupViews() {
-
-
-
         binding.teamMemeberOne2.visibility = View.GONE
         binding.teamMemeberOne3.visibility = View.GONE
         binding.teamMemeberOne4.visibility = View.GONE
-
-
-        binding.inviteButton1.setOnClickListener{
+        binding.inviteButton1.setOnClickListener {
             binding.teamMemeberOne2.visibility = View.VISIBLE
             binding.inviteButton1.visibility = View.GONE
         }
-
-        binding.inviteButton2.setOnClickListener{
+        binding.inviteButton2.setOnClickListener {
             binding.teamMemeberOne3.visibility = View.VISIBLE
             binding.inviteButton2.visibility = View.GONE
         }
-
-        binding.inviteButton3.setOnClickListener{
+        binding.inviteButton3.setOnClickListener {
             binding.teamMemeberOne4.visibility = View.VISIBLE
             binding.inviteButton3.visibility = View.GONE
         }
-
-
-        binding.deleteSecondMember.setOnClickListener{
+        binding.deleteSecondMember.setOnClickListener {
             binding.teamMemeberOne2.visibility = View.GONE
             binding.inviteButton1.visibility = View.VISIBLE
         }
-        binding.deleteThirdMember.setOnClickListener{
+        binding.deleteThirdMember.setOnClickListener {
             binding.teamMemeberOne3.visibility = View.GONE
             binding.inviteButton2.visibility = View.VISIBLE
         }
-        binding.deleteFourthMember.setOnClickListener{
+        binding.deleteFourthMember.setOnClickListener {
             binding.teamMemeberOne4.visibility = View.GONE
             binding.inviteButton3.visibility = View.VISIBLE
         }
-
-
-        binding.saveButton.setOnClickListener{
-            val firstTeamMemberName = binding.name.text
+        binding.saveButton.setOnClickListener {
             sendEmail()
         }
-        binding.bottomButton.setOnClickListener{
+        binding.bottomButton.setOnClickListener {
             val amt = viewModel.paymentRupees.value.toString()
             val amount = Math.round(amt.toFloat() * 100)
             val checkout = Checkout()
@@ -122,35 +98,29 @@ class RegisterForEventFragment : Fragment() {
                 obj.put("amount", amount)
 
                 // put mobile number
-                obj.put("prefill.contact", FirebaseAuth.getInstance().currentUser!!.phoneNumber.toString())
+                obj.put(
+                    "prefill.contact",
+                    FirebaseAuth.getInstance().currentUser!!.phoneNumber.toString()
+                )
 
                 // put email
                 obj.put("prefill.email", "techathon@gmail.com")
 
-                checkout.open(requireActivity(),obj)
-            }catch (e: JSONException){
+                checkout.open(requireActivity(), obj)
+            } catch (e: JSONException) {
                 e.printStackTrace()
             }
 
         }
-        }
-
-    private fun setupObserver() {
-
     }
 
-    private fun readFromFirebaseData() {
-
-    }
-
-    private fun sendEmail(){
+    private fun sendEmail() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.\nhttps://google.com")
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "$emailMessage $gitLink")
         sendIntent.type = "text/plain"
         sendIntent.setPackage("com.whatsapp")
-        startActivity(Intent.createChooser(sendIntent, "ma chuda"))
-//        startActivity(sendIntent)
+        startActivity(Intent.createChooser(sendIntent, "send invite"))
     }
 
 }
