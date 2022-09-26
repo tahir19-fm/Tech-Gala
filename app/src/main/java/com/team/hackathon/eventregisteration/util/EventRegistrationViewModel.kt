@@ -44,6 +44,13 @@ class EventRegistrationViewModel:  ViewModel() {
         _userDataEvents.value=data
     }
 
+    private val _paymentRupees = MutableLiveData<String>()
+    val paymentRupees : LiveData<String>
+        get() = _paymentRupees
+    fun setPayment(state:String){
+        _paymentRupees.value=state
+    }
+
 
 
 }

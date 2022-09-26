@@ -281,7 +281,7 @@ Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toSt
     }
 
     private fun moveToHome(){
-        val i = Intent(requireActivity(),SplashActivity::class.java)
+        val i = Intent(requireActivity(),HomeActivity::class.java)
         i.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(i)
         requireActivity().finish()

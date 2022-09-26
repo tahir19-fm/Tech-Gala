@@ -50,7 +50,7 @@ class EventDetailsFragment : Fragment() {
     binding.btnRegister.setOnClickListener{
         if (viewModel.registerDone.value== DOWNLOAD_C){
             //download c
-            return@setOnClickListener
+           openChromeToDownloadCertificate()
         }else if (viewModel.registerDone.value==2){
             return@setOnClickListener
         }else if (viewModel.registerDone.value==3){
@@ -64,30 +64,10 @@ class EventDetailsFragment : Fragment() {
 
     }
 
-    private fun completed(): Boolean {
+    private fun openChromeToDownloadCertificate() {
 
-        val docRef = db.collection("eventscompleted").document(viewModel.userId.value.toString())
-        docRef.get()
-            .addOnSuccessListener { document ->
-                Log.d("gf", "readFromFirebaseData: ${document}")
-                if(document.exists()){
-                    val exist=true
-                    viewModel.setUserExists(COMPLETED)
-                    Log.d("Dataaaaa", "${exist}")
-                }
-                if (viewModel.registerDone.value== REGISTERED&&document.exists()){
-                    viewModel.setUserExists(DOWNLOAD_C)
-                }
-                else{
-                    Log.d("Data", "No such document$")
-                }
-            }.addOnFailureListener{ exception ->
-                Log.d("Data", "get failed with ", exception)
-            }
-
-
-        return false
     }
+
 
     private fun setupObserver() {
     viewModel.userDataEventsDetail.observe(this.requireActivity()){
@@ -107,6 +87,7 @@ class EventDetailsFragment : Fragment() {
             binding.teamLength.text = data.teamType
             binding.location.text = data.location
         binding.startEnddate.text=data.startEndDate
+        viewModel.setPayment(data.entryfees.toString())
     }
 
         viewModel.registerDone.observe(this.requireActivity()){

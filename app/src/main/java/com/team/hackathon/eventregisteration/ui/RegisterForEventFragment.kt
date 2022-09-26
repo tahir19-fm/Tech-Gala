@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.razorpay.Checkout
+import com.team.hackathon.R
 import com.team.hackathon.databinding.FragmentRegisterForEventBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
+import org.json.JSONException
+import org.json.JSONObject
 
 
 class RegisterForEventFragment : Fragment() {
@@ -18,9 +23,12 @@ class RegisterForEventFragment : Fragment() {
     private val viewModel: EventRegistrationViewModel by activityViewModels()
     private val db = Firebase.firestore
 
-    private val emailMessage = "Hey You Have Been Invited For a Event"
+
     companion object {
+        const val emailMessage = "Hey You Have Been Invited For a Event"
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -88,10 +96,44 @@ class RegisterForEventFragment : Fragment() {
         binding.saveButton.setOnClickListener{
             val firstTeamMemberName = binding.name.text
             sendEmail()
-            // yoo
+        }
+        binding.bottomButton.setOnClickListener{
+            val amt = viewModel.paymentRupees.value.toString()
+            val amount = Math.round(amt.toFloat() * 100)
+            val checkout = Checkout()
+
+            checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
+
+            checkout.setImage(R.drawable.add_icon)
+            val obj = JSONObject()
+            try {
+                obj.put("name", "Tech-A-Thon")
+
+                // put description
+                obj.put("description", "Test payment")
+
+                // to set theme color
+                obj.put("theme.color", "")
+
+                // put the currency
+                obj.put("currency", "INR")
+
+                // put amount
+                obj.put("amount", amount)
+
+                // put mobile number
+                obj.put("prefill.contact", FirebaseAuth.getInstance().currentUser!!.phoneNumber.toString())
+
+                // put email
+                obj.put("prefill.email", "techathon@gmail.com")
+
+                checkout.open(requireActivity(),obj)
+            }catch (e: JSONException){
+                e.printStackTrace()
+            }
 
         }
-    }
+        }
 
     private fun setupObserver() {
 
