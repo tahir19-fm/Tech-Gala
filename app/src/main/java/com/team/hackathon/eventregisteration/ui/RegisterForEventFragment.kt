@@ -76,6 +76,8 @@ class RegisterForEventFragment : Fragment() {
             val firstTeamMemberName = binding.name.text
             sendEmail(firstTeamMemberEmail.toString() , "Subject" + "$firstTeamMemberName" , emailMessage )
 
+            // yoo
+
         }
 
 
