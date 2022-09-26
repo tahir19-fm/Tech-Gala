@@ -3,11 +3,8 @@
 
     <item android:title="EVENTS"
         android:icon="@drawable/list_events"
-        android:id="@+id/users"/>
+        android:id="@+id/events"/>
     <item android:title="REGISTERED"
         android:icon="@drawable/registered_list"
-        android:id="@+id/requests"/>
-    <item android:title="WISHLIST"
-        android:icon="@drawable/wish_list"
-        android:id="@+id/wishList"/>
+        android:id="@+id/registered"/>
 </menu>
