@@ -33,6 +33,23 @@ class RegisterForEventFragment : Fragment() {
 
 
 
+
+
+//        readFromFirebaseData()
+//        setupObserver()
+        setupViews()
+        registerForEvent()
+
+    }
+
+    private fun registerForEvent() {
+
+    }
+
+    private fun setupViews() {
+
+
+
         binding.teamMemeberOne2.visibility = View.GONE
         binding.teamMemeberOne3.visibility = View.GONE
         binding.teamMemeberOne4.visibility = View.GONE
@@ -74,23 +91,6 @@ class RegisterForEventFragment : Fragment() {
             // yoo
 
         }
-
-
-
-
-//        readFromFirebaseData()
-//        setupObserver()
-//        setupViews()
-        registerForEvent()
-
-    }
-
-    private fun registerForEvent() {
-
-    }
-
-    private fun setupViews() {
-
     }
 
     private fun setupObserver() {

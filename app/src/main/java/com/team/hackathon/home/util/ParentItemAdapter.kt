@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso.get
 import com.team.hackathon.R
 import com.team.hackathon.eventregisteration.ui.EventRegistrationActivity
 import com.team.hackathon.home.data.EventDataModel
-import java.util.*
 
 
 class ParentItemAdapter internal constructor(private val itemList: List<EventDataModel>) : RecyclerView.Adapter<ParentItemAdapter.ParentViewHolder>() {
@@ -38,7 +37,7 @@ class ParentItemAdapter internal constructor(private val itemList: List<EventDat
         parentViewHolder.total.text=parentItem.totalRegister
         parentViewHolder.lstDate.text=parentItem.lastDate
         parentViewHolder.teamTipe.text=parentItem.teamType
-        parentViewHolder.regFee.text=parentItem.entryfee
+        parentViewHolder.regFee.text=parentItem.entryfees
         parentViewHolder.itemView.setOnClickListener{v->
             id=parentItem.id
             val intent = Intent(v.context, EventRegistrationActivity::class.java)
