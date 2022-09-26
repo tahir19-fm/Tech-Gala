@@ -1,81 +1,405 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".eventregisteration.ui.RegisterForEventFragment">
+    android:id="@+id/scrollview"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:id="@+id/teamName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/postEventButton"
+        android:layout_marginBottom="26dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team Name"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_regular"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="android code"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-        />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-    <GridLayout
-        android:id="@+id/glBasicInformation"
-        android:background="@drawable/rounded_linear_layout"
+            app:layout_constraintBottom_toTopOf="@+id/bottomButton">
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:id="@+id/teamName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Team Name"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="android code"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <GridLayout
+                android:id="@+id/teamMemeberOne"
+                android:background="@drawable/rounded_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="1"
+                app:layout_constraintTop_toBottomOf="@+id/teamName"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveButton"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Invite"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inviteButton1"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Add Member"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/teamMemeberOne2"
+                android:background="@drawable/rounded_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="1"
+                app:layout_constraintTop_toBottomOf="@+id/teamMemeberOne"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/email2"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/name2"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveButton2"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Invite"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inviteButton2"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Add Member"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/teamMemeberOne3"
+                android:background="@drawable/rounded_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="1"
+                app:layout_constraintTop_toBottomOf="@+id/teamMemeberOne2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/email3"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/name3"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveButton3"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Invite"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inviteButton3"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Add Member"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/teamMemeberOne4"
+                android:background="@drawable/rounded_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="3"
+                android:columnCount="1"
+                app:layout_constraintTop_toBottomOf="@+id/teamMemeberOne3"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/email4"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/name4"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveButton4"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foregroundTint="@color/black"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
+                    android:shadowColor="@color/black"
+                    android:text="Invite"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </GridLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/postEventButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="3"
-        android:columnCount="1"
-        app:layout_constraintTop_toBottomOf="@+id/teamName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         >
-
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
             android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:background="@drawable/button_style"
             />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:hint="Name"
-            android:inputType="text"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            />
-
-    </GridLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

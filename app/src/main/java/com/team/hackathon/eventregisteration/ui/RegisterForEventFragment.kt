@@ -30,6 +30,29 @@ class RegisterForEventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val firstTeamMemberEmail = binding.email.text
+        val secondTeamMemberEmail = binding.email2.text
+        val thirdTeamMemberEmail = binding.email3.text
+        val fourthTeamMemberEmail = binding.email4.text
+
+        binding.teamMemeberOne2.visibility = View.GONE
+        binding.teamMemeberOne3.visibility = View.GONE
+        binding.teamMemeberOne4.visibility = View.GONE
+
+
+        binding.inviteButton1.setOnClickListener{
+            binding.teamMemeberOne2.visibility = View.VISIBLE
+        }
+
+        binding.inviteButton2.setOnClickListener{
+            binding.teamMemeberOne3.visibility = View.VISIBLE
+        }
+
+        binding.inviteButton3.setOnClickListener{
+            binding.teamMemeberOne4.visibility = View.VISIBLE
+        }
+
+
 //        readFromFirebaseData()
 //        setupObserver()
 //        setupViews()
@@ -37,15 +60,15 @@ class RegisterForEventFragment : Fragment() {
     }
 
     private fun setupViews() {
-        TODO("Not yet implemented")
+
     }
 
     private fun setupObserver() {
-        TODO("Not yet implemented")
+
     }
 
     private fun readFromFirebaseData() {
-        TODO("Not yet implemented")
+
     }
 
 }
