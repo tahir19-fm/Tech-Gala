@@ -195,12 +195,9 @@ private val dataCollection = Firebase.firestore.collection("details")
             // new implementation
             val code = credential.smsCode
             if (code != null) {
-                val i = Intent(requireActivity(), SplashActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(i)
-                requireActivity().finish()
                 binding.pinView.setText(code)
                 verifyCode(code)
+
                 // this will work in automatic way but what if user enterd number that is't in his phone
             }
         }
@@ -233,11 +230,13 @@ private val dataCollection = Firebase.firestore.collection("details")
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // move activity && built in flags ::
+                    uploadData()
+                    moveTOHome()
                     //Delay after login to give firebase some time to refresh auth token.
 
 
 //
-                        uploadData()
+
 
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
@@ -262,7 +261,7 @@ private val dataCollection = Firebase.firestore.collection("details")
     }
     private fun saveStudentDetails(StudentDetail: studentDetails) =CoroutineScope(Dispatchers.IO).launch {
         try {
-            dataCollection.add(StudentDetail).await()
+            Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toString()).set(studentDetails(viewModel.institute_data.value.toString(),viewModel.phoneNumber.value.toString()))
             withContext(Dispatchers.Main){
                 Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
             }
@@ -271,7 +270,7 @@ private val dataCollection = Firebase.firestore.collection("details")
             withContext(Dispatchers.Main){
                 Toast.makeText(requireContext(),e.message,Toast.LENGTH_LONG).show()
             }
-    }
+        }
 
     }
     private fun uploadData(){
@@ -279,6 +278,13 @@ private val dataCollection = Firebase.firestore.collection("details")
         val phoneNumber = viewModel.institue_phoneNumber.value.toString()
         val studentData = studentDetails(id,phoneNumber)
         saveStudentDetails(studentData)
+    }
+    private fun moveTOHome(){
+
+        val i = Intent(requireActivity(), HomeActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(i)
+        requireActivity().finish()
     }
 }
 

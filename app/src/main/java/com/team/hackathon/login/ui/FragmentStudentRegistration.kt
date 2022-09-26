@@ -61,8 +61,6 @@ class FragmentStudentRegistration : Fragment() {
 
         }
 
-
-
     }
     private fun setUpAllDropdowns(){
         val gender = resources.getStringArray(R.array.gender)
@@ -70,6 +68,7 @@ class FragmentStudentRegistration : Fragment() {
         binding.actSelectGender.setAdapter(arrayAdapterGender)
 
     }
+
 
 
 }
