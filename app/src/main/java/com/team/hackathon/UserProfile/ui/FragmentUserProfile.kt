@@ -52,43 +52,6 @@ class FragmentUserProfile : Fragment()  {
         setData()
         super.onViewCreated(view, savedInstanceState)
 
-        binding.sendmoney.setOnClickListener{
-            val amt = binding.edamount.text.toString()
-            val amount = Math.round(amt.toFloat() * 100)
-            val checkout = Checkout()
-
-            checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
-
-            checkout.setImage(R.drawable.add_icon)
-            val obj = JSONObject()
-            try {
-                obj.put("name", "Tech-A-Thon")
-
-                // put description
-                obj.put("description", "Test payment")
-
-                // to set theme color
-                obj.put("theme.color", "")
-
-                // put the currency
-                obj.put("currency", "INR")
-
-                // put amount
-                obj.put("amount", amount)
-
-                // put mobile number
-                obj.put("prefill.contact", "8082731286")
-
-                // put email
-                obj.put("prefill.email", "tahir19.fm@gmail.com")
-
-                checkout.open(requireActivity(),obj)
-            }catch (e:JSONException){
-                e.printStackTrace()
-            }
-
-        }
-
 
 
         binding.editButton.setOnClickListener{

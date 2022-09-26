@@ -469,20 +469,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <EditText
-            android:id="@+id/edamount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/glFoodPreferencesInformation"
-            app:layout_constraintStart_toStartOf="parent"/>
 
-        <ImageView
-            android:id="@+id/sendmoney"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/edamount"
-            app:layout_constraintBottom_toTopOf="@+id/signOutButton"
-            android:src="@drawable/group"/>
 
 
 

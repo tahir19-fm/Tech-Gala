@@ -49,11 +49,13 @@ class FragmentUserProfileEdit : Fragment() {
 
         setAllDropDown()
 
+        selectSelectedFromDropDown()
+
         setAllValuesFromUserProfile()
 
         setData()
 
-        selectSelectedFromDropDown()
+
 
         setAllCursorAtTheEnd()
 
@@ -193,11 +195,19 @@ class FragmentUserProfileEdit : Fragment() {
             if (modal.user.gender!="null") {
                 binding.actSelectGender.setText(modal.user.gender)
             }
+            if (modal.user.branch!="null") {
+                binding.selectBranch.setText(modal.user.branch)
+            }
+            if (modal.user.age!="null") {
+                binding.actSelectAge.setText(modal.user.age)
+            }
+            if (modal.user.year!="null"){
+                binding.selectYear.setText(modal.user.year)
+            }
             binding.edCollageName.setText(modal.user.collageName)
-            binding.selectBranch.setText(modal.user.branch)
-            binding.selectYear.setText(modal.user.year)
+
             binding.edpreferences.setText(modal.user.interest)
-            binding.actSelectAge.setText(modal.user.age)
+
             binding.actSelectCity.setText(modal.user.city)
         }
 
@@ -218,7 +228,6 @@ class FragmentUserProfileEdit : Fragment() {
             "abc@gmail.com",
             name.toString(), year.toString(),branch.toString(),gender.toString(),age.toString(),phoneNumber.toString(),interest.toString(),city.toString(),
                 collageName.toString()
-
         )
         )
     }
