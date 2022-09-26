@@ -16,6 +16,7 @@ import com.team.hackathon.databinding.FragmentRegisterForEventBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 import org.json.JSONException
 import org.json.JSONObject
+import kotlin.math.roundToInt
 
 
 class RegisterForEventFragment : Fragment() {
@@ -75,7 +76,7 @@ class RegisterForEventFragment : Fragment() {
         }
         binding.bottomButton.setOnClickListener {
             val amt = viewModel.paymentRupees.value.toString()
-            val amount = Math.round(amt.toFloat() * 100)
+            val amount = (amt.toFloat() * 100).roundToInt()
             val checkout = Checkout()
 
             checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")

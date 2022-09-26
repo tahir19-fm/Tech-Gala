@@ -48,7 +48,6 @@ class FragmentEventRegistered : Fragment() {
             val beta = it as ArrayList<EventDataModel>
             data = ArrayList()
             for (events in beta) {
-                Log.d("TAG", "dffddfdf: ${events.image}")
                 data.add(
                     EventDataModel(
                         events.image,
@@ -105,7 +104,7 @@ class FragmentEventRegistered : Fragment() {
                                 document.getString("totalRegister").toString() + " Registered",
                                 "last date : " + document.getString("lastDate").toString(),
                                 document.getString("teamType").toString(),
-                                 document.getString("entryfees").toString(),
+                                document.getString("entryfees").toString(),
                                 document.id
                             )
                         )
@@ -113,7 +112,6 @@ class FragmentEventRegistered : Fragment() {
                     }
                     res.reverse()
                     viewModel.fetchUserDataRegistered(res)
-                    Log.d("errors", "readFromFirebaseData: ${res}")
                 } else {
                     Log.d("Data", "No such document")
                 }
