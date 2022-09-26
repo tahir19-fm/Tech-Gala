@@ -70,9 +70,7 @@ private val dataCollection = Firebase.firestore.collection("details")
         binding.pinView.requestFocus()
         InputMethodManager.SHOW_FORCED
         InputMethodManager.HIDE_IMPLICIT_ONLY
-        binding.test.setOnClickListener{
-            uploadData()
-        }
+
 
         binding.ivBackButton.setOnClickListener {
             requireActivity().onBackPressed()
@@ -232,7 +230,8 @@ private val dataCollection = Firebase.firestore.collection("details")
                     //Delay after login to give firebase some time to refresh auth token.
                     lifecycleScope.launch {
                         delay(1000)
-//                        initAfterLogin()
+//
+                        uploadData()
                     }
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
