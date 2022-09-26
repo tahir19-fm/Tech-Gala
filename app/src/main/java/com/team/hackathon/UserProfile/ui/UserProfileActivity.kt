@@ -2,15 +2,13 @@ package com.team.hackathon.UserProfile.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.razorpay.PaymentResultListener
 import com.team.hackathon.R
 import com.team.hackathon.SplashActivity
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
 import com.team.hackathon.databinding.ActivityUserProfileBinding
-import com.team.hackathon.home.ui.FragmentEventList
+import com.team.hackathon.home.ui.HomeActivity
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -20,7 +18,7 @@ class UserProfileActivity : AppCompatActivity() {
     companion object{
         const val USER_PROFILE = 1
         const val USER_PROFILE_EDIT = 2
-        const val DIET_ACTIVITY = 3
+        const val HOME_ACTIVITY = 3
         const val SPLASH_SCREEN = 4
     }
 
@@ -43,8 +41,8 @@ class UserProfileActivity : AppCompatActivity() {
                 USER_PROFILE_EDIT -> {
                     userProfileEdit()
                 }
-                DIET_ACTIVITY ->{
-                    dietActivity()
+                HOME_ACTIVITY ->{
+                    homeActivity()
                 }
                 SPLASH_SCREEN ->{
                     splashscreen()
@@ -67,8 +65,10 @@ class UserProfileActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.mainUserProfile,FragmentUserProfileEdit()).commit()
     }
 
-    private fun dietActivity() {
-        splashscreen()
+    private fun homeActivity() {
+        val intent = Intent(this,  HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
     private fun splashscreen() {
