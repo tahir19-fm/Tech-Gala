@@ -3,6 +3,7 @@ package com.team.hackathon.eventregisteration.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -114,8 +115,20 @@ class RegisterForEventFragment : Fragment() {
             val firstTeamMemberEmail = binding.email.text
             val firstTeamMemberName = binding.name.text
             sendEmail(firstTeamMemberEmail.toString() , "Subject" + "$firstTeamMemberName" , emailMessage )
-
+//            val intent = Intent(Intent.ACTION_SEND)
+//            intent.type = "message/rfc822"
+////            intent.putExtra(Intent.EXTRA_EMAIL,"aaaaaaaaz")
+//            intent.putExtra(android.content.Intent.EXTRA_EMAIL, String[] { "someone@gmail.com" });
+//            intent.putExtra(Intent.EXTRA_SUBJECT, "saubjhect")
+//            intent.putExtra(Intent.EXTRA_TEXT, "Subjhect")
+//
+//
+//
+//            startActivity(Intent.createChooser(intent, "Select email"))
             // yoo
+
+
+
 
         }
 
@@ -146,11 +159,15 @@ class RegisterForEventFragment : Fragment() {
     }
 
     private fun sendEmail(email:String , subject:String, message:String){
+        Log.d("email", "sendEmail: $email")
+
+
         val intent = Intent(Intent.ACTION_SEND)
-        intent.data = Uri.parse("mailto:$email")
+        intent.data=Uri.parse("mailTo:")
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
         intent.putExtra(Intent.EXTRA_SUBJECT, subject)
         intent.putExtra(Intent.EXTRA_TEXT, message)
-        intent.type = "message/rfc822"
         startActivity(Intent.createChooser(intent, "Select email"))
     }
 

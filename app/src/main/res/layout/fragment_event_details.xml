@@ -19,12 +19,14 @@
 
         <ImageView
             android:id="@+id/EventImage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/banner_rev"
            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             />
 
         <GridLayout
