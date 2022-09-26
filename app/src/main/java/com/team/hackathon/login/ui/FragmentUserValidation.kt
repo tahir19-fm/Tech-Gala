@@ -30,8 +30,8 @@ class FragmentUserValidation : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.ivBackButton.setOnClickListener{
+        setHead()
+        binding.ivBackButton.setOnClickListener {
 
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_NUMBER)
         }
@@ -44,5 +44,10 @@ class FragmentUserValidation : Fragment() {
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_REGISTER_USER)
         }
 
+
+    }
+
+    private fun setHead(){
+        binding.llNavbar.image.visibility=View.INVISIBLE
     }
 }

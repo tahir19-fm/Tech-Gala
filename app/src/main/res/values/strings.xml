@@ -77,7 +77,7 @@ you can go back to reset  your Details</string>
         <item>B.Tech. Electronics And Communication</item>
     </string-array>
 
-    <string-array name="hussain">
+    <string-array name="interest">
         <item>Machine Learning</item>
         <item>Cyber Security</item>
         <item> Game Development</item>
