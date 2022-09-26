@@ -47,40 +47,34 @@ class FragmentLoginPhoneNumber : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.countryCodePicker.registerCarrierNumberEditText(binding.phoneNumberBox)
-        binding.phoneNumberBox.setText("8789355466")
-        binding.idEditText.setText("assam@gm.com")
-
-
         val ccp = binding.countryCodePicker
         ccp.registerCarrierNumberEditText(binding.phoneNumberBox)
-
         binding.btnToSendOtp.setOnClickListener {
             onSendOTPClicked()
         }
 
+        changeHeaderUi()
+
     }
 
-    private fun onSendOTPClicked(){
+    private fun changeHeaderUi(){
+        binding.llNavbar.image.visibility=View.INVISIBLE
+        }
+    private fun onSendOTPClicked() {
         val ccp = binding.countryCodePicker
         viewModel.setInstituteID(binding.idEditText.text.toString())
-        if (isValidPhoneNumber(ccp.fullNumber)  && isValidId(binding.idEditText.text.toString())) {
-            // for registration number
+        if (isValidPhoneNumber(ccp.fullNumber) && isValidId(binding.idEditText.text.toString())) {
             viewModel.setPhoneNumberRegistration(binding.phoneNumberBox.text.toString())
             viewModel.setInstituteID(binding.idEditText.text.toString())
-            Log.d("tahir",viewModel.phoneNumber.value.toString())
             viewModel.setphoneNumber(binding.countryCodePicker.fullNumberWithPlus)
             studentExists()
             hideKeyboard()
+        } else if (!isValidId(binding.idEditText.text.toString())) {
+            Toast.makeText(context, "invalid id", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "invalid Number", Toast.LENGTH_SHORT).show()
         }
-        else if(!isValidId(binding.idEditText.text.toString())){
-            Toast.makeText(context,"invalid id",Toast.LENGTH_SHORT).show()
-        }
-        else {
-            Toast.makeText(context,"invalid Number",Toast.LENGTH_SHORT).show()
-        }
-
     }
 
     private fun hideKeyboard() {
@@ -89,25 +83,23 @@ class FragmentLoginPhoneNumber : Fragment() {
         inputManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
-    private fun studentExists(){
-        binding.frag1.visibility=View.INVISIBLE
-        binding.progressBar.visibility=View.VISIBLE
-        val docRef = FirebaseFirestore.getInstance().collection("users").document(viewModel.phoneNumber.value.toString())
+    private fun studentExists() {
+        binding.frag1.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+        val docRef = FirebaseFirestore.getInstance().collection("users")
+            .document(viewModel.phoneNumber.value.toString())
         docRef.get()
-            .addOnSuccessListener{ document->
-                if (document.exists()){
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
                     viewModel.setUserExists(true)
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
-                }
-                else
-                {viewModel.setUserExists(false)
+                } else {
+                    viewModel.setUserExists(false)
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_USER_VALIDATION)
-
                 }
-
             }
-            .addOnFailureListener{exception->
-                Log.d(ContentValues.TAG,"get failed with",exception)
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with", exception)
             }
     }
 
