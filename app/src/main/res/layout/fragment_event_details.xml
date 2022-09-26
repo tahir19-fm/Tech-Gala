@@ -397,7 +397,7 @@
                     android:id="@+id/eligiblity"
                     android:layout_height="30dp"
                     android:layout_width="wrap_content"
-                    android:text="@string/eligibility_n"
+                    android:text="eligible"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="16sp"

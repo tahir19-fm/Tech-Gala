@@ -7,6 +7,7 @@ import com.dietTracker.login.ui.FragmentLoginPhoneNumber
 import com.team.hackathon.login.util.LoginViewModel
 import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.login.ui.FragmentStudentRegistration
+import com.team.hackathon.login.ui.FragmentUploadImage
 import com.team.hackathon.login.ui.FragmentUserValidation
 
 class LoginActivity : BaseActivity(){
@@ -23,7 +24,7 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.setLoginState(1)
+        viewModel.setLoginState(2)
         setupObservers()
     }
 
@@ -87,7 +88,7 @@ class LoginActivity : BaseActivity(){
     }
 
     private fun loginUserValidation() {
-        startFragment(FragmentUserValidation.getInstance(), false)
+        startFragment(FragmentUploadImage.getInstance(), false)
     }
 
 }

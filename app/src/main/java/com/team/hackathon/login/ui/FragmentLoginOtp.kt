@@ -2,6 +2,7 @@ package com.dietTracker.login.ui
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -27,6 +28,8 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.team.hackathon.SplashActivity
+import com.team.hackathon.home.ui.HomeActivity
 import com.team.hackathon.login.data.UserRegistrationDto
 import com.team.hackathon.login.data.studentDetails
 import kotlinx.coroutines.*
@@ -192,7 +195,10 @@ private val dataCollection = Firebase.firestore.collection("details")
             // new implementation
             val code = credential.smsCode
             if (code != null) {
-                // progress bar visible
+                val i = Intent(requireActivity(), SplashActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(i)
+                requireActivity().finish()
                 binding.pinView.setText(code)
                 verifyCode(code)
                 // this will work in automatic way but what if user enterd number that is't in his phone
@@ -228,11 +234,11 @@ private val dataCollection = Firebase.firestore.collection("details")
                 if (task.isSuccessful) {
                     // move activity && built in flags ::
                     //Delay after login to give firebase some time to refresh auth token.
-                    lifecycleScope.launch {
-                        delay(1000)
+
+
 //
                         uploadData()
-                    }
+
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
                     binding.progressBarVerify.visibility = View.INVISIBLE

@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.24818840579710144" />
+        <entry key="app/src/main/res/layout/fragment_event_details.xml" value="0.2078125" />
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.35688405797101447" />
         <entry key="app/src/main/res/layout/fragment_login_phone_number.xml" value="0.2527898412551323" />
         <entry key="app/src/main/res/layout/fragment_sign_in_with_details.xml" value="0.24003623188405798" />

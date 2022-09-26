@@ -40,9 +40,11 @@ class FragmentStudentRegistration : Fragment() {
         binding.btnToRegisterUser.setOnClickListener{
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
             if (binding.idEditText!=null){
+                viewModel.setInstituteID(binding.idEditText.text.toString())
             }
             if (binding.phoneNumberEditText!=null){
                 viewModel.setInstituePhoneNumber("+91"+binding.phoneNumberEditText.text.toString())
+
             }
         }
 
