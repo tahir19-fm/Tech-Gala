@@ -73,6 +73,11 @@ class RegisterForEventFragment : Fragment() {
 //        readFromFirebaseData()
 //        setupObserver()
 //        setupViews()
+        registerForEvent()
+
+    }
+
+    private fun registerForEvent() {
 
     }
 

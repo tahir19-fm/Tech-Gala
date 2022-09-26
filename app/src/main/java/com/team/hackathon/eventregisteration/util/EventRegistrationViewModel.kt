@@ -13,11 +13,11 @@ class EventRegistrationViewModel:  ViewModel() {
         _userState.value=state
     }
 
-    private val _userId = MutableLiveData<String>()
+    private val _eventId = MutableLiveData<String>()
     val userId : LiveData<String>
-        get() = _userId
+        get() = _eventId
     fun setUserId(state:String){
-        _userId.value=state
+        _eventId.value=state
     }
 
     private val _userDataEventsDetail = MutableLiveData<EventDetailsModalClass>()
@@ -28,10 +28,10 @@ class EventRegistrationViewModel:  ViewModel() {
         _userDataEventsDetail.value=data
     }
 
-    private val _registerDone = MutableLiveData<Boolean>()
-    val registerDone : LiveData<Boolean>
+    private val _registerDone = MutableLiveData<Int>()
+    val registerDone : LiveData<Int>
         get() = _registerDone
-    fun setUserExists(state:Boolean){
+    fun setUserExists(state:Int){
         _registerDone.value=state
     }
 
