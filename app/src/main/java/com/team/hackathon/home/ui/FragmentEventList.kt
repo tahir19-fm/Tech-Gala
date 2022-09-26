@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
@@ -45,7 +44,7 @@ class FragmentEventList : Fragment() {
             data=ArrayList()
             for(events in beta){
                 Log.d("TAG", "dffddfdf: ${events.image}")
-            data.add(EventDataModel(events.image,events.heading,events.totalRegister,events.lastDate,events.teamType,events.entryfee,events.id))
+            data.add(EventDataModel(events.image,events.heading,events.totalRegister,events.lastDate,events.teamType,events.entryfees,events.id))
                 }
             //reading data from viewModel and setting recyclerView
             binding.progressBar.visibility=View.GONE
@@ -88,7 +87,7 @@ class FragmentEventList : Fragment() {
                             document.getString("totalRegister").toString()+" Registered",
                             "last date : "+document.getString("lastDate").toString(),
                             document.getString("teamType").toString(),
-                            "Rupees: "+document.getString("entryfee").toString(),
+                            "Rupees: "+document.getString("entryfees").toString(),
                             document.id ))
                     }
                     res.reverse()

@@ -19,12 +19,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import com.team.hackathon.R
 import com.team.hackathon.UserProfile.data.UserDataForProfile
 import com.team.hackathon.UserProfile.data.UserForProfile
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
 import com.team.hackathon.databinding.FragmentUserProfileBinding
+import org.json.JSONException
+import org.json.JSONObject
 
-class FragmentUserProfile : Fragment() {
+class FragmentUserProfile : Fragment()  {
     private val binding by lazy { FragmentUserProfileBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
     private val pickImage  = 100
@@ -41,11 +46,14 @@ class FragmentUserProfile : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
 
         readFromFirebaseData()
         setData()
         super.onViewCreated(view, savedInstanceState)
+
+
+
         binding.editButton.setOnClickListener{
             viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE_EDIT)
         }
@@ -78,7 +86,8 @@ class FragmentUserProfile : Fragment() {
 
     private fun readFromFirebaseData(){
         hideAllContentShowProgressBar()
-        val docRef = db.collection("Users").document("FmUhRcWqDqA6ifxHIm1U")
+        val id =FirebaseAuth.getInstance().currentUser!!.phoneNumber.toString()
+        val docRef = db.collection("users").document(id)
         docRef.get()
             .addOnSuccessListener { document ->
                 if(document!=null){
@@ -93,11 +102,9 @@ class FragmentUserProfile : Fragment() {
                                 document.getString("branch").toString(),
                                 document.getString("gender").toString(),
                                 document.getString("age").toString(),
-                                document.getString("phone").toString(),
-                                document.getString("profile_picture_url").toString(),
+                                document.getString("phoneNumber").toString(),
                                 document.getString("interest").toString(),
                                 document.getString("city").toString(),
-                                document.getString("country").toString(),
                                 document.getString("collage_name").toString()
                             )
                         )
@@ -119,11 +126,13 @@ class FragmentUserProfile : Fragment() {
             binding.tvUserName.text = modal.user.name
             binding.tvPhoneNumber.text = modal.user.phoneNumber
             binding.tvBranch.text = modal.user.branch
+            binding.tvGender.text = modal.user.gender
             binding.tvYear.text = modal.user.year + " Year"
             binding.tvAge.text = modal.user.age + " yrs"
             binding.tvInterest.text = modal.user.interest
             binding.tvAddress.text = modal.user.city
             binding.tvCollageName.text = modal.user.collageName
+            binding.tvUserProfile.text = modal.user.name[0].uppercase()
         }
     }
 

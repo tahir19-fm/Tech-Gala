@@ -13,7 +13,7 @@ import com.team.hackathon.UserProfile.ui.UserProfileActivity
 import com.team.hackathon.databinding.ActivityHomeBinding
 import com.team.hackathon.home.util.HomeViewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity()   {
     private val binding by lazy{ActivityHomeBinding.inflate(layoutInflater)}
     private val viewModel:HomeViewModel by viewModels()
     companion object{
@@ -26,7 +26,6 @@ class HomeActivity : AppCompatActivity() {
         viewModel.setUserState(1)
         setupViews()
         setupObservers()
-
 
     }
 

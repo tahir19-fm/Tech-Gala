@@ -6,6 +6,6 @@ class EventDataModel(
  val totalRegister:String,
  val lastDate:String,
  val teamType:String,
- val entryfee:String,
+ val entryfees:String,
  val id: String
      )
