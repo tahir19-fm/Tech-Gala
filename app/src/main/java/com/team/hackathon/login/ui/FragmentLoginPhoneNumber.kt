@@ -96,11 +96,11 @@ class FragmentLoginPhoneNumber : Fragment() {
         docRef.get()
             .addOnSuccessListener{ document->
                 if (document.exists()){
-
+                    viewModel.setUserExists(true)
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
                 }
                 else
-                {
+                {viewModel.setUserExists(false)
                     viewModel.setLoginState(LoginActivity.LOGIN_STATE_USER_VALIDATION)
 
                 }

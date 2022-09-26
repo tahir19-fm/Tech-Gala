@@ -68,6 +68,13 @@ class LoginViewModel : ViewModel() {
     fun setInstituePhoneNumber(institutePhone : String){
         _institue_phoneNumber.value = institutePhone
     }
+    private val _userExists = MutableLiveData<Boolean>()
+    val userExists : LiveData<Boolean>
+    get() = _userExists
+
+    fun setUserExists(institutePhone : Boolean){
+        _userExists.value = institutePhone
+    }
 
 
 

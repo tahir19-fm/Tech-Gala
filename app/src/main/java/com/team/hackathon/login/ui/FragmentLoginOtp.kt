@@ -1,4 +1,4 @@
-package com.dietTracker.login.ui
+package com.team.hackathon.login.ui
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
@@ -15,7 +15,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import com.team.hackathon.databinding.FragmentLoginOtpBinding
 import com.team.hackathon.login.util.LoginViewModel
 import com.google.firebase.FirebaseApp
@@ -28,12 +27,9 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.team.hackathon.SplashActivity
 import com.team.hackathon.home.ui.HomeActivity
-import com.team.hackathon.login.data.UserRegistrationDto
 import com.team.hackathon.login.data.studentDetails
 import kotlinx.coroutines.*
-import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
@@ -230,8 +226,7 @@ private val dataCollection = Firebase.firestore.collection("details")
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // move activity && built in flags ::
-                    uploadData()
-                    moveTOHome()
+                  checkUserExists()
                     //Delay after login to give firebase some time to refresh auth token.
 
 
@@ -245,6 +240,20 @@ private val dataCollection = Firebase.firestore.collection("details")
                     Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
                 }
             }
+    }
+
+    private fun checkUserExists() {
+        viewModel.userExists.observe(requireActivity()){
+            when(it){
+                true->{
+                    moveTOHome()
+                }
+
+                else -> {
+                    uploadData()
+                }
+            }
+        }
     }
 
     private fun sendOtp() {
@@ -264,7 +273,7 @@ private val dataCollection = Firebase.firestore.collection("details")
         try {
             Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toString()).set(StudentDetail)
             withContext(Dispatchers.Main){
-
+                moveTOHome()
                 Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
             }
         }
@@ -283,7 +292,6 @@ private val dataCollection = Firebase.firestore.collection("details")
         saveStudentDetails(data)
     }
     private fun moveTOHome(){
-
         val i = Intent(requireActivity(), HomeActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(i)

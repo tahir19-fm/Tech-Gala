@@ -2,12 +2,11 @@ package com.team.hackathon
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.dietTracker.login.ui.FragmentLoginOtp
+import com.team.hackathon.login.ui.FragmentLoginOtp
 import com.dietTracker.login.ui.FragmentLoginPhoneNumber
 import com.team.hackathon.login.util.LoginViewModel
 import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.login.ui.FragmentStudentRegistration
-import com.team.hackathon.login.ui.FragmentUploadImage
 import com.team.hackathon.login.ui.FragmentUserValidation
 
 class LoginActivity : BaseActivity(){

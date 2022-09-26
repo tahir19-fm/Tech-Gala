@@ -1,6 +1,5 @@
 package com.team.hackathon.eventregisteration.ui
 
-import android.R
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.dietTracker.login.ui.FragmentLoginOtp
+import com.team.hackathon.login.ui.FragmentLoginOtp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
