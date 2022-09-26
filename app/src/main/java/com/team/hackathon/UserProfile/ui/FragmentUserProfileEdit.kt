@@ -49,11 +49,13 @@ class FragmentUserProfileEdit : Fragment() {
 
         setAllDropDown()
 
+        selectSelectedFromDropDown()
+
         setAllValuesFromUserProfile()
 
         setData()
 
-        selectSelectedFromDropDown()
+
 
         setAllCursorAtTheEnd()
 

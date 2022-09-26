@@ -90,7 +90,7 @@ class FragmentLoginPhoneNumber : Fragment() {
     }
 
     private fun studentExists(){
-        val docRef = FirebaseFirestore.getInstance().collection("users").document(viewModel.institute_data.value.toString())
+        val docRef = FirebaseFirestore.getInstance().collection("users").document(viewModel.phoneNumber.value.toString())
         docRef.get()
             .addOnSuccessListener{ document->
                 if (document.exists()){
