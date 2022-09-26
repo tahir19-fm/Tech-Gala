@@ -69,6 +69,11 @@ class FragmentStudentRegistration : Fragment() {
 
     }
 
+    private fun boxInput(){
+        if(binding.nameEditText.text.toString()!=null){}
+
+    }
+
 
 
 }
