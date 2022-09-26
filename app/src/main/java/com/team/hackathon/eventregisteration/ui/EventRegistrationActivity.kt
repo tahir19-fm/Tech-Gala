@@ -48,7 +48,7 @@ class EventRegistrationActivity : AppCompatActivity() , PaymentResultListener {
                             document.getString("totalRegister").toString()+" Registered",
                             "last date : "+document.getString("lastDate").toString(),
                             document.getString("teamType").toString(),
-                            "Rupees: "+document.getString("entryfee").toString(),
+                            "Rupees: "+document.getString("entryfees").toString(),
                             document.id )
                     viewModel.fetchUserData(res)
                 }else{

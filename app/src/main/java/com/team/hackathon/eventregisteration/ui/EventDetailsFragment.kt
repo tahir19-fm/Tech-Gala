@@ -68,10 +68,13 @@ class EventDetailsFragment : Fragment() {
     }
 
     private fun openChromeToDownloadCertificate() {
-        val url = ""
-         val builder = CustomTabsIntent.Builder()
-        val customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(requireActivity(),Uri.parse(url))
+
+        val url =viewModel.linkUrl.value.toString()
+        if (url.isNotEmpty()) {
+            val builder = CustomTabsIntent.Builder()
+            val customTabsIntent = builder.build()
+            customTabsIntent.launchUrl(requireActivity(), Uri.parse(url))
+        }
     }
 
 
@@ -154,6 +157,7 @@ class EventDetailsFragment : Fragment() {
 
 
                 if (document.getString("completed").toString()=="1"){
+                    viewModel.setUrl(document.getString("link").toString())
                     viewModel.setUserExists(DOWNLOAD_C)
                 }else
                 if(document.exists()){

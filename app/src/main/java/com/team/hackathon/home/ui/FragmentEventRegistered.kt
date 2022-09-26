@@ -105,7 +105,7 @@ class FragmentEventRegistered : Fragment() {
                                 document.getString("totalRegister").toString() + " Registered",
                                 "last date : " + document.getString("lastDate").toString(),
                                 document.getString("teamType").toString(),
-                                "Rupees: " + document.getString("entryfee").toString(),
+                                 document.getString("entryfees").toString(),
                                 document.id
                             )
                         )

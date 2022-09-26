@@ -93,5 +93,5 @@ dependencies {
     implementation 'com.razorpay:checkout:1.6.24'
 
     // Custom Chrome Tab
-    implementation 'androidx.browser:browser:1.2.0'
+    implementation 'androidx.browser:browser:1.4.0'
 }

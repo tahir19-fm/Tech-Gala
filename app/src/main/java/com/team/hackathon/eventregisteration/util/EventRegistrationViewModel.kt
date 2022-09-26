@@ -51,6 +51,11 @@ class EventRegistrationViewModel:  ViewModel() {
         _paymentRupees.value=state
     }
 
-
+    private val _linkUrl = MutableLiveData<String>()
+    val linkUrl : LiveData<String>
+        get() = _linkUrl
+    fun setUrl(state:String){
+        _linkUrl.value=state
+    }
 
 }
