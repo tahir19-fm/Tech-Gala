@@ -58,12 +58,15 @@ class RegisterForEventFragment : Fragment() {
 
         binding.deleteSecondMember.setOnClickListener{
             binding.teamMemeberOne2.visibility = View.GONE
+            binding.inviteButton1.visibility = View.VISIBLE
         }
         binding.deleteThirdMember.setOnClickListener{
             binding.teamMemeberOne3.visibility = View.GONE
+            binding.inviteButton2.visibility = View.VISIBLE
         }
         binding.deleteFourthMember.setOnClickListener{
             binding.teamMemeberOne4.visibility = View.GONE
+            binding.inviteButton3.visibility = View.VISIBLE
         }
 
 
