@@ -2,8 +2,12 @@ package com.team.hackathon.UserProfile.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
 import com.team.hackathon.R
 import com.team.hackathon.SplashActivity
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
@@ -11,7 +15,7 @@ import com.team.hackathon.databinding.ActivityUserProfileBinding
 import com.team.hackathon.home.ui.FragmentEventList
 
 
-class UserProfileActivity : AppCompatActivity() {
+class UserProfileActivity : AppCompatActivity() , PaymentResultListener {
     private val binding by lazy {ActivityUserProfileBinding.inflate(layoutInflater) }
     private val viewModel : UserProfileViewModel by viewModels()
 
@@ -76,6 +80,14 @@ class UserProfileActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    override fun onPaymentSuccess(p0: String?) {
+        Log.d("sucess","Success")
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+        Log.d("not","NOT")
+        //Toast.makeText(UserProfileActivity::class.java, "Payment Failed due to error : " +  Toast.LENGTH_SHORT).show();
+    }
 
 
 }

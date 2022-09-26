@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <GridLayout
+        android:id="@+id/glBasicInformation"
+        android:background="@drawable/rounded_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        >
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
+            android:layout_marginEnd="16dp"
+            />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:hint="Name"
+            android:inputType="text"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            />96666666666666666666666666666666666666666666666666666666666666
+    </GridLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
