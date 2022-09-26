@@ -77,10 +77,10 @@ class FragmentUserProfile : Fragment()  {
                 obj.put("amount", amount)
 
                 // put mobile number
-                obj.put("prefill.contact", "9284064503")
+                obj.put("prefill.contact", "8082731286")
 
                 // put email
-                obj.put("prefill.email", "chaitanyamunje@gmail.com")
+                obj.put("prefill.email", "tahir19.fm@gmail.com")
 
                 checkout.open(requireActivity(),obj)
             }catch (e:JSONException){
