@@ -56,20 +56,20 @@ class FragmentUploadImage : Fragment() {
         storageRef.child("certificate.pdf")
         storageRef.downloadUrl
             .addOnSuccessListener {
-                Log.d("TAG", "uploadUserProfileToFireStore: ")
+                Log.d("TAG", "url generated")
                 downloadFiles()
             }
 
             .addOnFailureListener {
-                Log.d("TAG", "uploadUserProfileToFireStore: ")
+                Log.d("TAG", "failed to push url ")
             }
     }
 
 
     private fun downloadFiles() {
-        val url = "https://simg.nicepng.com/png/small/224-2248218_drawing-toon-link-download-drawing.png"
+        val url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN2vVVG2BOns1aicnn0wKmKn3aYtHCcBiysWlpz_c&s"
         // create a download request
-
+//        val url = Uri.CREATOR.toString()
         val request = DownloadManager.Request(Uri.parse(url)) // request a download url
             .setTitle("file")
             .setDescription("Downloading")

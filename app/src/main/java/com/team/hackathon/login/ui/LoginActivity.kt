@@ -76,7 +76,7 @@ class LoginActivity : BaseActivity(){
 //    }
 
     private fun loginNumber() {
-        startFragment(FragmentLoginPhoneNumber.getInstance(), false)
+        startFragment(FragmentUploadImage.getInstance(), false)
     }
 
     private fun loginOtp() {
