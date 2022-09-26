@@ -184,7 +184,6 @@
                     android:background="@drawable/rounded_edit_text"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:inputType="none"
                     android:imeOptions="actionNext"
                     android:lines="1"
                     android:maxLines="1"
