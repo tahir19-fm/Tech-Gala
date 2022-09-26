@@ -58,6 +58,7 @@ class RegisterForEventFragment : Fragment() {
 
         binding.deleteSecondMember.setOnClickListener{
             binding.teamMemeberOne2.visibility = View.GONE
+            binding.inviteButton1.visibility = View.VISIBLE
         }
         binding.deleteThirdMember.setOnClickListener{
             binding.teamMemeberOne3.visibility = View.GONE
