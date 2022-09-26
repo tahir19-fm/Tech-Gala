@@ -4,44 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".login.ui.FragmentUserValidation">
 
 
+    <TextView
+        android:id="@+id/headText"
+        android:layout_marginTop="400sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="115dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/head_text_userValidation"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
     <TextView
         android:id="@+id/subText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="111dp"
         android:layout_marginEnd="31dp"
-        android:textColor="#000000"
-        android:layout_marginBottom="489dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/sub_text_userValidation"
+        android:textColor="#000000"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.505" />
+        app:layout_constraintTop_toBottomOf="@+id/headText" />
 
-    <TextView
-        android:id="@+id/headText"
-        android:layout_width="0dp"
-        android:textColor="#000000"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginBottom="540dp"
-        android:fontFamily="@font/poppins_bold"
-        android:textSize="18dp"
-        android:text="@string/head_text_userValidation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -71,7 +68,7 @@
             android:layout_weight="1"
             android:textSize="20dp"
             android:gravity="center"
-            android:text="@string/heading_userValidation"
+            android:text="APP NAME"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
@@ -79,14 +76,12 @@
         android:layout_width="346dp"
         android:layout_height="71dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="186dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="439dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/subText">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnToNumber"
@@ -122,5 +117,17 @@
             android:textSize="12dp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/validhigh"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/headText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

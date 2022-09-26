@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.team.hackathon.R
 import com.team.hackathon.UserProfile.ui.UserProfileActivity
 import com.team.hackathon.databinding.ActivityHomeBinding
@@ -24,6 +26,9 @@ class HomeActivity : AppCompatActivity()   {
         viewModel.setUserState(1)
         setupViews()
         setupObservers()
+        binding.headerDiet.image.setOnClickListener{
+            Firebase.auth.signOut()
+        }
 
     }
 

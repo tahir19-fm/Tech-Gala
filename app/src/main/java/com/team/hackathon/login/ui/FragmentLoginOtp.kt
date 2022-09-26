@@ -2,6 +2,7 @@ package com.dietTracker.login.ui
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -27,7 +28,10 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.team.hackathon.SplashActivity
+import com.team.hackathon.home.ui.HomeActivity
 import com.team.hackathon.login.data.UserRegistrationDto
+import com.team.hackathon.login.data.studentDetails
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
@@ -35,7 +39,7 @@ import java.util.concurrent.TimeUnit
 
 
 class FragmentLoginOtp : Fragment() {
-private val dataCollection = Firebase.firestore.collection("data")
+private val dataCollection = Firebase.firestore.collection("details")
     private val binding by lazy { FragmentLoginOtpBinding.inflate(layoutInflater) }
     private val viewModel: LoginViewModel by activityViewModels()
     private var codeBySystem: String = ""
@@ -69,6 +73,7 @@ private val dataCollection = Firebase.firestore.collection("data")
         binding.pinView.requestFocus()
         InputMethodManager.SHOW_FORCED
         InputMethodManager.HIDE_IMPLICIT_ONLY
+
 
         binding.ivBackButton.setOnClickListener {
             requireActivity().onBackPressed()
@@ -124,9 +129,6 @@ private val dataCollection = Firebase.firestore.collection("data")
             }
         }.start()
 
-
-
-
         binding.otpLinkBox.setOnClickListener {
 
             sendOtp()
@@ -171,18 +173,6 @@ private val dataCollection = Firebase.firestore.collection("data")
 
     }
 
-    private fun savedata(data: UserRegistrationDto)=CoroutineScope(Dispatchers.IO).launch {
-        try {
-            dataCollection.add(data).await()
-            withContext(Dispatchers.Main) {
-                Toast.makeText(requireContext(), "data Saved : )", Toast.LENGTH_LONG).show()
-            }
-        } catch (e: Exception) {
-            withContext(Dispatchers.Main) {
-                Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
-            }
-        }
-    }
 
     private fun setobservers() {
         viewModel.phoneNumber.observe(this.requireActivity()) {
@@ -193,13 +183,7 @@ private val dataCollection = Firebase.firestore.collection("data")
         }
     }
 
-    private fun createUser() {
- viewModel.userData.observe(this.requireActivity()){
-     val data=it as UserRegistrationDto
-     savedata(data)
- }
 
-    }
 
 
 
@@ -207,11 +191,14 @@ private val dataCollection = Firebase.firestore.collection("data")
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             // val otp = credential.smsCode
             Log.d(TAG, "onVerificationCompleted:$credential")
-            createUser()
+         //-------------------   createUser()
             // new implementation
             val code = credential.smsCode
             if (code != null) {
-                // progress bar visible
+                val i = Intent(requireActivity(), SplashActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(i)
+                requireActivity().finish()
                 binding.pinView.setText(code)
                 verifyCode(code)
                 // this will work in automatic way but what if user enterd number that is't in his phone
@@ -247,10 +234,11 @@ private val dataCollection = Firebase.firestore.collection("data")
                 if (task.isSuccessful) {
                     // move activity && built in flags ::
                     //Delay after login to give firebase some time to refresh auth token.
-                    lifecycleScope.launch {
-                        delay(1000)
-//                        initAfterLogin()
-                    }
+
+
+//
+                        uploadData()
+
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
                     binding.progressBarVerify.visibility = View.INVISIBLE
@@ -271,6 +259,26 @@ private val dataCollection = Firebase.firestore.collection("data")
             optionsBuilder.setForceResendingToken(resendToken)
         }
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
+    }
+    private fun saveStudentDetails(StudentDetail: studentDetails) =CoroutineScope(Dispatchers.IO).launch {
+        try {
+            dataCollection.add(StudentDetail).await()
+            withContext(Dispatchers.Main){
+                Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
+            }
+        }
+        catch (e:Exception){
+            withContext(Dispatchers.Main){
+                Toast.makeText(requireContext(),e.message,Toast.LENGTH_LONG).show()
+            }
+    }
+
+    }
+    private fun uploadData(){
+        val id = viewModel.institute_data.value.toString()
+        val phoneNumber = viewModel.institue_phoneNumber.value.toString()
+        val studentData = studentDetails(id,phoneNumber)
+        saveStudentDetails(studentData)
     }
 }
 
