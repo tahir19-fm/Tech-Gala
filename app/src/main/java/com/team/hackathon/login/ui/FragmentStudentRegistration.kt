@@ -13,7 +13,7 @@ import com.team.hackathon.R
 import com.team.hackathon.databinding.FragmentStudentRegistrationBinding
 import com.team.hackathon.login.data.studentDetails
 import com.team.hackathon.login.util.LoginViewModel
-import java.util.HashMap
+
 
 
 class FragmentStudentRegistration : Fragment() {
@@ -32,54 +32,47 @@ class FragmentStudentRegistration : Fragment() {
     ): View {
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpAllDropdowns()
-        binding.arrowToBack.setOnClickListener{
+        binding.arrowToBack.setOnClickListener {
             viewModel.setLoginState(LoginActivity.LOGIN_STATE_USER_VALIDATION)
         }
         binding.idEditText.setText(viewModel.institute_data.value)
         binding.phoneNumberEditText.setText(viewModel.phoneNumberRegistration.value)
-        Log.d("tag",viewModel.phoneNumber.value.toString())
-
-//        while (binding.nameEditText.text.length>=3
-//            && binding.instituteEditText.text.length>=3 && binding.branchEditText.text.length>=2 && binding.cityEditBox.text.length>=2){
-            binding.btnToRegisterUser.setOnClickListener{
-                viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
-//            if (binding.idEditText!=null){
-//                viewModel.setInstituteID(binding.idEditText.text.toString())
-//            }
-//            if (binding.phoneNumberEditText!=null){
-//                viewModel.setInstituePhoneNumber("+91"+binding.phoneNumberEditText.text.toString())
-//            }
-
-               detailsSave()
+        Log.d("tag", viewModel.phoneNumber.value.toString())
+        binding.btnToRegisterUser.setOnClickListener {
+            viewModel.setLoginState(LoginActivity.LOGIN_STATE_ENTER_OTP)
+            detailsSave()
 
         }
 
     }
-    private fun setUpAllDropdowns(){
+
+    private fun setUpAllDropdowns() {
         val gender = resources.getStringArray(R.array.gender)
         val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
         binding.actSelectGender.setAdapter(arrayAdapterGender)
 
         val branch = resources.getStringArray(R.array.branch)
-        val arrayAdapterBranch = context?.let{ArrayAdapter(it,R.layout.dropdown_layout,branch)}
+        val arrayAdapterBranch = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, branch) }
         binding.actSelectBranch.setAdapter(arrayAdapterBranch)
 
 
-        val interest = resources.getStringArray(R.array.hussain)
-        val arrayAdapterInterest = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,interest) }
+        val interest = resources.getStringArray(R.array.interest)
+        val arrayAdapterInterest =
+            context?.let { ArrayAdapter(it, R.layout.dropdown_layout, interest) }
         binding.actSelectInterests.setAdapter(arrayAdapterInterest)
 
     }
 
-private fun detailsSave(){
-    viewModel.setStudentDetailedInfo(
+    private fun detailsSave() {
+        viewModel.setStudentDetailedInfo(
 
             studentDetails(
                 binding.idEditText.text.toString(),
-                "+91"+binding.phoneNumberEditText.text.toString(),
+                "+91" + binding.phoneNumberEditText.text.toString(),
                 binding.nameEditText.text.toString(),
                 binding.instituteEditText.text.toString(),
                 binding.actSelectBranch.text.toString(),
@@ -87,17 +80,6 @@ private fun detailsSave(){
                 binding.actSelectInterests.text.toString()
             )
         )
-
-}
-
-
-
-
-
-    private fun boxInput(){
-
     }
-
-
 
 }

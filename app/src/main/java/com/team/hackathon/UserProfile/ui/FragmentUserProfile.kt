@@ -1,5 +1,4 @@
 package com.team.hackathon.UserProfile.ui
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.team.hackathon.SplashActivity
 import com.team.hackathon.UserProfile.data.UserDataForProfile
 import com.team.hackathon.UserProfile.data.UserForProfile
 import com.team.hackathon.UserProfile.util.UserProfileViewModel
@@ -44,11 +44,18 @@ class FragmentUserProfile : Fragment()  {
             viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE_EDIT)
         }
         binding.backButton.setOnClickListener{
-            viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
+            viewModel.setUserProfileState(UserProfileActivity.HOME_ACTIVITY)
         }
         binding.signOutButton.setOnClickListener{
-            viewModel.setUserProfileState(UserProfileActivity.SPLASH_SCREEN)
             FirebaseAuth.getInstance().signOut()
+            val intent = Intent(
+                requireActivity(),
+                SplashActivity::class.java
+            )
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            requireActivity().finish()
+
 
         }
 

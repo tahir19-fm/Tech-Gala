@@ -41,6 +41,11 @@ class RegisterForEventFragment : Fragment() {
     }
 
     private fun setupViews() {
+        if (viewModel.paymentRupees.value.toString()=="null"){
+            binding.bottomButton.text="refister"
+        }else{
+
+        }
         binding.teamMemeberOne2.visibility = View.GONE
         binding.teamMemeberOne3.visibility = View.GONE
         binding.teamMemeberOne4.visibility = View.GONE

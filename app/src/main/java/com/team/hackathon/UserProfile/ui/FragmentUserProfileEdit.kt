@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -67,7 +68,7 @@ class FragmentUserProfileEdit : Fragment() {
         }
 
         binding.backButtonEdit.setOnClickListener{
-            viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
+            viewModel.setUserProfileState(UserProfileActivity.HOME_ACTIVITY)
         }
         binding.progressBar.visibility = View.GONE
     }

@@ -35,7 +35,6 @@ import java.util.concurrent.TimeUnit
 
 
 class FragmentLoginOtp : Fragment() {
-private val dataCollection = Firebase.firestore.collection("details")
     private val binding by lazy { FragmentLoginOtpBinding.inflate(layoutInflater) }
     private val viewModel: LoginViewModel by activityViewModels()
     private var codeBySystem: String = ""
@@ -115,7 +114,6 @@ private val dataCollection = Firebase.firestore.collection("details")
                     }
 
                     override fun onFinish() {
-                        //  binding.otpResendBox.setText("done!")
                         binding.otpResendBox.visibility = View.INVISIBLE
                         binding.otpLinkBox.visibility = View.VISIBLE
 
@@ -126,9 +124,7 @@ private val dataCollection = Firebase.firestore.collection("details")
         }.start()
 
         binding.otpLinkBox.setOnClickListener {
-
             sendOtp()
-
             Toast.makeText(context, "hyperlink", Toast.LENGTH_SHORT).show()
             binding.otpLinkBox.visibility = View.INVISIBLE
             binding.otpResendBox.visibility = View.VISIBLE
@@ -142,16 +138,11 @@ private val dataCollection = Firebase.firestore.collection("details")
                     //  binding.otpResendBox.setText("done!")
                     binding.otpResendBox.visibility = View.INVISIBLE
                     binding.otpLinkBox.visibility = View.VISIBLE
-
                 }
-            }.start()
-
-        }
-
+            }.start() }
         sendOtp()
 
         binding.btnVerifyOTP.setOnClickListener {
-
             val code = binding.pinView.text.toString()
             if (code.length == 6) {
                 binding.btnVerifyOTP.isEnabled = true
@@ -169,7 +160,6 @@ private val dataCollection = Firebase.firestore.collection("details")
 
     }
 
-
     private fun setobservers() {
         viewModel.phoneNumber.observe(this.requireActivity()) {
             binding.otpSubText.text = "A 6 digit code has been sent to $it"
@@ -179,22 +169,14 @@ private val dataCollection = Firebase.firestore.collection("details")
         }
     }
 
-
-
-
-
     val otpCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             // val otp = credential.smsCode
             Log.d(TAG, "onVerificationCompleted:$credential")
-         //-------------------   createUser()
-            // new implementation
             val code = credential.smsCode
             if (code != null) {
                 binding.pinView.setText(code)
                 verifyCode(code)
-
-                // this will work in automatic way but what if user enterd number that is't in his phone
             }
         }
 
@@ -225,14 +207,7 @@ private val dataCollection = Firebase.firestore.collection("details")
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // move activity && built in flags ::
                   checkUserExists()
-                    //Delay after login to give firebase some time to refresh auth token.
-
-
-//
-
-
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
                     binding.progressBarVerify.visibility = View.INVISIBLE
@@ -285,8 +260,7 @@ private val dataCollection = Firebase.firestore.collection("details")
 
     }
     private fun uploadData(){
-//        val id = viewModel.institute_data.value.toString()
-//        val phoneNumber = viewModel.institue_phoneNumber.value.toString()
+
 
     val data=viewModel.studentDetailedInfo.value as studentDetails
         saveStudentDetails(data)

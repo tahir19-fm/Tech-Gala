@@ -9,7 +9,7 @@ import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.login.ui.FragmentStudentRegistration
 import com.team.hackathon.login.ui.FragmentUserValidation
 
-class LoginActivity : BaseActivity(){
+class LoginActivity : BaseActivity() {
 
     private val viewModel: LoginViewModel by viewModels()
 

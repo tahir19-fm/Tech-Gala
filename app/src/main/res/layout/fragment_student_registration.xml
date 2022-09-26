@@ -368,7 +368,7 @@
             android:layout_weight="4"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="APP NAME"
+            android:text="TECH GALA"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </LinearLayout>
