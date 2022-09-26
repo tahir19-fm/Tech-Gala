@@ -17,12 +17,16 @@ import com.team.hackathon.databinding.FragmentEventRegisteredBinding
 import com.team.hackathon.home.data.EventDataModel
 import com.team.hackathon.home.util.HomeViewModel
 import com.team.hackathon.home.util.ParentItemAdapter
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.tasks.await
+import kotlin.concurrent.thread
 
 class FragmentEventRegistered : Fragment() {
   private val binding by lazy { FragmentEventRegisteredBinding.inflate(layoutInflater) }
   private val viewModel: HomeViewModel by viewModels()
   private lateinit var data:MutableList<EventDataModel>
   private val db = Firebase.firestore
+  val res=ArrayList<EventDataModel>()
 
   companion object{
     const val EVENTS_REGISTERED="eventsregistered"
@@ -83,20 +87,26 @@ class FragmentEventRegistered : Fragment() {
       .addOnSuccessListener { result ->
         Log.d("TAG", "readFromFirebaseData: ${result.documents}")
         if(result!=null){
-          val res=ArrayList<EventDataModel>()
+
           for(document in result.documents) {
-            res.add(   EventDataModel(
-              document.getString("image").toString(),
-              document.getString("heading").toString(),
-              document.getString("totalRegister").toString()+" Registered",
-              "last date : "+document.getString("lastDate").toString(),
-              document.getString("teamType").toString(),
-              "Rupees: "+document.getString("entryfee").toString(),
-              document.id )
-            )
+
+                  Log.d("errors", "readFromFirebaseData:${document}")
+                  res.add(
+                    EventDataModel(
+                      document.getString("image").toString(),
+                      document.getString("heading").toString(),
+                      document.getString("totalRegister").toString() + " Registered",
+                      "last date : " + document.getString("lastDate").toString(),
+                      document.getString("teamType").toString(),
+                      "Rupees: " + document.getString("entryfee").toString(),
+                      document.id
+                    )
+                  )
+
           }
           res.reverse()
           viewModel.fetchUserDataRegistered(res)
+          Log.d("errors", "readFromFirebaseData: ${res}")
         }else{
           Log.d("Data", "No such document")
         }
@@ -104,5 +114,8 @@ class FragmentEventRegistered : Fragment() {
         Log.d("Data", "get failed with ", exception)
       }
   }
+
+
+
 
 }

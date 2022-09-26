@@ -28,5 +28,13 @@ class EventRegistrationViewModel:  ViewModel() {
         _userDataEventsDetail.value=data
     }
 
+    private val _registerDone = MutableLiveData<Boolean>()
+    val registerDone : LiveData<Boolean>
+        get() = _registerDone
+    fun setUserExists(state:Boolean){
+        _registerDone.value=state
+    }
+
+
 
 }

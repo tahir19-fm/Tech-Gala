@@ -17,6 +17,7 @@ class EventRegistrationActivity : AppCompatActivity() {
 
     companion object{
         const val EVENT_DETAILS_FRAGMENT=1
+        const val EVENT_REGISTER_FRAGMENT=2
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +42,15 @@ class EventRegistrationActivity : AppCompatActivity() {
                 EVENT_DETAILS_FRAGMENT->{
                     openEventDetailFragment()
                 }
+                EVENT_REGISTER_FRAGMENT->{
+                    openEventRegisterFragment()
+                }
             }
         }
+    }
+
+    private fun openEventRegisterFragment() {
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,RegisterForEventFragment()).commit()
     }
 
     private fun openEventDetailFragment() {
