@@ -13,7 +13,6 @@ import com.google.firebase.ktx.Firebase
 import com.razorpay.PaymentResultListener
 import com.team.hackathon.R
 import com.team.hackathon.baseActivity.BaseActivity
-import com.team.hackathon.databinding.ActivityBaseBinding
 import com.team.hackathon.databinding.ActivityEventRegistrationBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 import com.team.hackathon.home.data.EventDataModel

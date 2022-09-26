@@ -84,22 +84,22 @@ class FragmentUserProfileEdit : Fragment() {
 
 
     private fun setAllDropDown(){
-        val branches = resources.getStringArray(R.array.braches)
-        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, branches) }
-        binding.selectBranch.setAdapter(arrayAdapterDate)
-
-        val gender = resources.getStringArray(R.array.gender)
-        val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
-        binding.actSelectGender.setAdapter(arrayAdapterGender)
-
-
-        val years = resources.getStringArray(R.array.years)
-        val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
-        binding.selectYear.setAdapter(arrayAdapterYears)
-
-        val age = resources.getStringArray(R.array.age)
-        val arrayAdapterAge = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,age) }
-        binding.actSelectAge.setAdapter(arrayAdapterAge)
+//        val branches = resources.getStringArray(R.array.braches)
+//        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, branches) }
+//        binding.selectBranch.setAdapter(arrayAdapterDate)
+//
+//        val gender = resources.getStringArray(R.array.gender)
+//        val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
+//        binding.actSelectGender.setAdapter(arrayAdapterGender)
+//
+//
+//        val years = resources.getStringArray(R.array.years)
+//        val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
+//        binding.selectYear.setAdapter(arrayAdapterYears)
+//
+//        val age = resources.getStringArray(R.array.age)
+//        val arrayAdapterAge = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,age) }
+//        binding.actSelectAge.setAdapter(arrayAdapterAge)
 
 
     }
