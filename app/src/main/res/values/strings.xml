@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">hackathon</string>
+    <string name="app_name">Tech Gala</string>
     // for userValidation
     <string name="heading_userValidation">APP NAME</string>
     <string name="head_text_userValidation">"Your account doesn't exist"</string>
