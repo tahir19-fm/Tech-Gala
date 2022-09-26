@@ -26,11 +26,11 @@ class EventDetailsFragment : Fragment() {
     private val db = Firebase.firestore
 
     companion object {
-        const val REGISTER=1
-        const val REGISTERED=2
-        const val COMPLETED=3
-        const val DOWNLOAD_C=4
-        const val RS="Rs "
+        const val REGISTER = 1
+        const val REGISTERED = 2
+        const val COMPLETED = 3
+        const val DOWNLOAD_C = 4
+        const val RS = "Rs "
         fun getInstance() = FragmentLoginOtp()
     }
 
@@ -39,6 +39,7 @@ class EventDetailsFragment : Fragment() {
     ): View {
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,26 +51,25 @@ class EventDetailsFragment : Fragment() {
 
     private fun setupViews() {
 
-    binding.btnRegister.setOnClickListener{
-        if (viewModel.registerDone.value== DOWNLOAD_C){
-            //download c
-           openChromeToDownloadCertificate()
-        }else if (viewModel.registerDone.value==2){
-            return@setOnClickListener
-        }else if (viewModel.registerDone.value==3){
-            return@setOnClickListener
-        }else
-        {
-            viewModel.setUserState(EventRegistrationActivity.EVENT_REGISTER_FRAGMENT)
+        binding.btnRegister.setOnClickListener {
+            if (viewModel.registerDone.value == DOWNLOAD_C) {
+                //download c
+                openChromeToDownloadCertificate()
+            } else if (viewModel.registerDone.value == 2) {
+                return@setOnClickListener
+            } else if (viewModel.registerDone.value == 3) {
+                return@setOnClickListener
+            } else {
+                viewModel.setUserState(EventRegistrationActivity.EVENT_REGISTER_FRAGMENT)
+            }
         }
-    }
 
 
     }
 
     private fun openChromeToDownloadCertificate() {
 
-        val url =viewModel.linkUrl.value.toString()
+        val url = viewModel.linkUrl.value.toString()
         if (url.isNotEmpty()) {
             val builder = CustomTabsIntent.Builder()
             val customTabsIntent = builder.build()
@@ -79,11 +79,11 @@ class EventDetailsFragment : Fragment() {
 
 
     private fun setupObserver() {
-    viewModel.userDataEventsDetail.observe(this.requireActivity()){
-        val data =it as EventDetailsModalClass
-        if (data.image.isNotEmpty()) {
-            Picasso.get().load(data.image).into(binding.EventImage)
-        }
+        viewModel.userDataEventsDetail.observe(this.requireActivity()) {
+            val data = it as EventDetailsModalClass
+            if (data.image.isNotEmpty()) {
+                Picasso.get().load(data.image).into(binding.EventImage)
+            }
             binding.headingOf.text = data.heading
             binding.subHeadingOf.text = data.subHeading
             binding.adress.text = data.address
@@ -95,28 +95,27 @@ class EventDetailsFragment : Fragment() {
             }
             binding.teamLength.text = data.teamType
             binding.location.text = data.location
-        binding.startEnddate.text=data.startEndDate
-        viewModel.setPayment(data.entryfees.toString())
-    }
+            binding.startEnddate.text = data.startEndDate
+            viewModel.setPayment(data.entryfees.toString())
+        }
 
-        viewModel.registerDone.observe(this.requireActivity()){
-            when(it){
-                REGISTER->{
-                    binding.btnRegister.text="register"
+        viewModel.registerDone.observe(this.requireActivity()) {
+            when (it) {
+                REGISTER -> {
+                    binding.btnRegister.text = "register"
                 }
-               REGISTERED->{
-                   binding.btnRegister.text="registered"
-               }
-                COMPLETED->{
-                    binding.btnRegister.text="completed"
+                REGISTERED -> {
+                    binding.btnRegister.text = "registered"
                 }
-                DOWNLOAD_C->{
-                    binding.btnRegister.text="download certificate"
+                COMPLETED -> {
+                    binding.btnRegister.text = "completed"
+                }
+                DOWNLOAD_C -> {
+                    binding.btnRegister.text = "download certificate"
                 }
             }
         }
     }
-
 
 
     private fun readFromFirebaseData() {
@@ -125,49 +124,44 @@ class EventDetailsFragment : Fragment() {
         docRef.get()
             .addOnSuccessListener { document ->
                 Log.d("gf", "readFromFirebaseData: ${document}")
-                if(document.exists()){
+                if (document.exists()) {
 
 
-                       val res= EventDetailsModalClass(
-                            document.getString("address").toString(),
-                            document.getString("entryfees").toString(),
-                            document.getString("heading").toString(),
-                            document.getString("image").toString(),
-                            document.getString("lastDate").toString(),
-                            document.getString("location").toString(),
-                            document.getString("subHeading").toString(),
-                            document.getString("teamType").toString(),
-                            document.getString("totalRegister").toString(),
-                           document.getString("startEndDate").toString()
-                        )
+                    val res = EventDetailsModalClass(
+                        document.getString("address").toString(),
+                        document.getString("entryfees").toString(),
+                        document.getString("heading").toString(),
+                        document.getString("image").toString(),
+                        document.getString("lastDate").toString(),
+                        document.getString("location").toString(),
+                        document.getString("subHeading").toString(),
+                        document.getString("teamType").toString(),
+                        document.getString("totalRegister").toString(),
+                        document.getString("startEndDate").toString()
+                    )
                     viewModel.fetchUserDataDetail(res)
-
-                    Log.d("press", "dsata${res.address}")
-                }else{
-                    Log.d("Data", "No such document")
                 }
-            }.addOnFailureListener{ exception ->
+            }.addOnFailureListener { exception ->
                 Log.d("Data", "get failed with ", exception)
             }
 
-        val id=Firebase.auth.currentUser!!.phoneNumber.toString()
-        val roc = db.collection(FragmentEventRegistered.EVENTS_REGISTERED).document(id).collection("events").document(viewModel.userId.value.toString())
+        val id = Firebase.auth.currentUser!!.phoneNumber.toString()
+        val roc = db.collection(FragmentEventRegistered.EVENTS_REGISTERED).document(id)
+            .collection("events").document(viewModel.userId.value.toString())
         roc.get()
-            .addOnSuccessListener {document->
+            .addOnSuccessListener { document ->
 
 
-                if (document.getString("completed").toString()=="1"){
+                if (document.getString("completed").toString() == "1") {
                     viewModel.setUrl(document.getString("link").toString())
                     viewModel.setUserExists(DOWNLOAD_C)
-                }else
-                if(document.exists()){
-                    Log.d("Data", " exist document")
-                   viewModel.setUserExists(REGISTERED)
-                }else{
-                    viewModel.setUserExists(REGISTER)
-                    Log.d("Data", "No such document")
-                }
-            }.addOnFailureListener{ exception ->
+                } else
+                    if (document.exists()) {
+                        viewModel.setUserExists(REGISTERED)
+                    } else {
+                        viewModel.setUserExists(REGISTER)
+                    }
+            }.addOnFailureListener { exception ->
                 Log.d("Data", "get failed with ", exception)
             }
 

@@ -8,20 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.razorpay.Checkout
 import com.team.hackathon.R
 import com.team.hackathon.databinding.FragmentRegisterForEventBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 import org.json.JSONException
 import org.json.JSONObject
+import kotlin.math.roundToInt
 
 
 class RegisterForEventFragment : Fragment() {
     private val binding by lazy { FragmentRegisterForEventBinding.inflate(layoutInflater) }
     private val viewModel: EventRegistrationViewModel by activityViewModels()
-    private val db = Firebase.firestore
 
 
     companion object {
@@ -43,6 +41,11 @@ class RegisterForEventFragment : Fragment() {
     }
 
     private fun setupViews() {
+        if (viewModel.paymentRupees.value.toString()=="null"){
+            binding.bottomButton.text="refister"
+        }else{
+
+        }
         binding.teamMemeberOne2.visibility = View.GONE
         binding.teamMemeberOne3.visibility = View.GONE
         binding.teamMemeberOne4.visibility = View.GONE
@@ -70,12 +73,18 @@ class RegisterForEventFragment : Fragment() {
             binding.teamMemeberOne4.visibility = View.GONE
             binding.inviteButton3.visibility = View.VISIBLE
         }
-        binding.saveButton.setOnClickListener {
-            sendEmail()
+        binding.saveButton2.setOnClickListener {
+            sendInvite()
+        }
+        binding.saveButton3.setOnClickListener{
+            sendInvite()
+        }
+        binding.saveButton3.setOnClickListener{
+            sendInvite()
         }
         binding.bottomButton.setOnClickListener {
             val amt = viewModel.paymentRupees.value.toString()
-            val amount = Math.round(amt.toFloat() * 100)
+            val amount = (amt.toFloat() * 100).roundToInt()
             val checkout = Checkout()
 
             checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
@@ -114,7 +123,7 @@ class RegisterForEventFragment : Fragment() {
         }
     }
 
-    private fun sendEmail() {
+    private fun sendInvite() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
         sendIntent.putExtra(Intent.EXTRA_TEXT, "$emailMessage $gitLink")

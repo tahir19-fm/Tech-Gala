@@ -1,5 +1,4 @@
 package com.team.hackathon.home.ui
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.team.hackathon.databinding.FragmentEventListBinding
@@ -19,15 +17,16 @@ import kotlin.collections.ArrayList
 
 
 class FragmentEventList : Fragment() {
-    private val binding by lazy{FragmentEventListBinding.inflate(layoutInflater)}
+    private val binding by lazy { FragmentEventListBinding.inflate(layoutInflater) }
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var data:MutableList<EventDataModel>
+    private lateinit var data: MutableList<EventDataModel>
     private val db = Firebase.firestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,28 +38,36 @@ class FragmentEventList : Fragment() {
 
     private fun setupObserver() {
 
-        viewModel.userDataEvents.observe(this.requireActivity()){
-            val beta=it as ArrayList<EventDataModel>
-            data=ArrayList()
-            for(events in beta){
-                Log.d("TAG", "dffddfdf: ${events.image}")
-            data.add(EventDataModel(events.image,events.heading,events.totalRegister,events.lastDate,events.teamType,events.entryfees,events.id))
-                }
+        viewModel.userDataEvents.observe(this.requireActivity()) {
+            val beta = it as ArrayList<EventDataModel>
+            data = ArrayList()
+            for (events in beta) {
+                data.add(
+                    EventDataModel(
+                        events.image,
+                        events.heading,
+                        events.totalRegister,
+                        events.lastDate,
+                        events.teamType,
+                        events.entryfees,
+                        events.id
+                    )
+                )
+            }
             //reading data from viewModel and setting recyclerView
-            binding.progressBar.visibility=View.GONE
+            binding.progressBar.visibility = View.GONE
             setupRecycler(data)
         }
     }
 
     private fun setupViews() {
         refreshByPull()
-        Log.d("bag", "setupViews: ${Firebase.auth.currentUser!!.phoneNumber.toString()} ")
 
     }
 
     private fun refreshByPull() {
         binding.refresh.setOnRefreshListener {
-            binding.refresh.isRefreshing=false
+            binding.refresh.isRefreshing = false
             readFromFirebaseData()
         }
     }
@@ -72,30 +79,33 @@ class FragmentEventList : Fragment() {
         binding.rvEventList.layoutManager = layoutManager
     }
 
-    private fun readFromFirebaseData(){
-        binding.progressBar.visibility=View.VISIBLE
+    private fun readFromFirebaseData() {
+        binding.progressBar.visibility = View.VISIBLE
         val docRef = db.collection("events")
         docRef.get()
             .addOnSuccessListener { result ->
                 Log.d("TAG", "readFromFirebaseData: ${result.documents}")
-                if(result!=null){
-                    val res=ArrayList<EventDataModel>()
-                    for(document in result.documents) {
-                        res.add(   EventDataModel(
-                            document.getString("image").toString(),
-                            document.getString("heading").toString(),
-                            document.getString("totalRegister").toString()+" Registered",
-                            "last date : "+document.getString("lastDate").toString(),
-                            document.getString("teamType").toString(),
-                            "Rupees: "+document.getString("entryfees").toString(),
-                            document.id ))
+                if (result != null) {
+                    val res = ArrayList<EventDataModel>()
+                    for (document in result.documents) {
+                        res.add(
+                            EventDataModel(
+                                document.getString("image").toString(),
+                                document.getString("heading").toString(),
+                                document.getString("totalRegister").toString() + " Registered",
+                                "last date : " + document.getString("lastDate").toString(),
+                                document.getString("teamType").toString(),
+                                "Rupees: " + document.getString("entryfees").toString(),
+                                document.id
+                            )
+                        )
                     }
                     res.reverse()
                     viewModel.fetchUserData(res)
-                }else{
+                } else {
                     Log.d("Data", "No such document")
                 }
-            }.addOnFailureListener{ exception ->
+            }.addOnFailureListener { exception ->
                 Log.d("Data", "get failed with ", exception)
             }
     }

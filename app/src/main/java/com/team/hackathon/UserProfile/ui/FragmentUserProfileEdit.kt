@@ -1,5 +1,4 @@
 package com.team.hackathon.UserProfile.ui
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.FirebaseFirestore
+import androidx.fragment.app.viewModels
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -31,7 +29,6 @@ class FragmentUserProfileEdit : Fragment() {
     private var year: String?=null
     private var gender: String?=null
     private var age : String?=null
-    private var preferences: String?=null
     private val binding by lazy { FragmentUserProfileEditBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
     private val db = Firebase.firestore.collection("users")
@@ -63,15 +60,10 @@ class FragmentUserProfileEdit : Fragment() {
 
 
         binding.saveButton.setOnClickListener{
-            //binding.saveButton.visibility = View.GONE
-            //binding.progressBar.visibility = View.VISIBLE
             val oldData = getOldUserData()
             val newData = getNewUserData()
             update(oldData,newData)
             viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE)
-            //binding.saveButton.visibility = View.VISIBLE
-            //binding.progressBar.visibility = View.GONE
-            //viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
             Log.d("testingHashmap",hashMap.toString())
         }
 
@@ -79,9 +71,6 @@ class FragmentUserProfileEdit : Fragment() {
             viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
         }
         binding.progressBar.visibility = View.GONE
-
-
-
     }
 
 
@@ -112,7 +101,6 @@ class FragmentUserProfileEdit : Fragment() {
         binding.selectBranch.setOnItemClickListener { parent, _, position, _ ->
             this.branches = parent.getItemAtPosition(position) as String
             if (branches!!.contains(this.branches!!)) {
-                Toast.makeText(context, branches, Toast.LENGTH_LONG).show()
                 hashMap["branchForEdit"] = this.branches!!
             }
         }
@@ -120,7 +108,6 @@ class FragmentUserProfileEdit : Fragment() {
         binding.actSelectGender.setOnItemClickListener { parent, _, position, _ ->
             gender = parent.getItemAtPosition(position) as String
             if (gender!!.contains(this.gender!!)) {
-                Toast.makeText(context, gender, Toast.LENGTH_LONG).show()
                 hashMap["genderForEdit"] = this.gender!!
 
             }
@@ -130,7 +117,6 @@ class FragmentUserProfileEdit : Fragment() {
         binding.selectYear.setOnItemClickListener { parent, _, position, _ ->
             year = parent.getItemAtPosition(position) as String
             if (year!!.contains(this.year!!)) {
-                Toast.makeText(context, year, Toast.LENGTH_LONG).show()
                 hashMap["yearForEdit"] = this.year!!
 
             }
@@ -139,7 +125,6 @@ class FragmentUserProfileEdit : Fragment() {
         binding.actSelectAge.setOnItemClickListener{ parent ,_, poition, _ ->
             age = parent.getItemAtPosition(poition) as String
             if (age!!.contains(this.age!!)){
-                Toast.makeText(context,age,Toast.LENGTH_LONG).show()
                 hashMap["ageForEdit"] = this.age!!
             }
         }
@@ -247,7 +232,7 @@ class FragmentUserProfileEdit : Fragment() {
 
         val map = mutableMapOf<String , Any>()
         map["name"] = name.toString()
-        map["phone"] = phoneNumber.toString()
+        map["phoneNumber"] = phoneNumber.toString()
         map["branch"] = branch.toString()
         map["year"] = year.toString()
         map["gender"] = gender.toString()
