@@ -68,7 +68,7 @@ class FragmentUserProfileEdit : Fragment() {
         }
 
         binding.backButtonEdit.setOnClickListener{
-            viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
+            viewModel.setUserProfileState(UserProfileActivity.HOME_ACTIVITY)
         }
         binding.progressBar.visibility = View.GONE
     }
