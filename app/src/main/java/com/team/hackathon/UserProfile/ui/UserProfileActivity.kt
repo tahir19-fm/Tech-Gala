@@ -70,12 +70,14 @@ class UserProfileActivity : AppCompatActivity() , PaymentResultListener {
     }
 
     private fun dietActivity() {
-     splashscreen()
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.mainUserProfile, FragmentEventList()).commit()
     }
+
     private fun splashscreen() {
         val intent = Intent(this, SplashActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
     override fun onPaymentSuccess(p0: String?) {

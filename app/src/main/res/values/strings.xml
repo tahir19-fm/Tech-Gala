@@ -311,6 +311,40 @@ you can go back to reset  your Details</string>
     </string-array>
 
 
+    <string-array name="years">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+
+
+    </string-array>
+
+    <string-array name="age">
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+
+
+    </string-array>
+
+
+    <string-array name="braches">
+        <item>BCA</item>
+        <item>MCA</item>
+        <item>B.TECH-CSE</item>
+        <item>B.TECH-ELE</item>
+        <item>B.TECH-MEC</item>
+        <item>B.TECH-CIVIL</item>
+        <item>P.H.D</item>
+        <item>OTHER</item>
+
+        <item>21</item>
+    </string-array>
+
+
+
 
 
 </resources>

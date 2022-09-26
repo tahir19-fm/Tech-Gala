@@ -1,7 +1,5 @@
 package com.team.hackathon.eventregisteration.ui
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,7 +28,6 @@ class EventRegistrationActivity : AppCompatActivity() , PaymentResultListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
 
         viewModel.setUserState(1)
         getId()
