@@ -10,8 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.razorpay.Checkout
+import com.team.hackathon.R
 import com.team.hackathon.databinding.FragmentRegisterForEventBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
+import org.json.JSONException
+import org.json.JSONObject
 
 
 class RegisterForEventFragment : Fragment() {
@@ -68,6 +72,41 @@ class RegisterForEventFragment : Fragment() {
         binding.deleteFourthMember.setOnClickListener{
             binding.teamMemeberOne4.visibility = View.GONE
             binding.inviteButton3.visibility = View.VISIBLE
+        }
+        binding.bottomButton.setOnClickListener{
+            val amt = "10"
+            val amount = Math.round(amt.toFloat() * 100)
+            val checkout = Checkout()
+
+            checkout.setKeyID("rzp_test_lDBxxnlPFiPUGx")
+
+            checkout.setImage(R.drawable.add_icon)
+            val obj = JSONObject()
+            try {
+                obj.put("name", "Tech-A-Thon")
+
+                // put description
+                obj.put("description", "Test payment")
+
+                // to set theme color
+                obj.put("theme.color", "")
+
+                // put the currency
+                obj.put("currency", "INR")
+
+                // put amount
+                obj.put("amount", amount)
+
+                // put mobile number
+                obj.put("prefill.contact", "8082731286")
+
+                // put email
+                obj.put("prefill.email", "tahir19.fm@gmail.com")
+
+                checkout.open(requireActivity(),obj)
+            }catch (e: JSONException){
+                e.printStackTrace()
+            }
         }
 
 

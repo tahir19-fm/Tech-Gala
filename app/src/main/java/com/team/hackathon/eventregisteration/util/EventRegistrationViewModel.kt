@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team.hackathon.eventregisteration.data.EventDetailsModalClass
+import com.team.hackathon.home.data.EventDataModel
 
 class EventRegistrationViewModel:  ViewModel() {
     private val _userState = MutableLiveData<Int>()
@@ -33,6 +34,14 @@ class EventRegistrationViewModel:  ViewModel() {
         get() = _registerDone
     fun setUserExists(state:Int){
         _registerDone.value=state
+    }
+
+    private val _userDataEvents = MutableLiveData<EventDataModel>()
+    val userDataEvents: MutableLiveData<EventDataModel>
+        get() = _userDataEvents
+
+    fun fetchUserData(data :EventDataModel) {
+        _userDataEvents.value=data
     }
 
 
