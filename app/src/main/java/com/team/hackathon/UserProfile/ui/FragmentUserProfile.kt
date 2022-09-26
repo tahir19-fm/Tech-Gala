@@ -55,15 +55,6 @@ class FragmentUserProfile : Fragment()  {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode== Activity.RESULT_OK && requestCode==pickImage){
-            imageUri = data?.data
-            binding.tvUserProfile.visibility = View.GONE
-            binding.ivUserProfile.setImageURI(imageUri)
-
-        }
-    }
 
     private fun readFromFirebaseData(){
         hideAllContentShowProgressBar()
@@ -90,6 +81,7 @@ class FragmentUserProfile : Fragment()  {
                             )
                         )
                     )
+                    setData()
                     Toast.makeText(requireActivity(),name,Toast.LENGTH_SHORT).show()
                     showALlContentHideProgresssBar()
                 }else{
