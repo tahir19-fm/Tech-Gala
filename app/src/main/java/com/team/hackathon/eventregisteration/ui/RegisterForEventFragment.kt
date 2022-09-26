@@ -108,7 +108,7 @@ class RegisterForEventFragment : Fragment() {
 
     private fun sendEmail(email:String , subject:String, message:String){
         val intent = Intent(Intent.ACTION_SEND)
-        intent.putExtra(Intent.EXTRA_EMAIL, email)
+        intent.data = Uri.parse("mailto:$email")
         intent.putExtra(Intent.EXTRA_SUBJECT, subject)
         intent.putExtra(Intent.EXTRA_TEXT, message)
         intent.type = "message/rfc822"
