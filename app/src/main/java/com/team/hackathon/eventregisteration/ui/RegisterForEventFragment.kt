@@ -1,15 +1,15 @@
 package com.team.hackathon.eventregisteration.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.dietTracker.login.ui.FragmentLoginOtp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.team.hackathon.R
 import com.team.hackathon.databinding.FragmentRegisterForEventBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 
@@ -19,6 +19,7 @@ class RegisterForEventFragment : Fragment() {
     private val viewModel: EventRegistrationViewModel by activityViewModels()
     private val db = Firebase.firestore
 
+    private val emailMessage = "Hey You Have Been Invited For a Event"
     companion object {
     }
 
@@ -30,7 +31,7 @@ class RegisterForEventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val firstTeamMemberEmail = binding.email.text
+
         val secondTeamMemberEmail = binding.email2.text
         val thirdTeamMemberEmail = binding.email3.text
         val fourthTeamMemberEmail = binding.email4.text
@@ -70,6 +71,16 @@ class RegisterForEventFragment : Fragment() {
         }
 
 
+        binding.saveButton.setOnClickListener{
+            val firstTeamMemberEmail = binding.email.text
+            val firstTeamMemberName = binding.name.text
+            sendEmail(firstTeamMemberEmail.toString() , "Subject" + "$firstTeamMemberName" , emailMessage )
+
+        }
+
+
+
+
 //        readFromFirebaseData()
 //        setupObserver()
 //        setupViews()
@@ -86,6 +97,15 @@ class RegisterForEventFragment : Fragment() {
 
     private fun readFromFirebaseData() {
 
+    }
+
+    private fun sendEmail(email:String , subject:String, message:String){
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.putExtra(Intent.EXTRA_EMAIL, email)
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        intent.putExtra(Intent.EXTRA_TEXT, message)
+        intent.type = "message/rfc822"
+        startActivity(Intent.createChooser(intent, "Select email"))
     }
 
 }
