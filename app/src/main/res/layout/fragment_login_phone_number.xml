@@ -5,7 +5,7 @@
     android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.ui.">
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frag1"
@@ -17,6 +17,33 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:backgroundTint="#808080"
+            android:paddingRight="5dp"
+            android:enabled="false"
+            android:visibility="invisible"
+            android:text="LOG IN"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnToSendOtp"
             android:layout_width="match_parent"
@@ -32,10 +59,12 @@
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            android:text="Send OTP"
+            android:text="LOG IN"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:visibility="visible"
+            android:enabled="true"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,30 +73,29 @@
 
         <ImageView
             android:id="@+id/loginHeadImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="285dp"
+            android:layout_height="197dp"
             android:layout_marginStart="66dp"
-            android:layout_marginTop="95dp"
             android:layout_marginEnd="45dp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:srcCompat="@drawable/img_1" />
 
         <TextView
             android:id="@+id/loginHeadText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="16sp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="300dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="center|start"
-            android:text="SIGN IN"
+            android:text="LOG IN :"
+     android:layout_marginTop="25sp"
             android:textColor="#000000"
             android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +108,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="30dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="We Will Send An OTP To Your Number"
+            android:text="FILL IN THE DETAILS TO LOG IN TO YOUR ACCOUNT"
             app:layout_constraintEnd_toEndOf="@+id/loginHeadText"
             app:layout_constraintStart_toStartOf="@+id/loginHeadText"
             app:layout_constraintTop_toBottomOf="@+id/loginHeadText" />
@@ -90,8 +118,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="50sp"
+            android:layout_marginEnd="30sp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,13 +147,79 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:inputType="phone"
+                android:textColor="@color/black"
                 android:backgroundTint="#0066FF"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
         </LinearLayout>
+        ///////
 
+        <TextView
+            android:id="@+id/registerId"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15sp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.05"
+            android:text="Institute Id : "
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_goneMarginTop="30sp" />
 
+        <EditText
+            android:id="@+id/id_EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/rounded_edit_text"
+            android:lines="1"
+            android:maxLines="1"
+            android:layout_marginStart="16sp"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerId" />
+
+        <TextView
+            android:id="@+id/SignInWithNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:letterSpacing="0.05"
+            android:text="Phone Number : "
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginSubText"
+            app:layout_goneMarginTop="30sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="APP NAME"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

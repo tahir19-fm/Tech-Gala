@@ -4,15 +4,13 @@
     <string name="heading_userValidation">Diet Tracker</string>
     <string name="head_text_userValidation">"Your account doesn't exist"</string>
     <string name="sub_text_userValidation">you can click signup to create new account or
-you can go back and login with a another number</string>
-    <string name="btnToNumber_text">Change Number</string>
+you can go back to reset  your Details</string>
+    <string name="btnToNumber_text">Reset Details</string>
     <string name="btnToRegistration_text">Create New Account</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="register">REGISTER</string>
     <string name="info">We will send an OTP to veify your mobile number</string>
-    <string name="eligibility_n">Eligibility\n</string>
-
     <string-array name="date">
         <item>1</item>
         <item>2</item>
@@ -313,36 +311,6 @@ you can go back and login with a another number</string>
     </string-array>
 
 
-    <string-array name="years">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
 
-
-    </string-array>
-
-    <string-array name="age">
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-
-
-    </string-array>
-
-
-    <string-array name="braches">
-        <item>BCA</item>
-        <item>MCA</item>
-        <item>B.TECH-CSE</item>
-        <item>B.TECH-ELE</item>
-        <item>B.TECH-MEC</item>
-        <item>B.TECH-CIVIL</item>
-        <item>P.H.D</item>
-        <item>OTHER</item>
-
-        <item>21</item>
-    </string-array>
 
 </resources>

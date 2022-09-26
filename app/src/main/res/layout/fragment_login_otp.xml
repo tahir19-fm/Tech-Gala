@@ -61,6 +61,7 @@
         android:gravity="center"
         android:itemBackground="#EEEEEE"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:itemCount="6"
         app:itemRadius="9dp"
         app:itemSpacing="10dp"
