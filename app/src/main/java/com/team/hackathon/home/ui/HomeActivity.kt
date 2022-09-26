@@ -26,9 +26,6 @@ class HomeActivity : AppCompatActivity()   {
         viewModel.setUserState(1)
         setupViews()
         setupObservers()
-        binding.headerDiet.image.setOnClickListener{
-            Firebase.auth.signOut()
-        }
 
     }
 
