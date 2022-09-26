@@ -192,7 +192,9 @@ class FragmentUserProfileEdit : Fragment() {
             val modal = it as UserDataForProfile
             binding.nameEditText.setText(modal.user.name)
             binding.edphoneNumber.setText(modal.user.phoneNumber)
-            binding.actSelectGender.setText(modal.user.gender)
+            if (modal.user.gender!="null") {
+                binding.actSelectGender.setText(modal.user.gender)
+            }
             binding.edCollageName.setText(modal.user.collageName)
             binding.selectBranch.setText(modal.user.branch)
             binding.selectYear.setText(modal.user.year)

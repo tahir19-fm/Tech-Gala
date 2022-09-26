@@ -184,9 +184,9 @@
                     android:background="@drawable/rounded_edit_text"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
+                    android:inputType="none"
                     android:imeOptions="actionNext"
                     android:lines="1"
-                    android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:text="BTECH CSE"
@@ -215,7 +215,6 @@
                     android:imeOptions="actionNext"
                     android:lines="1"
                     android:maxLines="1"
-                    android:inputType="number"
                     android:singleLine="true"
                     android:text="2"
                     android:textSize="12sp" />
