@@ -68,6 +68,7 @@ class FragmentUserProfileEdit : Fragment() {
             val oldData = getOldUserData()
             val newData = getNewUserData()
             update(oldData,newData)
+            viewModel.setUserProfileState(UserProfileActivity.USER_PROFILE)
             //binding.saveButton.visibility = View.VISIBLE
             //binding.progressBar.visibility = View.GONE
             //viewModel.setUserProfileState(UserProfileActivity.DIET_ACTIVITY)
