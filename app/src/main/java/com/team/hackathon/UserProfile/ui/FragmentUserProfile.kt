@@ -123,7 +123,8 @@ class FragmentUserProfile : Fragment()  {
 
     private fun readFromFirebaseData(){
         hideAllContentShowProgressBar()
-        val docRef = db.collection("Users").document("FmUhRcWqDqA6ifxHIm1U")
+        val id =FirebaseAuth.getInstance().currentUser!!.phoneNumber.toString()
+        val docRef = db.collection("users").document(id)
         docRef.get()
             .addOnSuccessListener { document ->
                 if(document!=null){
@@ -138,7 +139,7 @@ class FragmentUserProfile : Fragment()  {
                                 document.getString("branch").toString(),
                                 document.getString("gender").toString(),
                                 document.getString("age").toString(),
-                                document.getString("phone").toString(),
+                                document.getString("phoneNumber").toString(),
                                 document.getString("interest").toString(),
                                 document.getString("city").toString(),
                                 document.getString("collage_name").toString()

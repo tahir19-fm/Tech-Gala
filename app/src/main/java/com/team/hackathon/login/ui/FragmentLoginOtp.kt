@@ -236,7 +236,7 @@ private val dataCollection = Firebase.firestore.collection("details")
                     //Delay after login to give firebase some time to refresh auth token.
 
                         uploadData()
-                    moveToHome()
+                        moveToHome()
 
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
@@ -281,7 +281,7 @@ Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toSt
     }
 
     private fun moveToHome(){
-        val i = Intent(requireActivity(),HomeActivity::class.java)
+        val i = Intent(requireActivity(),SplashActivity::class.java)
         i.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(i)
         requireActivity().finish()

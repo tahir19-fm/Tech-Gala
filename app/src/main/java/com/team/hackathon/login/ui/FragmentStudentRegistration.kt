@@ -55,8 +55,6 @@ class FragmentStudentRegistration : Fragment() {
                 viewModel.setInstituePhoneNumber("+91"+binding.phoneNumberEditText.text.toString())
         }
 
-
-
     }
     private fun setUpAllDropdowns(){
         val gender = resources.getStringArray(R.array.gender)
@@ -64,6 +62,7 @@ class FragmentStudentRegistration : Fragment() {
         binding.actSelectGender.setAdapter(arrayAdapterGender)
 
     }
+
 
 
 }

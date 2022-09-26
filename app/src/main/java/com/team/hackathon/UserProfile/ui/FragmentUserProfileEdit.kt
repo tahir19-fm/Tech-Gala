@@ -34,7 +34,7 @@ class FragmentUserProfileEdit : Fragment() {
     private var preferences: String?=null
     private val binding by lazy { FragmentUserProfileEditBinding.inflate(layoutInflater)}
     private val viewModel : UserProfileViewModel by activityViewModels()
-    private val db = Firebase.firestore.collection("Users")
+    private val db = Firebase.firestore.collection("users")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -84,22 +84,22 @@ class FragmentUserProfileEdit : Fragment() {
 
 
     private fun setAllDropDown(){
-//        val branches = resources.getStringArray(R.array.braches)
-//        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, branches) }
-//        binding.selectBranch.setAdapter(arrayAdapterDate)
-//
-//        val gender = resources.getStringArray(R.array.gender)
-//        val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
-//        binding.actSelectGender.setAdapter(arrayAdapterGender)
-//
-//
-//        val years = resources.getStringArray(R.array.years)
-//        val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
-//        binding.selectYear.setAdapter(arrayAdapterYears)
-//
-//        val age = resources.getStringArray(R.array.age)
-//        val arrayAdapterAge = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,age) }
-//        binding.actSelectAge.setAdapter(arrayAdapterAge)
+        val branches = resources.getStringArray(R.array.braches)
+        val arrayAdapterDate = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, branches) }
+        binding.selectBranch.setAdapter(arrayAdapterDate)
+
+        val gender = resources.getStringArray(R.array.gender)
+        val arrayAdapterGender = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, gender) }
+        binding.actSelectGender.setAdapter(arrayAdapterGender)
+
+
+        val years = resources.getStringArray(R.array.years)
+        val arrayAdapterYears = context?.let { ArrayAdapter(it, R.layout.dropdown_layout, years) }
+        binding.selectYear.setAdapter(arrayAdapterYears)
+
+        val age = resources.getStringArray(R.array.age)
+        val arrayAdapterAge = context?.let { ArrayAdapter(it,R.layout.dropdown_layout,age) }
+        binding.actSelectAge.setAdapter(arrayAdapterAge)
 
 
     }
@@ -249,7 +249,7 @@ class FragmentUserProfileEdit : Fragment() {
     private fun update(data : UserDataClassForEdit , newData : Map<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
 
         val userQuery = db
-            .whereEqualTo("name" , data.user.name)
+            .whereEqualTo("phoneNumber" , data.user.phoneNumber)
             .get()
             .await()
         if (userQuery.documents.isNotEmpty()){

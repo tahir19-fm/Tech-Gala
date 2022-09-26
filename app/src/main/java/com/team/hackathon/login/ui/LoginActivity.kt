@@ -47,34 +47,6 @@ class LoginActivity : BaseActivity(){
         }
     }
 
-//    override fun onBackPressed() {
-//        if(backPressOverride())
-//            return
-//
-//        super.onBackPressed()
-//    }
-
-//    private fun backPressOverride() : Boolean {
-//        when(viewModel.loginState.value){
-//            LOGIN_STATE_ENTER_OTP -> {
-//                if(viewModel.isUserExist())
-//                    viewModel.setLoginState(LOGIN_STATE_ENTER_NUMBER)
-//                else
-//                    viewModel.setLoginState(LOGIN_STATE_REGISTER_USER)
-//                return true
-//            }
-//            LOGIN_STATE_REGISTER_USER -> {
-//                viewModel.setLoginState(LOGIN_STATE_ENTER_NUMBER)
-//                return true
-//            }
-//            LOGIN_STATE_USER_VALIDATION -> {
-//                viewModel.setLoginState(LOGIN_STATE_ENTER_NUMBER)
-//                return true
-//            }
-//        }
-//        return false
-//    }
-
     private fun loginNumber() {
         startFragment(FragmentLoginPhoneNumber.getInstance(), false)
     }

@@ -111,34 +111,6 @@ class FragmentLoginPhoneNumber : Fragment() {
             }
     }
 
-//    private fun buttonCall() {
-//        binding.phoneNumberBox.addTextChangedListener(object : TextWatcher {
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                val ch = binding.phoneNumberBox.text.toString()
-//                if (ch.length != 10) {
-//                    binding.btnToSendOtp.isEnabled = true
-//                    binding.btnToSendOtp.visibility = View.INVISIBLE
-//                    binding.btnCover.visibility = View.VISIBLE
-//                }
-//            }
-//
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//
-//        }
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                val ch = binding.phoneNumberBox.text.toString()
-//                if (ch.length == 10) {
-//                    binding.btnToSendOtp.isEnabled = true
-//                    binding.btnToSendOtp.visibility = View.VISIBLE
-//                    binding.btnCover.visibility = View.INVISIBLE
-//                }
-//
-//            }
-//        })
-//
-//    }
 
 
 

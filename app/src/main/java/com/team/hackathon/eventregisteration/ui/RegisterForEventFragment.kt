@@ -104,11 +104,11 @@ class RegisterForEventFragment : Fragment() {
     private fun sendEmail(){
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.\nhttps://google.com")
         sendIntent.type = "text/plain"
         sendIntent.setPackage("com.whatsapp")
-        startActivity(Intent.createChooser(sendIntent, ""))
-        startActivity(sendIntent)
+        startActivity(Intent.createChooser(sendIntent, "ma chuda"))
+//        startActivity(sendIntent)
     }
 
 }
