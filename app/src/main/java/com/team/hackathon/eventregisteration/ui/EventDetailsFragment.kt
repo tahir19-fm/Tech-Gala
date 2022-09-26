@@ -1,11 +1,15 @@
 package com.team.hackathon.eventregisteration.ui
 
+import android.R
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.dietTracker.login.ui.FragmentLoginOtp
 import com.google.firebase.auth.ktx.auth
@@ -16,6 +20,7 @@ import com.team.hackathon.databinding.FragmentEventDetailsBinding
 import com.team.hackathon.eventregisteration.data.EventDetailsModalClass
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 import com.team.hackathon.home.ui.FragmentEventRegistered
+
 
 class EventDetailsFragment : Fragment() {
     private val binding by lazy { FragmentEventDetailsBinding.inflate(layoutInflater) }
@@ -65,7 +70,10 @@ class EventDetailsFragment : Fragment() {
     }
 
     private fun openChromeToDownloadCertificate() {
-
+        val url = ""
+         val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(requireActivity(),Uri.parse(url))
     }
 
 
