@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/rounded_edit_text.xml" value="0.279" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/activity_event_registration.xml" value="0.1265625" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/activity_home.xml" value="0.1265625" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/event_list_card_view.xml" value="0.1265625" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_event_details.xml" value="0.1265625" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_event_list.xml" value="0.1265625" />
         <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_register_for_event.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_student_registration.xml" value="0.15534420289855072" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_upload_image.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/VAIO/AndroidStudioProjects/hackathon/app/src/main/res/layout/fragment_user_profile_edit.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/VAIO/OneDrive/Documents/GitHub/hackathon/app/src/main/res/layout/activity_base.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/button_style.xml" value="0.2415" />
         <entry key="..\:/Users/ahzam/AndroidStudioProjects/hackathon/app/src/main/res/drawable-v24/camera.xml" value="0.124" />
