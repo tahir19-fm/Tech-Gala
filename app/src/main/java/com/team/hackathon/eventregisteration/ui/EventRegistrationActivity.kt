@@ -7,14 +7,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.razorpay.PaymentResultListener
 import com.team.hackathon.R
-import com.team.hackathon.baseActivity.BaseActivity
 import com.team.hackathon.databinding.ActivityEventRegistrationBinding
 import com.team.hackathon.eventregisteration.util.EventRegistrationViewModel
 import com.team.hackathon.home.data.EventDataModel
-import com.team.hackathon.home.ui.FragmentEventRegistered
 
 class EventRegistrationActivity : AppCompatActivity(), PaymentResultListener {
     private val binding by lazy { ActivityEventRegistrationBinding.inflate(layoutInflater) }

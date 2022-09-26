@@ -1,5 +1,4 @@
 package com.team.hackathon.home.ui
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.team.hackathon.databinding.FragmentEventListBinding

@@ -3,7 +3,6 @@ package com.team.hackathon.UserProfile.util
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.team.hackathon.UserProfile.data.UserDataClassForEdit
 import com.team.hackathon.UserProfile.data.UserDataForProfile
 
 
@@ -23,14 +22,6 @@ class UserProfileViewModel : ViewModel() {
 
     fun setUserProfileState(state : Int){
         _userProfileState.value = state
-    }
-
-    private val _userDataForEdit = MutableLiveData<UserDataClassForEdit>()
-    val userDataForEdit : LiveData<UserDataClassForEdit>
-    get() = _userDataForEdit
-
-    fun setUserDataForEdit(data:UserDataClassForEdit){
-        _userDataForEdit.value = data
     }
 
 }

@@ -3,10 +3,8 @@ package com.team.hackathon.UserProfile.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
 import com.team.hackathon.R
 import com.team.hackathon.SplashActivity
@@ -70,23 +68,21 @@ class UserProfileActivity : AppCompatActivity() , PaymentResultListener {
     }
 
     private fun dietActivity() {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.mainUserProfile, FragmentEventList()).commit()
+        splashscreen()
     }
 
     private fun splashscreen() {
         val intent = Intent(this, SplashActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 
     override fun onPaymentSuccess(p0: String?) {
-        Log.d("sucess","Success")
+        Log.d("success","Payment Success")
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
-        Log.d("not","NOT")
-        //Toast.makeText(UserProfileActivity::class.java, "Payment Failed due to error : " +  Toast.LENGTH_SHORT).show();
+        Log.d("failure","Payment Failure")
     }
 
 
