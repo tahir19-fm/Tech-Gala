@@ -13,7 +13,7 @@ import com.team.hackathon.databinding.ActivityUserProfileBinding
 import com.team.hackathon.home.ui.FragmentEventList
 
 
-class UserProfileActivity : AppCompatActivity() , PaymentResultListener {
+class UserProfileActivity : AppCompatActivity() {
     private val binding by lazy {ActivityUserProfileBinding.inflate(layoutInflater) }
     private val viewModel : UserProfileViewModel by viewModels()
 
@@ -75,14 +75,6 @@ class UserProfileActivity : AppCompatActivity() , PaymentResultListener {
         val intent = Intent(this, SplashActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
-    }
-
-    override fun onPaymentSuccess(p0: String?) {
-        Log.d("success","Payment Success")
-    }
-
-    override fun onPaymentError(p0: Int, p1: String?) {
-        Log.d("failure","Payment Failure")
     }
 
 
