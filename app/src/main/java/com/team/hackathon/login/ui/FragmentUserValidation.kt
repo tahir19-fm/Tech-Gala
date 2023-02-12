@@ -47,7 +47,7 @@ class FragmentUserValidation : Fragment() {
 
     }
 
-    private fun setHead(){
-        binding.llNavbar.image.visibility=View.INVISIBLE
+    private fun setHead() {
+        binding.llNavbar.image.visibility = View.INVISIBLE
     }
 }

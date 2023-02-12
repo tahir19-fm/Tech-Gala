@@ -15,7 +15,6 @@ import com.team.hackathon.login.data.studentDetails
 import com.team.hackathon.login.util.LoginViewModel
 
 
-
 class FragmentStudentRegistration : Fragment() {
     private val binding by lazy { FragmentStudentRegistrationBinding.inflate(layoutInflater) }
     private val viewModel: LoginViewModel by activityViewModels()
