@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "hackathon"
 include ':app'
-#commentadded
