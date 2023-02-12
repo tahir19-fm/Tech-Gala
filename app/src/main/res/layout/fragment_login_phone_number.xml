@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16sp"
             android:letterSpacing="0.05"
-            android:text="Phone Number : "
+            android:text="Phone Number: "
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -115,7 +115,7 @@
                 app:ccp_defaultNameCode="IN"
                 app:ccp_hintExampleNumber="true"
                 app:ccp_rememberLastSelection="true"
-                app:ccp_textSize="15sp"
+                app:ccp_textSize="14sp"
                 tools:ignore="MissingConstraints" />
 
             <EditText
@@ -133,13 +133,13 @@
 
         <TextView
             android:id="@+id/registerId"
-            android:layout_width="144dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="15sp"
             android:fontFamily="@font/poppins_regular"
             android:letterSpacing="0.05"
-            android:text="Institute Id : "
+            android:text="Email/Institute Id: "
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"

@@ -139,7 +139,8 @@ class FragmentLoginOtp : Fragment() {
                     binding.otpResendBox.visibility = View.INVISIBLE
                     binding.otpLinkBox.visibility = View.VISIBLE
                 }
-            }.start() }
+            }.start()
+        }
         sendOtp()
 
         binding.btnVerifyOTP.setOnClickListener {
@@ -207,7 +208,7 @@ class FragmentLoginOtp : Fragment() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                  checkUserExists()
+                    checkUserExists()
                 } else {
                     binding.btnVerifyOTP.visibility = View.VISIBLE;
                     binding.progressBarVerify.visibility = View.INVISIBLE
@@ -218,9 +219,9 @@ class FragmentLoginOtp : Fragment() {
     }
 
     private fun checkUserExists() {
-        viewModel.userExists.observe(requireActivity()){
-            when(it){
-                true->{
+        viewModel.userExists.observe(requireActivity()) {
+            when (it) {
+                true -> {
                     moveTOHome()
                 }
 
@@ -243,29 +244,33 @@ class FragmentLoginOtp : Fragment() {
         }
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
     }
-    private fun saveStudentDetails(StudentDetail: studentDetails) =CoroutineScope(Dispatchers.IO).launch {
 
-        try {
-            Firebase.firestore.collection("users").document(viewModel.phoneNumber.value.toString()).set(StudentDetail)
-            withContext(Dispatchers.Main){
-                moveTOHome()
-                Toast.makeText(requireContext(),"data Uploaded",Toast.LENGTH_LONG).show()
+    private fun saveStudentDetails(StudentDetail: studentDetails) =
+        CoroutineScope(Dispatchers.IO).launch {
+
+            try {
+                Firebase.firestore.collection("users")
+                    .document(viewModel.phoneNumber.value.toString()).set(StudentDetail)
+                withContext(Dispatchers.Main) {
+                    moveTOHome()
+                    Toast.makeText(requireContext(), "data Uploaded", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
+                }
             }
-        }
-        catch (e:Exception){
-            withContext(Dispatchers.Main){
-                Toast.makeText(requireContext(),e.message,Toast.LENGTH_LONG).show()
-            }
+
         }
 
-    }
-    private fun uploadData(){
+    private fun uploadData() {
 
 
-    val data=viewModel.studentDetailedInfo.value as studentDetails
+        val data = viewModel.studentDetailedInfo.value as studentDetails
         saveStudentDetails(data)
     }
-    private fun moveTOHome(){
+
+    private fun moveTOHome() {
         val i = Intent(requireActivity(), HomeActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(i)
